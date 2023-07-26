@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/cohen/CLionProjects/API2023
+# Install script for directory: C:/Program Files (x86)/GitHub/API2023/API2023
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/cohen/CLionProjects/API2023/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "C:/Program Files (x86)/GitHub/API2023/API2023/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
