@@ -64,8 +64,6 @@ carTreeNode * carInsert (carTreeNode *root , int s)
     }
     return root;
 }
-
-
 /**
  * Search Car Function
  * @param root of the tree
@@ -81,6 +79,78 @@ carTreeNode * searchCar(carTreeNode *root, int x)
     }
     return root;
 }
+/**
+ * Lowest Autonomy Car Function
+ * @param root of the tree
+ * @return the car with the lowest autonomy
+ */
+carTreeNode * lowestAutonomyCar(carTreeNode *root){
+    carTreeNode *cur=root;
+    while(cur->left==NULL){
+        cur=cur->left;
+    }
+    return cur;
+}
+
+/**
+ * Function that finds the successor of x
+ * @param x car
+ * @return successor
+ */
+carTreeNode * nextCar(carTreeNode *x){
+    if(x->right!=NULL){
+        return lowestAutonomyCar(x->right);
+    }
+    carTreeNode *y=x->p;
+    while(y!=NULL && y->right==x){
+        x=y;
+        y=y->p;
+    }
+    return y;
+
+}
+
+/**
+ * Funcion to Remove a Car from the tree
+ * @param root of the tree
+ * @return root
+ */
+carTreeNode* removeCar(carTreeNode *root, int key){
+    carTreeNode *x=searchCar(root,key);
+    carTreeNode *to_del,*subtree;
+
+    //find the node to delete
+    if(x->left==NULL||x->right==NULL){
+        to_del=x;
+    }
+    else to_del=nextCar(x);
+
+    //find the subtree to move
+    if(to_del->left != NULL){
+        subtree=to_del->left;
+    }
+    else subtree=to_del->right;
+    if(subtree!=NULL){
+        subtree->p=to_del->p;
+    }
+
+    //correct the father reference
+    if(to_del->p==NULL){
+        root=subtree;
+    }
+    else if (to_del == to_del->p->left){
+        to_del->p->left=subtree;
+    }
+    else to_del->p->right=subtree;
+
+    //copy the key value
+    if(to_del != x){
+        x->key=to_del->key;
+    }
+    free(to_del);
+    return root;
+}
+
 
 /**
  * Highest Autonomy Car Function
