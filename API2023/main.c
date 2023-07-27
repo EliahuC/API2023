@@ -13,23 +13,23 @@
 
 
 
-typedef struct node {
+typedef struct carNode {
     int key ;
-    struct node* p ;
-    struct node* left;
-    struct node* right;
+    struct carNode* p ;
+    struct carNode* left;
+    struct carNode* right;
 
 } carTreeNode ;
 
 
 /**
  * Creation of CarNodes
- * @param s key of the node
- * @return the new node
+ * @param s key of the carNode
+ * @return the new carNode
  */
 carTreeNode* carTreeNodeCreation(int s){
     carTreeNode *x;
-    x = (struct node*)malloc(sizeof(struct node));
+    x = (struct carNode*)malloc(sizeof(struct carNode));
     x->key=s;
     x->left=NULL;
     x->right=NULL;
@@ -40,7 +40,7 @@ carTreeNode* carTreeNodeCreation(int s){
  /**
   * Insert of CarNode Function
   * @param root of the tree
-  * @param s key of the new node
+  * @param s key of the new carNode
   * @return root
   */
 carTreeNode * carInsert (carTreeNode *root , int s)
@@ -119,7 +119,7 @@ carTreeNode* removeCar(carTreeNode *root, int key){
     carTreeNode *x=searchCar(root,key);
     carTreeNode *to_del,*subtree;
 
-    //find the node to delete
+    //find the carNode to delete
     if(x->left==NULL||x->right==NULL){
         to_del=x;
     }
@@ -164,6 +164,46 @@ int highestAutonomyCar(carTreeNode *root){
     }
     return cur->key;
 }
+
+typedef struct Edge{
+    int start;
+    int destination;
+    struct Edge* next;
+}Edge;
+
+typedef struct Station{
+    int distance;
+    carTreeNode* root;
+    Edge* edges;
+}Station;
+
+typedef struct Graph{
+    Station* head;
+}StationGraph;
+
+Station *addEdges(Station *station, StationGraph graph) {
+    Edge* edges;
+    int maxDistance=highestAutonomyCar(station->root);
+    int stationDistance=station->distance;
+    int stationMaxEdge=stationDistance+maxDistance;
+    StationGraph temporaryGraph=graph;
+    //TODO settare grafo a stazione successiva
+    while(temporaryGraph.head->distance > stationDistance && temporaryGraph.head->distance<stationMaxEdge){
+
+
+    }
+}
+
+Station* createStation(StationGraph graph,int distance, carTreeNode* root){
+   Station *x;
+    x = (struct Station *)malloc(sizeof(struct Station));
+    x->root=root;
+    x->distance=distance;
+    x= addEdges(x, graph);
+    return x;
+}
+
+
 
 int main(){
     //TODO Implementare grafi per stazione
