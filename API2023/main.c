@@ -11,7 +11,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-#define int -1 IDLE;
+
 typedef struct carNode {
     int key ;
     struct carNode* p ;
@@ -164,7 +164,7 @@ int highestAutonomyCar(carTreeNode *root){
     return cur->key;
 }
 
-typedef struct Edge{
+typedef struct Path{
     int start;
     int destination;
     struct Station* destinationStation;
@@ -173,9 +173,9 @@ typedef struct Edge{
 typedef struct Vertex{
     int distance;
     carTreeNode* root;
-    struct Station* next;
-    struct Station* prev;
-    struct Path* paths;
+    struct Vertex* next;
+    struct Vertex* prev;
+    Path* paths;
     int numberOfPaths;
 }Station;
 
@@ -184,18 +184,28 @@ typedef struct Graph{
     int size;
 }StationGraph;
 
-
+/**
+ * Checks if the station is already in the graph (search funtion)
+ * @param graph of the stations
+ * @param distance of the station
+ * @return true if there isn't any station with key==distance
+ */
 bool notInTheGraph(StationGraph *graph, int distance) {
     //TODO SEARCH IN THE GRAPH
 }
 
 
 
+/**
+ * Adds all the egdes of a certain station
+ * @param station to get the edges
+ * @param graph of the stations
+ * @return graph
+ */
+Path *addEdges(Station *station, StationGraph graph) {
+    Path *edges;
 
-Station *addEdges(Station *station, StationGraph graph) {
-    Path* edges;
-
-    //edges=(struct Edge *)malloc(station->numberOfPaths * (sizeof (struct Edge)));
+    //edges=(struct Path *)malloc(station->numberOfPaths * (sizeof (struct Path)));
     int maxDistance=highestAutonomyCar(station->root);
     int stationDistance=station->distance;
     int stationMaxEdge=stationDistance+maxDistance;
@@ -206,9 +216,15 @@ Station *addEdges(Station *station, StationGraph graph) {
 
 
     }
+    return edges;
 }
 
+Station* nextStation(Station *x,StationGraph graph){
 
+}
+Station* prevStation(Station *x,StationGraph graph){
+
+}
 
 /**
  * Insert in the graph
@@ -220,7 +236,7 @@ Station *addEdges(Station *station, StationGraph graph) {
 StationGraph * createStation(StationGraph *graph,int distance, carTreeNode* root){
    Station *x;
    if(notInTheGraph(graph,distance)){
-    x = (struct Station *)malloc(sizeof(struct Vertex));
+    x =  (struct Station*) malloc(sizeof(struct Station*));
     x->root=root;
     x->distance=distance;
     if(graph->head->distance==0){
@@ -228,33 +244,44 @@ StationGraph * createStation(StationGraph *graph,int distance, carTreeNode* root
         graph->size++;
         return graph;
     }
-    x= addEdges(x, *graph);
+    x->paths = addEdges(x, *graph);
+    x->next=nextStation(x,*graph);
+    x->prev=prevStation(x,*graph);
     graph->size++;
     return graph;
    }
     return NULL;
 }
 
+/**
+ * Initialize a new graph
+ * @param graph to initialize
+ * @return graph
+ */
 StationGraph * newGraph(StationGraph *graph) {
-    Station *x = malloc(sizeof(Station));
+    Station *x = malloc(sizeof(Station*));
     graph->size = 0;
     x->distance=0;
     x->root=NULL;
     x->paths=NULL;
     x->numberOfPaths=0;
     x->next=NULL;
-    x->prev
+    x->prev=NULL;
+    graph->head=x;
+    return graph;
 
 }
 
 
 int main(){
-    //TODO Implementare grafi per stazione
-    //TODO Funzione aggiungi-stazione
-    //TODO Funzione demolisci-stazione
-    //TODO Funzione aggiungi-auto
-    //TODO Funzione rottama-auto
-    //TODO Funzione pianifica-percorso
-    //TODO funzione main
+    StationGraph *graph= malloc(sizeof (StationGraph));
+    newGraph(graph);
+    //TODO Implementare grafi per stazione 70%
+    //TODO Funzione aggiungi-stazione  50%
+    //TODO Funzione demolisci-stazione 0%
+    //TODO Funzione aggiungi-auto 80%
+    //TODO Funzione rottama-auto 80%
+    //TODO Funzione pianifica-percorso 0%
+    //TODO funzione main 0%
     return 0;
 }
