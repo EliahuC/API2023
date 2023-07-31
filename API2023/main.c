@@ -4,7 +4,13 @@
 //                  SearchPath
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
-
+//TODO Implementare grafi per stazione 99%
+//TODO Funzione aggiungi-stazione  80%
+//TODO Funzione demolisci-stazione 0%
+//TODO Funzione aggiungi-auto 80%
+//TODO Funzione rottama-auto 80%
+//TODO Funzione pianifica-percorso 0%
+//TODO funzione main 0%
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -34,7 +40,21 @@ carTreeNode* carTreeNodeCreation(int s){
     x->right=NULL;
     return x;
 }
-
+/**
+ * Search Car Function
+ * @param root of the tree
+ * @param x key to search
+ * @return root
+ */
+carTreeNode * searchCar(carTreeNode *root, int x)
+{
+    while((root != NULL) && (x!= root->key)  )
+    {
+        if(x < root->key)  root=root->left;
+        else root=root->right;
+    }
+    return root;
+}
 
  /**
   * Insert of CarNode Function
@@ -44,6 +64,7 @@ carTreeNode* carTreeNodeCreation(int s){
   */
 carTreeNode * carInsert (carTreeNode *root , int s)
 {
+    if(searchCar(root,s)==NULL) {
     carTreeNode *pre, *cur, *x;
     x=carTreeNodeCreation(s);
     pre=NULL;
@@ -62,22 +83,10 @@ carTreeNode * carInsert (carTreeNode *root , int s)
         else pre->right=x;
     }
     return root;
-}
-/**
- * Search Car Function
- * @param root of the tree
- * @param x key to search
- * @return root
- */
-carTreeNode * searchCar(carTreeNode *root, int x)
-{
-    while((root != NULL) && (x!= root->key)  )
-    {
-        if(x < root->key)  root=root->left;
-        else root=root->right;
     }
-    return root;
+    return NULL;
 }
+
 /**
  * Lowest Autonomy Car Function
  * @param root of the tree
@@ -168,13 +177,14 @@ typedef struct Path{
     int start;
     int destination;
     struct Station* destinationStation;
+    struct Path* nextPath;
 }Path;
 
-typedef struct Vertex{
+typedef struct Station{
     int distance;
     carTreeNode* root;
-    struct Vertex* next;
-    struct Vertex* prev;
+    struct Station* next;
+    struct Station* prev;
     Path* paths;
     int numberOfPaths;
 }Station;
@@ -191,10 +201,21 @@ typedef struct Graph{
  * @return true if there isn't any station with key==distance
  */
 bool notInTheGraph(StationGraph *graph, int distance) {
-    //TODO SEARCH IN THE GRAPH
+    while(graph->head->distance<distance || graph->head->next==NULL){
+        graph->head=graph->head->next;
+    }
+    if(graph->head->distance==distance)return false;
+    return true;
 }
 
-
+Path  *addEdge(Path *edges,int stationDistance,int distance,Station *station){
+    Path *edge=malloc( (sizeof (struct Path)));
+    edge->start=stationDistance;
+    edge->destination=distance;
+    edge->destinationStation=station;
+    edges->nextPath=edge;
+    return edges;
+}
 
 /**
  * Adds all the egdes of a certain station
@@ -205,25 +226,40 @@ bool notInTheGraph(StationGraph *graph, int distance) {
 Path *addEdges(Station *station, StationGraph graph) {
     Path *edges;
 
-    //edges=(struct Path *)malloc(station->numberOfPaths * (sizeof (struct Path)));
+    edges=malloc( (sizeof (struct Path)));
+    Path *edgesHead=edges;
     int maxDistance=highestAutonomyCar(station->root);
     int stationDistance=station->distance;
     int stationMaxEdge=stationDistance+maxDistance;
+    int stationMinEdge=stationDistance-maxDistance;
+    if(stationMinEdge<0)stationMinEdge=0;
     StationGraph temporaryGraph=graph;
-    //TODO settare grafo a stazione successiva
-    while(temporaryGraph.head->distance > stationDistance && temporaryGraph.head->distance<stationMaxEdge){
-
-
-
+    while( temporaryGraph.head->distance<stationMaxEdge) {
+        if (temporaryGraph.head->distance > stationMinEdge) {
+            edges=addEdge(edges,stationDistance,temporaryGraph.head->distance,temporaryGraph.head);
+            graph.head->numberOfPaths++;
+            edges=edges->nextPath;
+        }
+        temporaryGraph.head = temporaryGraph.head->next;
     }
-    return edges;
+    return edgesHead;
 }
 
-Station* nextStation(Station *x,StationGraph graph){
+StationGraph* addStation(Station *x, StationGraph *graph){
+    while(graph->head->distance<x->distance|| graph->head->next==NULL){
+        graph->head=graph->head->next;
+    }
+    if(graph->head->prev->distance<x->distance){
+        x->prev=graph->head->prev;
+        graph->head->prev->next=x;
+    }
+    x->next=graph->head;
+    graph->head->prev=x;
 
-}
-Station* prevStation(Station *x,StationGraph graph){
-
+    while (graph->head->prev!=NULL){
+        graph->head=graph->head->prev;
+    }
+    return graph;
 }
 
 /**
@@ -231,12 +267,12 @@ Station* prevStation(Station *x,StationGraph graph){
  * @param graph
  * @param distance from the beginning of the road
  * @param root of the tree
- * @return graph
+ * @return graph or NULL if the station is already present
  */
 StationGraph * createStation(StationGraph *graph,int distance, carTreeNode* root){
    Station *x;
    if(notInTheGraph(graph,distance)){
-    x =  (struct Station*) malloc(sizeof(struct Station*));
+    x =   malloc(sizeof(struct Station*));
     x->root=root;
     x->distance=distance;
     if(graph->head->distance==0){
@@ -245,8 +281,7 @@ StationGraph * createStation(StationGraph *graph,int distance, carTreeNode* root
         return graph;
     }
     x->paths = addEdges(x, *graph);
-    x->next=nextStation(x,*graph);
-    x->prev=prevStation(x,*graph);
+    graph=addStation(x,graph);
     graph->size++;
     return graph;
    }
@@ -272,13 +307,33 @@ StationGraph * newGraph(StationGraph *graph) {
 
 }
 
+/**
+ * Function to remove a station
+ * @param graph of the stations
+ * @param distance of the station to remove
+ * @return the updated graph
+ */
+StationGraph* removeStation(StationGraph *graph,int distance){
+    StationGraph *temp_graph=graph;
+    while (temp_graph->head->distance<distance){
+        temp_graph->head=temp_graph->head->next;
+    }
+    temp_graph->head->prev->next=temp_graph->head->next;
+    temp_graph->head->next->prev=temp_graph->head->prev;
+    Station *s=graph->head;
+    free(s);
+    return graph;
+
+
+}
 
 int main(){
     StationGraph *graph= malloc(sizeof (StationGraph));
     newGraph(graph);
-    //TODO Implementare grafi per stazione 70%
-    //TODO Funzione aggiungi-stazione  50%
-    //TODO Funzione demolisci-stazione 0%
+
+    //TODO Implementare grafi per stazione 90%
+    //TODO Funzione aggiungi-stazione  80%
+    //TODO Funzione demolisci-stazione 90%
     //TODO Funzione aggiungi-auto 80%
     //TODO Funzione rottama-auto 80%
     //TODO Funzione pianifica-percorso 0%
