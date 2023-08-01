@@ -195,7 +195,7 @@ typedef struct Graph{
 }StationGraph;
 
 /**
- * Checks if the station is already in the graph (search funtion)
+ * Checks if the station is already in the graph (search function)
  * @param graph of the stations
  * @param distance of the station
  * @return true if there isn't any station with key==distance
@@ -285,7 +285,7 @@ StationGraph * createStation(StationGraph *graph,int distance, carTreeNode* root
     graph->size++;
     return graph;
    }
-    return NULL;
+    return graph;
 }
 
 /**
@@ -327,16 +327,79 @@ StationGraph* removeStation(StationGraph *graph,int distance){
 
 }
 
+void shiftInput(){
+    char input;
+    input= getc(stdin);
+    while(input!=' ' ){
+        input= getc(stdin);
+    }
+}
+
+carTreeNode* createCarTree(int cars[],int n,carTreeNode *root){
+    int i;
+    for(i=0;i<n;i++){
+        root= carInsert(root,cars[i]);
+    }
+    return root;
+}
+
 int main(){
     StationGraph *graph= malloc(sizeof (StationGraph));
-    newGraph(graph);
+    graph=newGraph(graph);
 
+    char *command= malloc(12*sizeof (char));
+    char firstLetter,ambiguitySolver,garbage;
+    do {
+        if(fgets(command, 12, stdin)==NULL)return 0;
+        firstLetter = command[0];
+        switch (firstLetter) {
+            case 'a':
+                ambiguitySolver=command[9];
+                //aggiungi-stazione
+                if(ambiguitySolver=='s'){
+                    shiftInput();
+                    int distance, n_cars;
+                  scanf("%d",&distance);
+                  garbage=getc(stdin);
+                  scanf("%d",&n_cars);
+                  garbage=getc(stdin);
+                  int cars[n_cars];
+                  int i=0;
+                  for(i=0;i<n_cars;i++){
+                      scanf("%d",&cars[i]);
+                      garbage=getc(stdin);
+                  }
+                    carTreeNode *root;
+                    root = (struct carNode *) malloc(sizeof(struct carNode));
+                    root->p=NULL;
+                    root=createCarTree(cars,n_cars,root);
+                    int size=graph->size;
+                    graph= createStation(graph,distance,root);
+                    if(graph->size==size+1)printf("aggiunta");
+                    else printf("non aggiunta");
+
+                }
+                //aggiungi-auto
+                else if(ambiguitySolver=='a'){
+
+                }
+                break;
+            case 'd':
+                break;
+            case 'r':
+                break;
+            case 'p':
+                break;
+            default:
+                break;
+        }
+    }while(command!=NULL);
+    return 0;
+}
     //TODO Implementare grafi per stazione 90%
     //TODO Funzione aggiungi-stazione  80%
     //TODO Funzione demolisci-stazione 90%
     //TODO Funzione aggiungi-auto 80%
     //TODO Funzione rottama-auto 80%
     //TODO Funzione pianifica-percorso 0%
-    //TODO funzione main 0%
-    return 0;
-}
+    //TODO funzione main 50%
