@@ -185,6 +185,7 @@ typedef struct Station{
     carTreeNode* root;
     struct Station* next;
     struct Station* prev;
+    bool visited;
     Path* paths;
     int numberOfPaths;
 }Station;
@@ -341,6 +342,50 @@ carTreeNode* createCarTree(int cars[],int n,carTreeNode *root){
         root= carInsert(root,cars[i]);
     }
     return root;
+}
+typedef struct Queue{
+    Station *station;
+    Station* prevStation;
+
+
+}Queue;
+
+Station * searchStation(StationGraph *graph,int start){
+    StationGraph *temp=graph;
+    while(temp->head->distance<start){
+        temp->head=temp->head->next;
+    }
+    if(temp->head->distance==start)return graph->head;
+    return NULL;
+}
+
+/**
+ * Function to find the best path for the trip
+ * @param graph of the stations
+ * @param startingPoint starting station
+ * @param arrivalPoint final station
+ * @return best path
+ */
+int *bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
+    Queue * queue = malloc(sizeof(Queue) * graph->size);
+    int front = 0;
+    int rear = 0;
+    Station *startingStation=searchStation(graph,startingPoint);
+    Station *temp1=startingStation;
+    while(temp1->distance<=arrivalPoint){
+        temp1->visited=false;
+        temp1=temp1->next;
+    }
+    queue[rear++].station = startingStation;
+    while (front < rear) {
+        Station *curr =queue[front++].station;
+        Station *temp=curr;
+        int autonomy= highestAutonomyCar(curr->root);
+        while(temp->distance < curr->distance+autonomy){
+
+        }
+
+    }
 }
 
 int main(){
