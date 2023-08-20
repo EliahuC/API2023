@@ -185,7 +185,7 @@ typedef struct Station{
     carTreeNode* root;
     struct Station* next;
     struct Station* prev;
-    bool visited;
+    struct Station* best;
     Path* paths;
     int numberOfPaths;
 }Station;
@@ -343,12 +343,7 @@ carTreeNode* createCarTree(int cars[],int n,carTreeNode *root){
     }
     return root;
 }
-typedef struct Queue{
-    Station *station;
-    Station* prevStation;
 
-
-}Queue;
 
 Station * searchStation(StationGraph *graph,int start){
     StationGraph *temp=graph;
@@ -358,35 +353,126 @@ Station * searchStation(StationGraph *graph,int start){
     if(temp->head->distance==start)return graph->head;
     return NULL;
 }
+/**
+ * adds a new station to the queue
+ * @param queue
+ * @param rear
+ * @param temp
+ * @return new queue
+ */
+Station **addToQueue(Station **queue, int rear, Station *temp) {
+    Station *toBeAdded=temp;
+    queue[rear++]= toBeAdded;
+    return queue;
+}
+
 
 /**
  * Function to find the best path for the trip
  * @param graph of the stations
  * @param startingPoint starting station
  * @param arrivalPoint final station
- * @return best path
+ *
  */
-int *bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
-    Queue * queue = malloc(sizeof(Queue) * graph->size);
+void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
+    Station* *queue = malloc(sizeof(Station*) * graph->size);
     int front = 0;
     int rear = 0;
     Station *startingStation=searchStation(graph,startingPoint);
-    Station *temp1=startingStation;
-    while(temp1->distance<=arrivalPoint){
-        temp1->visited=false;
-        temp1=temp1->next;
-    }
-    queue[rear++].station = startingStation;
-    while (front < rear) {
-        Station *curr =queue[front++].station;
-        Station *temp=curr;
-        int autonomy= highestAutonomyCar(curr->root);
-        while(temp->distance < curr->distance+autonomy){
 
+    queue[rear++] = startingStation;
+
+    //percorso diretto
+    if(startingPoint<arrivalPoint){
+        Station *temp1=startingStation;
+        //RESET BEST PATH
+        while(temp1->distance<=arrivalPoint){
+            temp1->best=NULL;
+            temp1=temp1->next;
         }
-
+        int maxDistanceTouched=startingStation->distance;
+        while (front < rear || maxDistanceTouched < arrivalPoint) {
+                Station *curr =queue[front++];
+                Station *temp=curr;
+                int autonomy= highestAutonomyCar(curr->root);
+                while(temp->distance <= curr->distance+autonomy||temp->distance<=arrivalPoint){
+                    if(temp->best==NULL){
+                        temp->best=curr;
+                        queue=addToQueue(queue,rear,temp);
+                        rear++;
+                    }
+                    maxDistanceTouched=temp->distance;
+                    temp=temp->next;
+                }
+        }
+        Station *finalStation= searchStation(graph,arrivalPoint);
+        if(finalStation->best==NULL){
+            printf("nessun percorso");
+        }
+        else{
+            int *list=malloc(sizeof (int)*arrivalPoint-startingPoint);
+            int i=-1,capacity=0;
+            while(finalStation->distance>=startingPoint){
+                list[i++]=finalStation->distance;
+                capacity++;
+                finalStation=finalStation->best;
+            }
+            for(int j=capacity;j<1;j--){
+                printf("%d ",list[j-1]);
+            }
+            free(list);
+        }
+        free(queue);
+        return ;
     }
+
+    //precorso inverso
+    else {
+        Station *temp1=startingStation;
+        //RESET BEST PATH
+        while(temp1->distance>=arrivalPoint){
+            temp1->best=NULL;
+            temp1=temp1->prev;
+        }
+        while (front < rear) {
+            Station *curr =queue[front++];
+            Station *temp=curr;
+            int autonomy= highestAutonomyCar(curr->root);
+            while(temp->distance >= curr->distance-autonomy||temp->distance<=arrivalPoint){
+                if(temp->best==NULL ){
+                    temp->best=curr;
+                    queue=addToQueue(queue,rear,temp);
+                    rear++;
+                }
+                else if(curr->best!=temp->best){
+                    temp->best=curr;
+                }
+                temp=temp->prev;
+            }
+        }
+        Station *finalStation= searchStation(graph,arrivalPoint);
+        if(finalStation->best==NULL){
+            printf("nessun percorso");
+        }
+        else{
+            int *list=malloc(sizeof (int)*startingPoint-arrivalPoint);
+            int i=-1,capacity=0;
+            while(finalStation->distance>=startingPoint){
+                list[i++]=finalStation->distance;
+                capacity++;
+                finalStation=finalStation->best;
+            }
+            for(int j=capacity;j<1;j--){
+                printf("%d ",list[j-1]);
+            }
+            free(list);
+        }
+        free(queue);
+        return ;
+    }
+
 }
+
 
 int main(){
     StationGraph *graph= malloc(sizeof (StationGraph));
