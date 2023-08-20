@@ -69,7 +69,7 @@ carTreeNode * carInsert (carTreeNode *root , int s)
     x=carTreeNodeCreation(s);
     pre=NULL;
     cur=root;
-    while ((cur!=NULL)&&(cur->key != NULL))
+    while (cur!=NULL)
     {
         pre=cur;
         if (x->key<cur->key)cur=cur->left;
@@ -436,25 +436,26 @@ int main(){
     graph=newGraph(graph);
 
     char *command= malloc(12*sizeof (char));
-    char firstLetter,ambiguitySolver,garbage;
+    char firstLetter,ambiguitySolver;
     do {
         if(fgets(command, 12, stdin)==NULL)return 0;
         firstLetter = command[0];
         switch (firstLetter) {
-            case 'a':
+            case 'a':{
+                char garbage;
                 ambiguitySolver=command[9];
                 //aggiungi-stazione
                 if(ambiguitySolver=='s'){
                     shiftInput();
                     int distance, n_cars;
-                  scanf("%d",&distance);
+                  if(scanf("%d",&distance));
                   garbage=getc(stdin);
-                  scanf("%d",&n_cars);
+                  if(scanf("%d",&n_cars));
                   garbage=getc(stdin);
                   int cars[n_cars];
                   int i=0;
                   for(i=0;i<n_cars;i++){
-                      scanf("%d",&cars[i]);
+                      if(scanf("%d",&cars[i]));
                       garbage=getc(stdin);
                   }
                     carTreeNode *root;
@@ -471,9 +472,9 @@ int main(){
                 else if(ambiguitySolver=='a'){
                     shiftInput();
                     int distance,autonomy;
-                    scanf("%d",&distance);
+                    if(scanf("%d",&distance));
                     garbage=getc(stdin);
-                    scanf("%d",&autonomy);
+                    if(scanf("%d",&autonomy));
                     garbage=getc(stdin);
                     Station *station= searchStation(graph,distance);
                     if(station==NULL){
@@ -483,11 +484,12 @@ int main(){
                     station->root= carInsert(station->root,autonomy);
                     break;
                 }
-                break;
+                break;}
             case 'd':{
+                char garbage;
                 shiftInput();
                 int distance;
-                scanf("%d",&distance);
+                if(scanf("%d",&distance));
                 garbage=getc(stdin);
                 Station *station= searchStation(graph,distance);
                 if(station==NULL){
@@ -500,11 +502,12 @@ int main(){
             }
 
             case 'r':{
+                char garbage;
                 shiftInput();
                 int distance,autonomy;
-                scanf("%d",&distance);
+                if(scanf("%d",&distance));
                 garbage=getc(stdin);
-                scanf("%d",&autonomy);
+                if(scanf("%d",&autonomy));
                 garbage=getc(stdin);
                 Station *station= searchStation(graph,distance);
                 if(station==NULL){
@@ -520,11 +523,12 @@ int main(){
             }
 
             case 'p':{
+                char garbage;
                 shiftInput();
                 int start,end;
-                scanf("%d",&start);
+                if(scanf("%d",&start));
                 garbage=getc(stdin);
-                scanf("%d",&end);
+                if(scanf("%d",&end));
                 garbage=getc(stdin);
                 bestPath(graph,start,end);
                 break;
