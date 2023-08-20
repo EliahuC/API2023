@@ -173,12 +173,7 @@ int highestAutonomyCar(carTreeNode *root){
     return cur->key;
 }
 
-typedef struct Path{
-    int start;
-    int destination;
-    struct Station* destinationStation;
-    struct Path* nextPath;
-}Path;
+
 
 typedef struct Station{
     int distance;
@@ -186,7 +181,7 @@ typedef struct Station{
     struct Station* next;
     struct Station* prev;
     struct Station* best;
-    Path* paths;
+
     int numberOfPaths;
 }Station;
 
@@ -209,44 +204,11 @@ bool notInTheGraph(StationGraph *graph, int distance) {
     return true;
 }
 
-Path  *addEdge(Path *edges,int stationDistance,int distance,Station *station){
-    Path *edge=malloc( (sizeof (struct Path)));
-    edge->start=stationDistance;
-    edge->destination=distance;
-    edge->destinationStation=station;
-    edges->nextPath=edge;
-    return edges;
-}
 
-/**
- * Adds all the egdes of a certain station
- * @param station to get the edges
- * @param graph of the stations
- * @return graph
- */
-Path *addEdges(Station *station, StationGraph graph) {
-    Path *edges;
 
-    edges=malloc( (sizeof (struct Path)));
-    Path *edgesHead=edges;
-    int maxDistance=highestAutonomyCar(station->root);
-    int stationDistance=station->distance;
-    int stationMaxEdge=stationDistance+maxDistance;
-    int stationMinEdge=stationDistance-maxDistance;
-    if(stationMinEdge<0)stationMinEdge=0;
-    StationGraph temporaryGraph=graph;
-    while( temporaryGraph.head->distance<stationMaxEdge) {
-        if (temporaryGraph.head->distance > stationMinEdge) {
-            edges=addEdge(edges,stationDistance,temporaryGraph.head->distance,temporaryGraph.head);
-            graph.head->numberOfPaths++;
-            edges=edges->nextPath;
-        }
-        temporaryGraph.head = temporaryGraph.head->next;
-    }
-    return edgesHead;
-}
 
 StationGraph* addStation(Station *x, StationGraph *graph){
+    StationGraph *temp=graph;
     while(graph->head->distance<x->distance|| graph->head->next==NULL){
         graph->head=graph->head->next;
     }
@@ -257,10 +219,7 @@ StationGraph* addStation(Station *x, StationGraph *graph){
     x->next=graph->head;
     graph->head->prev=x;
 
-    while (graph->head->prev!=NULL){
-        graph->head=graph->head->prev;
-    }
-    return graph;
+    return temp;
 }
 
 /**
@@ -281,7 +240,6 @@ StationGraph * createStation(StationGraph *graph,int distance, carTreeNode* root
         graph->size++;
         return graph;
     }
-    x->paths = addEdges(x, *graph);
     graph=addStation(x,graph);
     graph->size++;
     return graph;
@@ -299,7 +257,6 @@ StationGraph * newGraph(StationGraph *graph) {
     graph->size = 0;
     x->distance=0;
     x->root=NULL;
-    x->paths=NULL;
     x->numberOfPaths=0;
     x->next=NULL;
     x->prev=NULL;
@@ -512,15 +469,66 @@ int main(){
                 }
                 //aggiungi-auto
                 else if(ambiguitySolver=='a'){
-
+                    shiftInput();
+                    int distance,autonomy;
+                    scanf("%d",&distance);
+                    garbage=getc(stdin);
+                    scanf("%d",&autonomy);
+                    garbage=getc(stdin);
+                    Station *station= searchStation(graph,distance);
+                    if(station==NULL){
+                        printf("non aggiunta");
+                        break;
+                    }
+                    station->root= carInsert(station->root,autonomy);
+                    break;
                 }
                 break;
-            case 'd':
+            case 'd':{
+                shiftInput();
+                int distance;
+                scanf("%d",&distance);
+                garbage=getc(stdin);
+                Station *station= searchStation(graph,distance);
+                if(station==NULL){
+                    printf("non demolita");
+                    break;
+                }
+                graph= removeStation(graph,distance);
                 break;
-            case 'r':
+
+            }
+
+            case 'r':{
+                shiftInput();
+                int distance,autonomy;
+                scanf("%d",&distance);
+                garbage=getc(stdin);
+                scanf("%d",&autonomy);
+                garbage=getc(stdin);
+                Station *station= searchStation(graph,distance);
+                if(station==NULL){
+                    printf("non rottamata");
+                    break;
+                }
+                if(searchCar(station->root,autonomy)==NULL)printf("non rottamata");
+                else{
+                    station->root=removeCar(station->root,autonomy);
+                    printf("rottamata");
+                }
                 break;
-            case 'p':
+            }
+
+            case 'p':{
+                shiftInput();
+                int start,end;
+                scanf("%d",&start);
+                garbage=getc(stdin);
+                scanf("%d",&end);
+                garbage=getc(stdin);
+                bestPath(graph,start,end);
                 break;
+            }
             default:
                 break;
         }
