@@ -23,6 +23,7 @@ typedef struct carNode {
     struct carNode* left;
     struct carNode* right;
 
+
 } carTreeNode ;
 
 
@@ -63,7 +64,7 @@ carTreeNode * searchCar(carTreeNode *root, int x)
   */
 carTreeNode * carInsert (carTreeNode *root , int s)
 {
-    if(searchCar(root,s)==NULL) {
+
     carTreeNode *pre, *cur, *x;
     x=carTreeNodeCreation(s);
     pre=NULL;
@@ -84,8 +85,7 @@ carTreeNode * carInsert (carTreeNode *root , int s)
         printf("aggiunta\n");
     return root;
     }
-    return NULL;
-}
+
 
 /**
  * Lowest Autonomy Car Function
@@ -212,19 +212,19 @@ bool notInTheGraph(StationGraph *graph, int distance) {
 
 
 StationGraph* addStation(Station *x, StationGraph *graph){
+    Station *prev=graph->head;
 
-    while(graph->head->distance<x->distance|| graph->head->next!=NULL){
+    while((graph->head!=NULL)&&(graph->head->distance<x->distance|| graph->head->next!=NULL)){
+        prev=graph->head;
         graph->head=graph->head->next;
-        if(graph->head==NULL){
 
-        }
     }
-    if(graph->head->prev->distance<x->distance){
-        x->prev=graph->head->prev;
-        graph->head->prev->next=x;
+    if(prev->distance<x->distance){
+        x->prev=prev;
+       prev->next=x;
     }
     x->next=graph->head;
-    graph->head->prev=x;
+   // graph->head->prev=x;
     graph->head=graph->startingPoint;
     return graph;
 }
@@ -237,11 +237,11 @@ StationGraph* addStation(Station *x, StationGraph *graph){
  * @return graph or NULL if the station is already present
  */
 StationGraph * createStation(StationGraph *graph,int distance, carTreeNode* root){
-   Station *x;
+
 
    if(notInTheGraph(graph,distance)){
+   Station *x = malloc(sizeof(struct Station*));
     graph->head=graph->startingPoint;
-    x =   malloc(sizeof(struct Station*));
     x->root=root;
     x->distance=distance;
     x->prev=NULL;
@@ -290,7 +290,10 @@ StationGraph* removeStation(StationGraph *graph,int distance){
         temp_graph->head=temp_graph->head->next;
     }
     temp_graph->head->prev->next=temp_graph->head->next;
-    temp_graph->head->next->prev=temp_graph->head->prev;
+    if(temp_graph->head->next!=NULL){
+        temp_graph->head->next->prev=temp_graph->head->prev;
+    }
+
     Station *s=graph->head;
     free(s);
     printf("demolita\n");
@@ -312,6 +315,7 @@ carTreeNode* createCarTree(int cars[],int n,carTreeNode *root){
     int i;
     root->key=cars[0];
     for(i=1;i<n;i++){
+
         root= carInsert(root,cars[i]);
     }
     return root;
@@ -323,7 +327,12 @@ Station * searchStation(StationGraph *graph,int start){
     while(temp->head->distance<start){
         temp->head=temp->head->next;
     }
-    if(temp->head->distance==start)return graph->head;
+    if(temp->head->distance==start){
+        Station *station=graph->head;
+        graph->head=graph->startingPoint;
+        return station;
+    }
+    graph->head=graph->startingPoint;
     return NULL;
 }
 /**
@@ -381,7 +390,7 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
         }
         Station *finalStation= searchStation(graph,arrivalPoint);
         if(finalStation->best==NULL){
-            printf("nessun percorso");
+            printf("nessun percorso\n");
         }
         else{
             int *list=malloc(sizeof (int)*arrivalPoint-startingPoint);
@@ -426,7 +435,7 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
         }
         Station *finalStation= searchStation(graph,arrivalPoint);
         if(finalStation->best==NULL){
-            printf("nessun percorso");
+            printf("nessun percorso\n");
         }
         else{
             int *list=malloc(sizeof (int)*startingPoint-arrivalPoint);
@@ -552,6 +561,11 @@ int main(){
                 garbage=getc(stdin);
                 if(scanf("%d",&end)<0);
                 garbage=getc(stdin);
+                if(searchStation(graph,start)==NULL|| searchStation(graph,end)==NULL){
+                    printf("nessun percorso\n");
+                    break;
+
+                }
                 bestPath(graph,start,end);
                 break;
             }
