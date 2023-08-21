@@ -240,7 +240,7 @@ StationGraph * createStation(StationGraph *graph,int distance, carTreeNode* root
 
 
    if(notInTheGraph(graph,distance)){
-   Station *x = malloc(sizeof(struct Station*));
+   Station *x = (Station *) malloc(sizeof(Station));
     graph->head=graph->startingPoint;
     x->root=root;
     x->distance=distance;
@@ -266,9 +266,9 @@ StationGraph * createStation(StationGraph *graph,int distance, carTreeNode* root
  * @return graph
  */
 StationGraph * newGraph(StationGraph *graph) {
-    Station *x = malloc(sizeof(Station*));
+    Station *x =(Station *) malloc(sizeof(Station));
     graph->size = 0;
-    x->distance=0;
+    x->distance=-1;
     x->root=NULL;
     x->next=NULL;
     x->prev=NULL;
@@ -329,6 +329,7 @@ void shiftInput(){
 }
 
 carTreeNode* createCarTree(int cars[],int n,carTreeNode *root){
+    if(n==0) return root;
     int i;
     root->key=cars[0];
     for(i=1;i<n;i++){
@@ -361,7 +362,7 @@ Station **addToQueue(Station **queue, int rear, Station *temp) {
  *
  */
 void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
-    Station* *queue = malloc(sizeof(Station*) * graph->size);
+    Station* *queue =(Station **) malloc(sizeof(Station) * graph->size);
     int front = 0;
     int rear = 0;
     Station *startingStation=searchStation(graph,startingPoint);
@@ -397,7 +398,7 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
             printf("nessun percorso\n");
         }
         else{
-            int *list=malloc(sizeof (int)*arrivalPoint-startingPoint);
+            int *list=(int *)malloc(sizeof (int)*arrivalPoint-startingPoint);
             int i=-1,capacity=0;
             while(finalStation->distance>=startingPoint){
                 list[i++]=finalStation->distance;
@@ -442,7 +443,7 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
             printf("nessun percorso\n");
         }
         else{
-            int *list=malloc(sizeof (int)*startingPoint-arrivalPoint);
+            int *list=(int *)malloc(sizeof (int)*startingPoint-arrivalPoint);
             int i=-1,capacity=0;
             while(finalStation->distance>=startingPoint){
                 list[i++]=finalStation->distance;
@@ -463,16 +464,16 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
 
 
 int main(){
-    StationGraph *graph= malloc(sizeof (StationGraph));
+    StationGraph *graph= (StationGraph *)malloc(sizeof (StationGraph));
     graph=newGraph(graph);
     int size=12;
 
-    char *command= (char*)malloc(size*sizeof (char));
-    char firstLetter,ambiguitySolver,garbage='8';
+    //char *command= (char*)malloc(size*sizeof (char));
+    char command[12];
+    char firstLetter,ambiguitySolver;
     do {
         if(fgets(command, size, stdin)==NULL)return 0;
         firstLetter = command[0];
-        if(garbage==command[2])garbage=command[3];
         switch (firstLetter) {
             case 'a':{
 
@@ -482,14 +483,14 @@ int main(){
                     shiftInput();
                     int distance, n_cars;
                   if(scanf("%d",&distance)<0);
-                  garbage=getc(stdin);
+                  getc(stdin);
                   if(scanf("%d",&n_cars)<0);
-                  garbage=getc(stdin);
+                  getc(stdin);
                   int cars[n_cars];
-                  int i=0;
+                  int i;
                   for(i=0;i<n_cars;i++){
                       if(scanf("%d",&cars[i]));
-                      garbage=getc(stdin);
+                      getc(stdin);
                   }
                     carTreeNode *root;
                     root = (struct carNode *) malloc(sizeof(struct carNode));
@@ -499,7 +500,7 @@ int main(){
                     root=createCarTree(cars,n_cars,root);
                     int size=graph->size;
                     graph= createStation(graph,distance,root);
-                    if(graph->size==size+1)printf("aggiunta\n");
+                    if(graph->size==size+1) printf("aggiunta\n");
                     else printf("non aggiunta\n");
 
                 }
@@ -508,9 +509,9 @@ int main(){
                     shiftInput();
                     int distance,autonomy;
                     if(scanf("%d",&distance)<0);
-                    garbage=getc(stdin);
+                    getc(stdin);
                     if(scanf("%d",&autonomy)<0);
-                    garbage=getc(stdin);
+                    getc(stdin);
                     Station *station= searchStation(graph,distance);
                     if(station==NULL){
                         printf("non aggiunta\n");
@@ -526,7 +527,7 @@ int main(){
                 shiftInput();
                 int distance;
                 if(scanf("%d",&distance)<0);
-                garbage=getc(stdin);
+                getc(stdin);
                 Station *station= searchStation(graph,distance);
                 if(station==NULL){
                     printf("non demolita\n");
@@ -542,9 +543,9 @@ int main(){
                 shiftInput();
                 int distance,autonomy;
                 if(scanf("%d",&distance)<0);
-                garbage=getc(stdin);
+                getc(stdin);
                 if(scanf("%d",&autonomy)<0);
-                garbage=getc(stdin);
+                getc(stdin);
                 Station *station= searchStation(graph,distance);
                 if(station==NULL){
                     printf("non rottamata\n");
@@ -562,9 +563,9 @@ int main(){
                 shiftInput();
                 int start,end;
                 if(scanf("%d",&start)<0);
-                garbage=getc(stdin);
+                getc(stdin);
                 if(scanf("%d",&end)<0);
-                garbage=getc(stdin);
+                getc(stdin);
                 if(searchStation(graph,start)==NULL|| searchStation(graph,end)==NULL){
                     printf("nessun percorso\n");
                     break;
