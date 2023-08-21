@@ -82,6 +82,7 @@ carTreeNode * carInsert (carTreeNode *root , int s)
         if (x->key<pre->key) pre->left = x;
         else pre->right=x;
     }
+        printf("aggiunta\n");
     return root;
     }
     return NULL;
@@ -156,6 +157,7 @@ carTreeNode* removeCar(carTreeNode *root, int key){
         x->key=to_del->key;
     }
     free(to_del);
+    printf("rottamata\n");
     return root;
 }
 
@@ -280,6 +282,7 @@ StationGraph* removeStation(StationGraph *graph,int distance){
     temp_graph->head->next->prev=temp_graph->head->prev;
     Station *s=graph->head;
     free(s);
+    printf("demolita\n");
     return graph;
 
 
@@ -422,6 +425,7 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
             for(int j=capacity;j<1;j--){
                 printf("%d ",list[j-1]);
             }
+            printf("\n");
             free(list);
         }
         free(queue);
@@ -436,13 +440,13 @@ int main(){
     graph=newGraph(graph);
 
     char *command= malloc(12*sizeof (char));
-    char firstLetter,ambiguitySolver;
+    char firstLetter,ambiguitySolver,garbage='8';
     do {
         if(fgets(command, 12, stdin)==NULL)return 0;
         firstLetter = command[0];
         switch (firstLetter) {
             case 'a':{
-                char garbage;
+
                 ambiguitySolver=command[9];
                 //aggiungi-stazione
                 if(ambiguitySolver=='s'){
@@ -464,8 +468,8 @@ int main(){
                     root=createCarTree(cars,n_cars,root);
                     int size=graph->size;
                     graph= createStation(graph,distance,root);
-                    if(graph->size==size+1)printf("aggiunta");
-                    else printf("non aggiunta");
+                    if(graph->size==size+1)printf("aggiunta\n");
+                    else printf("non aggiunta\n");
 
                 }
                 //aggiungi-auto
@@ -478,22 +482,23 @@ int main(){
                     garbage=getc(stdin);
                     Station *station= searchStation(graph,distance);
                     if(station==NULL){
-                        printf("non aggiunta");
+                        printf("non aggiunta\n");
                         break;
                     }
                     station->root= carInsert(station->root,autonomy);
+
                     break;
                 }
                 break;}
             case 'd':{
-                char garbage;
+
                 shiftInput();
                 int distance;
                 if(scanf("%d",&distance));
                 garbage=getc(stdin);
                 Station *station= searchStation(graph,distance);
                 if(station==NULL){
-                    printf("non demolita");
+                    printf("non demolita\n");
                     break;
                 }
                 graph= removeStation(graph,distance);
@@ -502,7 +507,7 @@ int main(){
             }
 
             case 'r':{
-                char garbage;
+
                 shiftInput();
                 int distance,autonomy;
                 if(scanf("%d",&distance));
@@ -511,19 +516,18 @@ int main(){
                 garbage=getc(stdin);
                 Station *station= searchStation(graph,distance);
                 if(station==NULL){
-                    printf("non rottamata");
+                    printf("non rottamata\n");
                     break;
                 }
-                if(searchCar(station->root,autonomy)==NULL)printf("non rottamata");
+                if(searchCar(station->root,autonomy)==NULL)printf("non rottamata\n");
                 else{
                     station->root=removeCar(station->root,autonomy);
-                    printf("rottamata");
                 }
                 break;
             }
 
             case 'p':{
-                char garbage;
+
                 shiftInput();
                 int start,end;
                 if(scanf("%d",&start));
