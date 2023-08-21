@@ -168,7 +168,7 @@ carTreeNode* removeCar(carTreeNode *root, int key){
  */
 int highestAutonomyCar(carTreeNode *root){
     carTreeNode *cur=root;
-    while(cur->right==NULL){
+    while(cur->right!=NULL){
         cur=cur->right;
     }
     return cur->key;
@@ -188,6 +188,7 @@ typedef struct Station{
 typedef struct Graph{
     Station* head;
     int size;
+    Station *startingPoint;
 }StationGraph;
 
 /**
@@ -196,14 +197,14 @@ typedef struct Graph{
  * @param distance of the station
  * @return true if there isn't any station with key==distance
  */
-bool notInTheGraph(Station *temp, int distance) {
 
-    if(temp == NULL )return true;
-    while(temp== NULL || temp->next == NULL || temp->distance < distance ){
-        if(temp == NULL)return true;
-        temp=temp->next;
+bool notInTheGraph(StationGraph *graph, int distance) {
+    while((graph->head!=NULL)||(graph->head->next!=NULL)||(graph->head->distance<distance) ) {
+        graph->head=graph->head->next;
+        if(graph->head==NULL)return true;
     }
-    if(temp->distance == distance)return false;
+
+    if(graph->head->distance==distance)return false;
     return true;
 }
 
@@ -211,9 +212,12 @@ bool notInTheGraph(Station *temp, int distance) {
 
 
 StationGraph* addStation(Station *x, StationGraph *graph){
-    StationGraph *temp=graph;
-    while(graph->head->distance<x->distance|| graph->head->next==NULL){
+
+    while(graph->head->distance<x->distance|| graph->head->next!=NULL){
         graph->head=graph->head->next;
+        if(graph->head==NULL){
+
+        }
     }
     if(graph->head->prev->distance<x->distance){
         x->prev=graph->head->prev;
@@ -221,8 +225,8 @@ StationGraph* addStation(Station *x, StationGraph *graph){
     }
     x->next=graph->head;
     graph->head->prev=x;
-
-    return temp;
+    graph->head=graph->startingPoint;
+    return graph;
 }
 
 /**
@@ -234,16 +238,19 @@ StationGraph* addStation(Station *x, StationGraph *graph){
  */
 StationGraph * createStation(StationGraph *graph,int distance, carTreeNode* root){
    Station *x;
-    Station *temp=graph->head;
-   if(notInTheGraph(temp,distance)){
+
+   if(notInTheGraph(graph,distance)){
+    graph->head=graph->startingPoint;
     x =   malloc(sizeof(struct Station*));
     x->root=root;
     x->distance=distance;
     x->prev=NULL;
     x->next=NULL;
-    if(graph->head->distance==0){
-        graph->head=x;
+    if(graph->size==0){
+        graph->head->next=x;
+        graph->head->next->prev=graph->head;
         graph->size++;
+        graph->head=graph->startingPoint;
         return graph;
     }
     graph=addStation(x,graph);
@@ -266,6 +273,7 @@ StationGraph * newGraph(StationGraph *graph) {
     x->next=NULL;
     x->prev=NULL;
     graph->head=x;
+    graph->startingPoint=x;
     return graph;
 
 }
@@ -286,6 +294,7 @@ StationGraph* removeStation(StationGraph *graph,int distance){
     Station *s=graph->head;
     free(s);
     printf("demolita\n");
+    graph->head=graph->startingPoint;
     return graph;
 
 
@@ -350,16 +359,17 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
     if(startingPoint<arrivalPoint){
         Station *temp1=startingStation;
         //RESET BEST PATH
-        while(temp1->distance<=arrivalPoint){
+        while(temp1!=NULL&&temp1->distance<=arrivalPoint){
             temp1->best=NULL;
             temp1=temp1->next;
+
         }
         int maxDistanceTouched=startingStation->distance;
-        while (front < rear || maxDistanceTouched < arrivalPoint) {
+        while (front < rear && maxDistanceTouched < arrivalPoint) {
                 Station *curr =queue[front++];
                 Station *temp=curr;
                 int autonomy= highestAutonomyCar(curr->root);
-                while(temp->distance <= curr->distance+autonomy||temp->distance<=arrivalPoint){
+                while(temp->distance <= curr->distance+autonomy&&temp->distance<=arrivalPoint){
                     if(temp->best==NULL){
                         temp->best=curr;
                         queue=addToQueue(queue,rear,temp);
