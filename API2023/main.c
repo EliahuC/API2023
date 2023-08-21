@@ -94,7 +94,7 @@ carTreeNode * carInsert (carTreeNode *root , int s)
  */
 carTreeNode * lowestAutonomyCar(carTreeNode *root){
     carTreeNode *cur=root;
-    while(cur->left==NULL){
+    while(cur->left!=NULL){
         cur=cur->left;
     }
     return cur;
