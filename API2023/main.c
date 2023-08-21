@@ -278,6 +278,19 @@ StationGraph * newGraph(StationGraph *graph) {
 
 }
 
+Station * searchStation(StationGraph *graph,int start){
+    StationGraph *temp=graph;
+    while(temp->head->next!=NULL&&temp->head->distance<start){
+        temp->head=temp->head->next;
+    }
+    if(temp->head->distance==start){
+        Station *station=graph->head;
+        graph->head=graph->startingPoint;
+        return station;
+    }
+    graph->head=graph->startingPoint;
+    return NULL;
+}
 /**
  * Function to remove a station
  * @param graph of the stations
@@ -285,7 +298,8 @@ StationGraph * newGraph(StationGraph *graph) {
  * @return the updated graph
  */
 StationGraph* removeStation(StationGraph *graph,int distance){
-    StationGraph *temp_graph=graph;
+
+   StationGraph *temp_graph=graph;
     while (temp_graph->head->distance<distance){
         temp_graph->head=temp_graph->head->next;
     }
@@ -294,10 +308,13 @@ StationGraph* removeStation(StationGraph *graph,int distance){
         temp_graph->head->next->prev=temp_graph->head->prev;
     }
 
-    Station *s=graph->head;
-    free(s);
-    printf("demolita\n");
     graph->head=graph->startingPoint;
+
+
+   // free(s->root);
+  //  free(s);
+    printf("demolita\n");
+
     return graph;
 
 
@@ -322,19 +339,6 @@ carTreeNode* createCarTree(int cars[],int n,carTreeNode *root){
 }
 
 
-Station * searchStation(StationGraph *graph,int start){
-    StationGraph *temp=graph;
-    while(temp->head->distance<start){
-        temp->head=temp->head->next;
-    }
-    if(temp->head->distance==start){
-        Station *station=graph->head;
-        graph->head=graph->startingPoint;
-        return station;
-    }
-    graph->head=graph->startingPoint;
-    return NULL;
-}
 /**
  * adds a new station to the queue
  * @param queue
