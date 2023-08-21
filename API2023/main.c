@@ -62,7 +62,7 @@ carTreeNode * searchCar(carTreeNode *root, int x)
   * @param s key of the new carNode
   * @return root
   */
-carTreeNode * carInsert (carTreeNode *root , int s)
+carTreeNode * carInsert (carTreeNode *root , int s,int print)
 {
 
     carTreeNode *pre, *cur, *x;
@@ -82,7 +82,7 @@ carTreeNode * carInsert (carTreeNode *root , int s)
         if (x->key<pre->key) pre->left = x;
         else pre->right=x;
     }
-        printf("aggiunta\n");
+        if(print==1) printf("aggiunta\n");
     return root;
     }
 
@@ -211,10 +211,21 @@ bool notInTheGraph(StationGraph *graph, int distance) {
 
 
 
-StationGraph* addStation(Station *x, StationGraph *graph){
-    Station *prev=graph->head;
+StationGraph* addStation(Station *x, StationGraph *graph) {
+    graph->head = graph->startingPoint;
 
-    while((graph->head!=NULL)&&(graph->head->distance<x->distance|| graph->head->next!=NULL)){
+    while (graph->head->next != NULL){
+        if(graph->head->next->distance > x->distance) break;
+        graph->head = graph->head->next;
+    }
+    x->next=graph->head->next;
+    graph->head->next=x;
+
+    graph->head=graph->startingPoint;
+    return graph;
+    /*Station *prev=graph->head;
+
+    while((graph->head!=NULL)&&(graph->head->distance<x->distance && graph->head->next!=NULL)){
         prev=graph->head;
         graph->head=graph->head->next;
 
@@ -226,7 +237,7 @@ StationGraph* addStation(Station *x, StationGraph *graph){
     x->next=graph->head;
    // graph->head->prev=x;
     graph->head=graph->startingPoint;
-    return graph;
+    return graph;*/
 }
 
 /**
@@ -334,7 +345,7 @@ carTreeNode* createCarTree(int cars[],int n,carTreeNode *root){
     root->key=cars[0];
     for(i=1;i<n;i++){
 
-        root= carInsert(root,cars[i]);
+        root= carInsert(root,cars[i],0);
     }
     return root;
 }
@@ -381,14 +392,20 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
         int maxDistanceTouched=startingStation->distance;
         while (front < rear && maxDistanceTouched < arrivalPoint) {
                 Station *curr =queue[front++];
+
                 Station *temp=curr;
                 int autonomy= highestAutonomyCar(curr->root);
                 while(temp->distance <= curr->distance+autonomy&&temp->distance<=arrivalPoint){
+                    if(temp->distance==arrivalPoint){
+                        temp->best=curr;
+                        break;
+                    }
                     if(temp->best==NULL){
                         temp->best=curr;
                         queue=addToQueue(queue,rear,temp);
                         rear++;
                     }
+
                     maxDistanceTouched=temp->distance;
                     temp=temp->next;
                 }
@@ -502,6 +519,7 @@ int main(){
                     graph= createStation(graph,distance,root);
                     if(graph->size==size+1) printf("aggiunta\n");
                     else printf("non aggiunta\n");
+                    break;
 
                 }
                 //aggiungi-auto
@@ -517,7 +535,7 @@ int main(){
                         printf("non aggiunta\n");
                         break;
                     }
-                    station->root= carInsert(station->root,autonomy);
+                    station->root= carInsert(station->root,autonomy,1);
 
                     break;
                 }
