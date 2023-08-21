@@ -1,0 +1,10 @@
+aggiungi-stazione 91 9 5 4 5 5 4 6 5 4 5
+aggiungi-stazione 24 6 5 4 5 4 4 5
+pianifica-percorso 24 91
+aggiungi-stazione 92 6 5 4 4 5 5 5
+demolisci-stazione 59
+aggiungi-stazione 52 9 13 14 13 17 17 15 18 15 16
+aggiungi-auto 91 39
+aggiungi-auto 52 39
+aggiungi-auto 24 28
+pianifica-percorso 24 92

@@ -1,0 +1,91 @@
+aggiungi-stazione 288 7 2 3 2 3 3 2 3
+aggiungi-stazione 172 10 10 8 8 8 8 10 10 9 8 10
+aggiungi-stazione 61 8 19 25 19 19 24 18 25 20
+aggiungi-stazione 129 0
+aggiungi-auto 129 17
+aggiungi-auto 129 20
+aggiungi-auto 129 21
+aggiungi-auto 129 22
+aggiungi-auto 129 16
+aggiungi-auto 129 19
+aggiungi-auto 129 19
+aggiungi-stazione 223 11 3 3 3 5 3 4 3 5 3 4 4
+aggiungi-stazione 359 8 10 11 10 8 8 8 9 8
+aggiungi-stazione 66 10 21 23 20 24 23 22 25 19 24 25
+aggiungi-stazione 258 6 4 4 3 3 3 4
+aggiungi-stazione 186 9 8 7 8 6 7 8 8 7 8
+aggiungi-stazione 282 11 4 3 4 3 3 3 3 4 3 3 3
+aggiungi-stazione 406 8 1 1 1 1 1 1 1 0
+aggiungi-stazione 389 11 5 6 5 6 5 6 5 5 6 5 5
+aggiungi-stazione 358 7 9 10 10 9 11 10 9
+aggiungi-stazione 8 6 13 13 11 12 13 11
+aggiungi-stazione 372 10 8 9 10 8 10 7 7 10 8 7
+pianifica-percorso 372 8
+aggiungi-stazione 31 9 17 17 18 20 20 18 19 20 19
+aggiungi-stazione 42 9 17 21 21 20 21 20 21 19 18
+aggiungi-stazione 351 11 10 8 8 11 9 11 9 9 9 10 11
+aggiungi-stazione 403 11 1 1 2 1 2 1 2 1 2 1 1
+aggiungi-stazione 367 6 10 8 8 8 9 9
+aggiungi-stazione 404 8 1 1 1 1 1 1 1 1
+aggiungi-stazione 261 8 3 4 3 3 3 4 4 4
+aggiungi-stazione 336 8 10 7 8 9 8 8 9 10
+aggiungi-stazione 136 7 16 17 19 16 17 19 16
+aggiungi-stazione 101 0
+aggiungi-auto 101 29
+aggiungi-auto 101 30
+aggiungi-auto 101 23
+aggiungi-auto 101 22
+aggiungi-auto 101 25
+aggiungi-auto 101 24
+aggiungi-auto 101 27
+aggiungi-auto 101 29
+aggiungi-auto 101 23
+aggiungi-auto 101 24
+aggiungi-stazione 119 6 23 19 23 23 23 25
+aggiungi-stazione 27 8 17 15 15 14 14 17 17 14
+aggiungi-stazione 87 7 21 26 22 25 22 28 22
+aggiungi-stazione 241 7 4 3 4 4 4 4 4
+aggiungi-stazione 184 8 6 7 7 9 8 7 7 8
+aggiungi-stazione 1 0
+aggiungi-auto 1 12
+aggiungi-auto 1 14
+aggiungi-auto 1 11
+aggiungi-auto 1 12
+aggiungi-auto 1 10
+aggiungi-auto 1 12
+aggiungi-auto 1 14
+aggiungi-auto 1 12
+aggiungi-auto 1 14
+aggiungi-auto 1 13
+aggiungi-stazione 183 0
+aggiungi-auto 183 9
+aggiungi-auto 183 8
+aggiungi-auto 183 8
+aggiungi-auto 183 9
+aggiungi-auto 183 9
+aggiungi-auto 183 9
+aggiungi-stazione 126 10 22 18 22 17 21 19 21 17 22 19
+aggiungi-stazione 106 9 27 23 23 21 23 28 27 22 21
+aggiungi-stazione 122 8 20 22 22 23 19 24 19 18
+aggiungi-stazione 390 7 6 4 5 4 5 6 6
+aggiungi-auto 403 13
+aggiungi-auto 372 17
+aggiungi-auto 172 36
+aggiungi-auto 223 37
+aggiungi-auto 8 19
+aggiungi-auto 406 2
+aggiungi-auto 351 15
+aggiungi-auto 282 21
+aggiungi-auto 136 36
+aggiungi-auto 404 2
+aggiungi-auto 241 18
+aggiungi-auto 389 17
+aggiungi-auto 183 11
+aggiungi-auto 258 17
+aggiungi-auto 336 48
+aggiungi-auto 288 48
+aggiungi-auto 27 19
+aggiungi-auto 186 37
+aggiungi-auto 261 21
+aggiungi-auto 390 13
+pianifica-percorso 31 359

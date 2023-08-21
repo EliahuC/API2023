@@ -1,0 +1,615 @@
+aggiungi-stazione 2321 14 143 139 164 130 139 128 159 172 142 145 130 132 173 163
+aggiungi-stazione 233 0
+aggiungi-auto 233 92
+aggiungi-auto 233 89
+aggiungi-auto 233 86
+aggiungi-auto 233 96
+aggiungi-auto 233 83
+aggiungi-auto 233 82
+aggiungi-auto 233 79
+aggiungi-auto 233 94
+aggiungi-auto 233 87
+aggiungi-auto 233 88
+aggiungi-auto 233 88
+aggiungi-auto 233 96
+aggiungi-auto 233 95
+aggiungi-auto 233 80
+aggiungi-auto 233 90
+aggiungi-stazione 490 14 95 96 95 101 87 93 101 94 103 90 103 103 104 96
+aggiungi-auto 2321 135
+aggiungi-stazione 161 14 88 89 75 84 96 95 73 74 84 95 87 85 80 85
+aggiungi-stazione 573 18 87 86 108 91 95 105 105 90 85 87 92 86 90 85 107 94 92 80
+aggiungi-stazione 2196 0
+aggiungi-auto 2196 243
+aggiungi-auto 2196 197
+aggiungi-auto 2196 216
+aggiungi-auto 2196 256
+aggiungi-auto 2196 200
+aggiungi-auto 2196 235
+aggiungi-auto 2196 210
+aggiungi-auto 2196 214
+aggiungi-auto 2196 257
+aggiungi-auto 2196 232
+aggiungi-auto 2196 242
+aggiungi-auto 2196 213
+aggiungi-stazione 1026 20 451 452 395 389 433 364 418 405 383 443 384 447 446 373 398 462 394 478 397 454
+aggiungi-stazione 600 11 106 95 99 83 90 102 99 109 103 83 105
+aggiungi-stazione 1281 0
+aggiungi-auto 1281 579
+aggiungi-auto 1281 557
+aggiungi-auto 1281 577
+aggiungi-auto 1281 471
+aggiungi-auto 1281 521
+aggiungi-auto 1281 553
+aggiungi-auto 1281 534
+aggiungi-auto 1281 521
+aggiungi-auto 1281 513
+aggiungi-auto 1281 544
+aggiungi-auto 1281 536
+aggiungi-auto 1281 574
+aggiungi-auto 1281 586
+aggiungi-auto 1281 500
+aggiungi-auto 1281 448
+aggiungi-auto 1281 509
+aggiungi-auto 1281 468
+aggiungi-auto 1281 587
+aggiungi-auto 1281 533
+aggiungi-auto 1281 545
+aggiungi-stazione 90 17 82 73 87 84 87 89 74 82 93 84 81 79 85 89 76 72 71
+demolisci-stazione 583
+aggiungi-stazione 2022 11 329 321 269 333 347 343 260 287 348 292 287
+aggiungi-stazione 1844 11 301 354 360 358 296 316 358 326 360 307 314
+aggiungi-stazione 870 16 329 278 323 359 340 285 283 358 317 304 324 350 293 273 341 344
+aggiungi-stazione 169 20 92 71 75 91 79 97 88 81 84 74 97 75 85 82 80 81 79 76 88 95
+aggiungi-stazione 2347 11 150 139 128 144 123 151 136 146 126 112 120
+aggiungi-stazione 379 12 89 89 86 88 89 91 80 81 94 97 100 101
+aggiungi-stazione 1899 17 350 328 329 292 372 363 323 283 373 353 286 329 284 370 342 380 361
+aggiungi-stazione 1348 20 438 570 547 493 556 563 552 439 462 438 530 471 567 576 471 528 545 520 491 574
+aggiungi-stazione 1395 0
+aggiungi-auto 1395 435
+aggiungi-auto 1395 530
+aggiungi-auto 1395 441
+aggiungi-auto 1395 476
+aggiungi-auto 1395 481
+aggiungi-auto 1395 552
+aggiungi-auto 1395 524
+aggiungi-auto 1395 478
+aggiungi-auto 1395 488
+aggiungi-auto 1395 452
+aggiungi-auto 1395 505
+aggiungi-auto 1395 492
+aggiungi-auto 1395 485
+aggiungi-auto 1395 436
+aggiungi-auto 1395 515
+aggiungi-auto 1395 450
+aggiungi-auto 1395 509
+aggiungi-auto 1395 535
+aggiungi-auto 763 527
+aggiungi-auto 2371 950
+rottama-auto 1796 1931
+aggiungi-stazione 1613 0
+aggiungi-auto 1613 471
+aggiungi-auto 1613 400
+aggiungi-auto 1613 476
+aggiungi-auto 1613 443
+aggiungi-auto 1613 445
+aggiungi-auto 1613 404
+aggiungi-auto 1613 471
+aggiungi-auto 1613 476
+aggiungi-auto 1613 472
+aggiungi-auto 1613 470
+aggiungi-auto 1613 421
+aggiungi-auto 1613 406
+aggiungi-stazione 1912 19 298 380 293 313 287 321 297 370 371 350 370 346 367 379 291 313 359 338 283
+aggiungi-stazione 1743 14 384 412 419 368 412 351 424 404 382 346 420 394 404 423
+aggiungi-stazione 1783 11 404 391 373 387 324 380 403 354 416 329 335
+aggiungi-stazione 129 11 91 90 75 94 85 93 73 89 92 78 72
+rottama-auto 1844 319
+aggiungi-stazione 705 12 157 158 169 156 159 152 171 182 187 151 187 190
+aggiungi-stazione 621 18 88 107 102 96 94 83 101 100 80 91 88 86 105 84 107 109 80 82
+aggiungi-stazione 1687 15 452 363 367 410 368 447 432 446 431 419 410 464 372 373 411
+aggiungi-stazione 663 17 129 121 131 129 144 148 120 121 125 125 150 140 121 146 123 128 139
+aggiungi-stazione 2106 13 239 275 265 237 256 243 306 301 249 235 288 237 253
+aggiungi-stazione 2328 13 125 125 131 125 150 165 156 161 124 153 155 143 149
+rottama-auto 161 88
+aggiungi-stazione 70 16 78 84 91 88 77 86 73 71 74 75 77 84 76 78 76 74
+aggiungi-stazione 195 0
+aggiungi-auto 195 91
+aggiungi-auto 195 86
+aggiungi-auto 195 89
+aggiungi-auto 195 76
+aggiungi-auto 195 76
+aggiungi-auto 195 95
+aggiungi-auto 195 76
+aggiungi-auto 195 92
+aggiungi-auto 195 98
+aggiungi-auto 195 83
+aggiungi-auto 195 86
+aggiungi-auto 195 80
+aggiungi-auto 195 76
+aggiungi-auto 195 95
+aggiungi-auto 195 86
+aggiungi-stazione 2098 11 283 283 251 277 268 248 256 317 271 269 285
+aggiungi-stazione 1220 14 485 530 509 435 489 442 547 540 579 562 460 560 536 481
+aggiungi-stazione 1824 20 325 379 358 331 356 376 313 345 316 335 323 377 410 393 355 397 351 330 303 356
+aggiungi-stazione 13 14 76 73 81 72 78 78 70 86 69 76 73 70 76 78
+pianifica-percorso 169 2321
+aggiungi-stazione 2048 18 309 252 294 297 261 289 287 272 326 270 293 290 337 280 284 311 282 274
+aggiungi-stazione 123 12 78 91 85 75 95 72 72 88 95 84 75 94
+rottama-auto 2098 253
+aggiungi-stazione 1901 0
+aggiungi-auto 1901 282
+aggiungi-auto 1901 348
+aggiungi-auto 1901 377
+aggiungi-auto 1901 289
+aggiungi-auto 1901 360
+aggiungi-auto 1901 311
+aggiungi-auto 1901 318
+aggiungi-auto 1901 371
+aggiungi-auto 1901 339
+aggiungi-auto 1901 340
+aggiungi-auto 1901 311
+aggiungi-auto 1901 316
+aggiungi-stazione 1299 11 450 542 584 453 492 553 586 554 530 550 500
+aggiungi-stazione 102 11 76 93 87 88 75 70 72 87 80 78 77
+aggiungi-stazione 1319 15 538 581 558 502 457 505 557 485 460 449 452 527 543 538 443
+aggiungi-stazione 837 13 306 302 280 297 303 298 277 283 276 267 328 250 268
+aggiungi-stazione 1387 0
+aggiungi-auto 1387 482
+aggiungi-auto 1387 512
+aggiungi-auto 1387 541
+aggiungi-auto 1387 548
+aggiungi-auto 1387 457
+aggiungi-auto 1387 558
+aggiungi-auto 1387 547
+aggiungi-auto 1387 469
+aggiungi-auto 1387 470
+aggiungi-auto 1387 434
+aggiungi-auto 1387 526
+aggiungi-stazione 824 12 279 305 273 308 302 267 285 268 274 270 248 301
+aggiungi-stazione 1809 14 396 406 363 323 357 411 391 366 391 360 363 350 391 324
+aggiungi-stazione 2310 17 145 140 163 179 172 157 177 151 177 158 167 169 165 168 158 144 161
+aggiungi-stazione 1790 20 386 398 363 339 324 360 401 351 325 371 415 345 344 361 347 395 321 383 369 362
+rottama-auto 1235 1678
+aggiungi-stazione 2312 19 139 163 164 179 162 158 163 147 164 156 177 177 154 152 160 156 154 142 141
+aggiungi-stazione 403 16 88 95 86 85 90 99 97 87 102 93 81 90 95 98 89 89
+aggiungi-stazione 1774 12 396 362 359 330 418 335 347 343 363 383 343 331
+aggiungi-stazione 493 19 94 81 107 89 93 83 79 105 85 84 82 87 104 98 99 106 82 87 79
+aggiungi-stazione 1233 14 451 550 529 455 519 504 538 552 457 582 550 567 537 583
+aggiungi-stazione 545 18 107 89 87 104 84 89 89 93 95 81 102 94 82 95 107 83 80 86
+aggiungi-stazione 1953 11 274 340 282 350 333 306 364 356 371 305 315
+aggiungi-stazione 1159 0
+aggiungi-auto 1159 474
+aggiungi-auto 1159 469
+aggiungi-auto 1159 494
+aggiungi-auto 1159 438
+aggiungi-auto 1159 535
+aggiungi-auto 1159 518
+aggiungi-auto 1159 517
+aggiungi-auto 1159 434
+aggiungi-auto 1159 467
+aggiungi-auto 1159 428
+aggiungi-auto 1159 469
+aggiungi-auto 1159 488
+aggiungi-auto 1159 430
+aggiungi-auto 1159 551
+aggiungi-auto 1159 516
+aggiungi-auto 1159 520
+aggiungi-auto 1159 518
+aggiungi-auto 1159 550
+aggiungi-auto 1159 551
+aggiungi-auto 1159 532
+aggiungi-stazione 791 0
+aggiungi-auto 791 218
+aggiungi-auto 791 257
+aggiungi-auto 791 225
+aggiungi-auto 791 280
+aggiungi-auto 791 236
+aggiungi-auto 791 240
+aggiungi-auto 791 277
+aggiungi-auto 791 291
+aggiungi-auto 791 243
+aggiungi-auto 791 233
+aggiungi-auto 791 274
+aggiungi-stazione 2003 16 355 315 328 344 349 357 281 326 290 302 286 351 301 310 307 279
+aggiungi-stazione 1337 0
+aggiungi-auto 1337 435
+aggiungi-auto 1337 469
+aggiungi-auto 1337 539
+aggiungi-auto 1337 439
+aggiungi-auto 1337 500
+aggiungi-auto 1337 444
+aggiungi-auto 1337 575
+aggiungi-auto 1337 483
+aggiungi-auto 1337 475
+aggiungi-auto 1337 492
+aggiungi-auto 1337 476
+aggiungi-auto 1337 430
+aggiungi-auto 1337 483
+aggiungi-auto 1337 565
+aggiungi-auto 1337 554
+aggiungi-auto 1337 551
+aggiungi-stazione 16 16 87 89 70 84 79 68 66 82 70 76 87 72 87 86 66 85
+aggiungi-stazione 1127 11 464 437 447 538 451 525 515 529 432 522 429
+aggiungi-stazione 83 13 80 71 91 75 87 93 87 82 79 78 84 76 80
+aggiungi-stazione 1875 13 321 378 348 308 328 385 347 376 312 285 373 366 301
+aggiungi-stazione 1287 12 559 505 456 542 574 511 444 446 510 538 568 439
+aggiungi-stazione 861 18 322 337 294 349 286 292 347 314 329 312 304 282 327 331 286 283 288 314
+demolisci-stazione 1783
+aggiungi-stazione 83 18 2372 1858 693 1097 759 304 55 1147 1201 1528 2446 781 2357 2437 2378 991 406 2415
+pianifica-percorso 2098 123
+rottama-auto 196 2007
+aggiungi-stazione 1545 12 409 401 506 500 490 477 516 471 451 478 441 464
+aggiungi-stazione 336 20 79 97 94 92 80 97 84 98 84 82 91 97 83 86 77 98 84 81 76 102
+aggiungi-stazione 1453 15 412 486 423 443 408 424 438 526 433 502 536 542 412 493 480
+aggiungi-stazione 1693 13 345 375 362 440 416 368 437 444 405 344 401 368 428
+aggiungi-stazione 313 11 88 93 85 101 98 98 89 89 83 88 78
+aggiungi-stazione 466 17 95 106 103 80 106 98 102 93 102 101 92 94 104 107 97 106 106
+aggiungi-stazione 1094 18 517 471 526 503 451 428 508 450 395 465 405 440 491 473 490 496 403 485
+aggiungi-stazione 860 12 333 301 285 285 354 270 331 334 334 309 262 277
+aggiungi-stazione 1399 20 480 552 417 518 517 495 425 509 536 535 553 442 484 458 448 438 539 421 490 424
+aggiungi-stazione 183 12 96 88 74 96 78 96 89 87 83 80 86 76
+aggiungi-stazione 1440 12 450 422 463 413 428 494 434 495 421 534 502 524
+aggiungi-stazione 1520 15 506 456 502 440 425 416 456 485 433 524 499 399 469 511 400
+aggiungi-stazione 1114 14 537 501 414 471 515 465 498 512 473 489 410 488 489 404
+aggiungi-stazione 2240 17 175 186 204 176 180 177 207 221 174 186 220 234 222 220 187 209 183
+aggiungi-stazione 654 12 121 141 138 143 138 134 138 126 109 141 141 128
+aggiungi-stazione 2267 0
+aggiungi-auto 2267 204
+aggiungi-auto 2267 209
+aggiungi-auto 2267 194
+aggiungi-auto 2267 164
+aggiungi-auto 2267 199
+aggiungi-auto 2267 171
+aggiungi-auto 2267 181
+aggiungi-auto 2267 193
+aggiungi-auto 2267 187
+aggiungi-auto 2267 191
+aggiungi-auto 2267 172
+aggiungi-auto 2267 176
+aggiungi-auto 2267 197
+aggiungi-auto 2267 203
+aggiungi-auto 2267 193
+aggiungi-auto 2267 193
+aggiungi-stazione 1959 16 322 299 332 323 358 326 283 273 310 288 341 336 334 293 321 344
+rottama-auto 2321 139
+aggiungi-stazione 1218 17 540 570 478 540 529 468 553 493 499 476 474 476 500 514 583 445 436
+aggiungi-stazione 219 19 86 87 97 77 73 98 84 91 99 77 95 95 89 75 92 73 79 91 74
+aggiungi-auto 129 91
+rottama-auto 169 87
+aggiungi-stazione 2004 17 334 267 308 333 277 351 334 305 339 313 282 334 271 281 275 347 325
+aggiungi-stazione 1136 18 427 447 473 466 519 476 455 419 505 501 547 512 449 458 442 548 508 533
+aggiungi-stazione 1587 14 383 403 477 412 428 474 400 385 499 462 416 389 429 425
+aggiungi-stazione 2400 12 89 97 92 93 92 101 85 101 86 81 84 81
+aggiungi-stazione 1341 15 536 491 493 497 542 477 577 430 462 526 559 511 461 474 544
+pianifica-percorso 233 2328
+aggiungi-stazione 1904 19 324 331 291 371 296 296 328 358 379 355 344 312 375 361 360 359 306 338 305
+pianifica-percorso 2196 123
+aggiungi-stazione 1411 0
+aggiungi-auto 1411 520
+aggiungi-auto 1411 435
+aggiungi-auto 1411 460
+aggiungi-auto 1411 536
+aggiungi-auto 1411 420
+aggiungi-auto 1411 542
+aggiungi-auto 1411 443
+aggiungi-auto 1411 524
+aggiungi-auto 1411 487
+aggiungi-auto 1411 440
+aggiungi-auto 1411 526
+aggiungi-auto 1411 540
+aggiungi-auto 1411 445
+aggiungi-auto 1411 422
+aggiungi-auto 1411 487
+aggiungi-auto 1411 436
+aggiungi-auto 1411 450
+aggiungi-auto 1411 492
+aggiungi-auto 1411 470
+aggiungi-stazione 5 16 69 78 68 75 74 69 76 66 79 77 74 89 67 84 73 75
+aggiungi-stazione 1325 17 546 555 504 465 583 510 523 540 458 579 437 535 435 565 494 559 502
+aggiungi-stazione 2393 20 93 108 99 107 103 107 106 80 95 101 109 90 91 80 99 96 103 97 86 99
+aggiungi-stazione 2136 14 262 275 271 277 275 251 242 237 271 275 266 296 269 236
+rottama-auto 1281 577
+aggiungi-stazione 2105 20 276 265 286 263 272 260 307 264 255 289 255 300 286 296 240 315 262 238 300 286
+aggiungi-stazione 1957 18 318 331 277 322 364 345 326 308 346 324 313 284 293 303 361 313 328 276
+aggiungi-stazione 1526 13 470 512 423 406 473 433 419 400 497 526 430 507 392
+rottama-auto 1026 392
+aggiungi-stazione 482 16 99 105 94 98 106 91 103 104 102 97 99 99 86 85 95 84
+aggiungi-stazione 518 12 102 105 90 92 100 83 88 104 82 96 83 83
+aggiungi-stazione 921 11 337 304 382 361 374 387 329 402 314 325 323
+aggiungi-stazione 1493 13 534 457 414 415 424 506 478 482 433 449 518 495 423
+aggiungi-stazione 89 18 93 78 83 71 82 83 91 72 84 81 91 84 87 69 91 90 89 81
+aggiungi-stazione 2221 13 224 206 184 235 216 186 245 238 203 209 217 202 185
+aggiungi-stazione 1349 0
+aggiungi-auto 1349 476
+aggiungi-auto 1349 445
+aggiungi-auto 1349 447
+aggiungi-auto 1349 490
+aggiungi-auto 1349 444
+aggiungi-auto 1349 522
+aggiungi-auto 1349 521
+aggiungi-auto 1349 566
+aggiungi-auto 1349 521
+aggiungi-auto 1349 470
+aggiungi-auto 1349 545
+aggiungi-auto 1349 501
+aggiungi-auto 1349 490
+aggiungi-auto 1349 469
+aggiungi-auto 1349 461
+aggiungi-auto 1349 436
+aggiungi-auto 1349 549
+aggiungi-auto 1349 522
+aggiungi-stazione 2404 14 87 77 74 78 93 86 77 78 79 83 82 94 99 84
+aggiungi-stazione 806 17 279 294 287 241 259 284 247 290 290 254 300 261 304 229 288 291 250
+rottama-auto 2310 165
+aggiungi-stazione 159 12 78 71 95 81 90 95 93 91 80 83 96 82
+aggiungi-stazione 2365 0
+aggiungi-auto 2365 131
+aggiungi-auto 2365 114
+aggiungi-auto 2365 135
+aggiungi-auto 2365 125
+aggiungi-auto 2365 133
+aggiungi-auto 2365 107
+aggiungi-auto 2365 128
+aggiungi-auto 2365 132
+aggiungi-auto 2365 117
+aggiungi-auto 2365 135
+aggiungi-auto 2365 117
+aggiungi-auto 2365 129
+aggiungi-auto 2365 105
+aggiungi-auto 2365 114
+aggiungi-auto 2365 110
+aggiungi-auto 2365 100
+aggiungi-stazione 2159 18 279 223 222 220 282 245 275 251 218 233 248 263 279 233 230 243 245 253
+aggiungi-stazione 496 13 93 99 94 100 90 102 89 99 96 80 105 104 101
+aggiungi-stazione 601 20 80 82 85 99 89 87 102 97 107 94 98 86 92 89 99 106 91 87 106 87
+aggiungi-stazione 1525 14 475 408 444 433 421 471 411 415 460 505 427 458 481 490
+aggiungi-stazione 1195 12 460 539 427 484 502 435 470 501 433 479 470 469
+aggiungi-stazione 1684 19 452 465 411 413 442 371 455 347 378 411 407 466 439 411 384 382 439 441 455
+aggiungi-stazione 851 18 339 293 325 326 330 298 260 306 284 330 260 256 322 317 276 327 266 308
+aggiungi-stazione 455 20 100 101 103 80 85 96 85 95 101 84 91 100 93 90 97 96 94 83 90 83
+aggiungi-stazione 1629 16 370 392 443 448 385 481 443 394 456 484 384 427 373 376 451 423
+demolisci-stazione 1325
+aggiungi-stazione 360 0
+aggiungi-auto 360 80
+aggiungi-auto 360 93
+aggiungi-auto 360 95
+aggiungi-auto 360 78
+aggiungi-auto 360 80
+aggiungi-auto 360 90
+aggiungi-auto 360 89
+aggiungi-auto 360 85
+aggiungi-auto 360 92
+aggiungi-auto 360 88
+aggiungi-auto 360 88
+aggiungi-auto 360 83
+aggiungi-auto 360 85
+aggiungi-auto 360 95
+aggiungi-auto 360 82
+aggiungi-auto 360 85
+aggiungi-auto 360 78
+aggiungi-auto 360 97
+aggiungi-stazione 1858 0
+aggiungi-auto 1858 389
+aggiungi-auto 1858 302
+aggiungi-auto 1858 310
+aggiungi-auto 1858 327
+aggiungi-auto 1858 359
+aggiungi-auto 1858 303
+aggiungi-auto 1858 316
+aggiungi-auto 1858 326
+aggiungi-auto 1858 295
+aggiungi-auto 1858 348
+aggiungi-auto 1858 308
+aggiungi-auto 1858 353
+aggiungi-auto 1858 384
+aggiungi-auto 1858 330
+aggiungi-auto 1858 310
+aggiungi-auto 1858 347
+aggiungi-auto 1858 369
+aggiungi-auto 1858 357
+aggiungi-auto 1858 354
+aggiungi-stazione 484 14 104 79 84 103 90 96 87 82 80 85 100 102 102 107
+aggiungi-stazione 734 17 178 194 211 183 175 230 206 195 181 227 199 176 191 230 184 198 232
+aggiungi-auto 13 89
+aggiungi-stazione 2362 17 116 131 112 125 120 113 111 120 105 131 115 134 107 120 122 117 102
+aggiungi-stazione 1298 11 476 519 480 508 469 555 517 566 447 525 470
+aggiungi-stazione 2072 14 330 329 246 270 310 329 262 263 295 250 297 304 248 272
+aggiungi-stazione 695 0
+aggiungi-auto 695 141
+aggiungi-auto 695 144
+aggiungi-auto 695 174
+aggiungi-auto 695 143
+aggiungi-auto 695 171
+aggiungi-auto 695 143
+aggiungi-auto 695 185
+aggiungi-auto 695 172
+aggiungi-auto 695 142
+aggiungi-auto 695 168
+aggiungi-auto 695 146
+aggiungi-stazione 217 18 74 88 94 79 76 78 84 83 95 87 87 84 87 87 79 77 90 91
+aggiungi-stazione 1922 12 292 293 343 340 337 292 282 282 336 327 297 367
+aggiungi-stazione 1503 18 444 456 423 470 410 510 426 488 419 478 400 404 405 437 529 429 413 528
+aggiungi-stazione 1288 0
+aggiungi-auto 1288 478
+aggiungi-auto 1288 544
+aggiungi-auto 1288 517
+aggiungi-auto 1288 495
+aggiungi-auto 1288 548
+aggiungi-auto 1288 497
+aggiungi-auto 1288 560
+aggiungi-auto 1288 446
+aggiungi-auto 1288 518
+aggiungi-auto 1288 479
+aggiungi-auto 1288 473
+aggiungi-auto 1288 545
+aggiungi-auto 1288 500
+aggiungi-auto 1288 531
+aggiungi-auto 1288 552
+aggiungi-auto 1288 438
+aggiungi-auto 1288 587
+aggiungi-auto 1288 504
+pianifica-percorso 89 2393
+aggiungi-stazione 15 13 82 86 81 66 73 70 67 79 71 86 78 74 85
+aggiungi-stazione 1794 18 421 405 349 420 324 325 404 353 323 405 337 322 411 388 405 340 419 357
+aggiungi-stazione 581 18 80 103 109 81 96 80 105 99 99 80 101 98 92 109 95 108 100 81
+aggiungi-stazione 2337 15 140 141 136 148 144 159 142 149 126 149 117 147 138 124 125
+aggiungi-stazione 1038 12 382 482 454 419 391 427 402 457 386 396 455 416
+aggiungi-stazione 118 16 92 86 88 72 89 74 89 90 78 91 94 81 93 82 88 82
+aggiungi-stazione 2500 12 0 1 0 1 1 1 1 1 1 1 1 0
+aggiungi-stazione 651 19 136 140 127 117 136 135 138 110 116 122 132 130 111 117 110 140 137 123 108
+aggiungi-stazione 953 14 325 319 335 402 388 350 351 411 321 392 370 321 415 389
+aggiungi-stazione 1839 11 331 371 356 398 396 320 306 393 392 378 318
+rottama-auto 1912 2501
+demolisci-stazione 1038
+aggiungi-stazione 1478 19 458 419 419 476 538 486 408 407 510 405 409 520 484 494 541 491 466 493 538
+aggiungi-stazione 1937 18 372 336 359 319 325 357 324 364 340 338 305 360 297 354 328 358 295 299
+aggiungi-stazione 1355 19 466 471 502 570 569 460 526 473 532 465 498 525 553 575 475 558 440 555 499
+aggiungi-stazione 2254 15 189 215 170 208 184 193 171 181 166 219 200 173 193 192 173
+aggiungi-stazione 564 12 87 106 100 93 101 106 80 102 104 89 82 80
+aggiungi-stazione 2123 16 254 237 287 279 284 232 291 239 231 302 270 250 288 293 244 300
+aggiungi-stazione 2435 14 58 68 58 62 68 62 65 56 63 56 54 68 58 63
+aggiungi-stazione 1302 11 531 482 459 496 467 452 484 487 537 533 549
+aggiungi-stazione 2443 20 49 53 45 54 48 44 52 49 55 59 44 54 52 53 48 44 60 49 45 59
+aggiungi-stazione 1200 19 535 486 580 549 500 458 445 559 528 511 499 476 550 449 430 428 536 551 529
+demolisci-stazione 2311
+aggiungi-stazione 2329 13 131 135 153 139 126 133 157 153 123 165 157 124 144
+aggiungi-stazione 1979 15 347 334 339 321 336 274 358 301 271 282 304 354 362 326 341
+aggiungi-stazione 268 17 84 95 77 77 98 91 88 97 81 75 76 91 83 76 94 86 100
+aggiungi-stazione 1339 0
+aggiungi-auto 1339 525
+aggiungi-auto 1339 527
+aggiungi-auto 1339 534
+aggiungi-auto 1339 431
+aggiungi-auto 1339 524
+aggiungi-auto 1339 509
+aggiungi-auto 1339 460
+aggiungi-auto 1339 524
+aggiungi-auto 1339 476
+aggiungi-auto 1339 444
+aggiungi-auto 1339 574
+aggiungi-stazione 1360 17 463 448 490 447 516 432 488 535 515 441 510 460 474 539 542 570 478
+aggiungi-stazione 193 14 79 74 85 75 78 79 78 91 86 72 76 94 82 74
+aggiungi-auto 1904 296
+demolisci-stazione 1900
+aggiungi-stazione 1199 16 455 469 556 566 504 573 551 451 433 493 578 471 457 435 453 500
+aggiungi-stazione 24 15 70 67 74 81 78 82 75 82 73 77 83 76 71 82 66
+aggiungi-stazione 436 11 98 87 82 88 84 105 85 99 88 97 95
+aggiungi-stazione 1058 11 501 466 472 497 379 413 400 459 465 463 384
+aggiungi-stazione 2085 13 256 322 303 266 300 315 317 273 244 324 285 255 243
+aggiungi-stazione 1968 18 274 312 279 279 328 347 306 299 309 354 361 321 323 282 306 340 360 302
+aggiungi-stazione 377 0
+aggiungi-auto 377 85
+aggiungi-auto 377 80
+aggiungi-auto 377 93
+aggiungi-auto 377 100
+aggiungi-auto 377 87
+aggiungi-auto 377 96
+aggiungi-auto 377 100
+aggiungi-auto 377 77
+aggiungi-auto 377 82
+aggiungi-auto 377 82
+aggiungi-auto 377 101
+aggiungi-auto 377 82
+rottama-auto 193 77
+aggiungi-stazione 1954 12 290 343 356 370 312 321 345 299 279 369 306 358
+aggiungi-stazione 194 19 86 94 94 75 82 86 95 96 75 92 79 74 98 90 92 91 87 87 79
+aggiungi-stazione 2123 13 1306 41 1102 1077 960 2263 510 2458 941 492 1617 1427 1899
+aggiungi-stazione 462 15 105 93 82 88 93 102 98 83 89 82 101 104 79 102 103
+aggiungi-stazione 1893 14 301 288 363 307 324 372 290 336 338 354 304 292 289 307
+aggiungi-stazione 2224 13 211 228 186 245 192 245 199 183 200 230 244 225 200
+aggiungi-stazione 1303 17 525 527 454 517 464 475 563 450 566 559 455 551 559 488 541 484 450
+aggiungi-stazione 1336 15 497 560 498 555 552 540 555 529 519 526 450 474 476 492 575
+aggiungi-stazione 750 17 192 226 228 246 207 243 189 219 226 200 222 222 184 241 209 211 215
+aggiungi-stazione 2137 13 289 273 270 260 226 294 239 282 264 278 264 224 270
+aggiungi-stazione 1403 20 432 471 425 532 455 446 550 524 522 537 457 475 496 530 508 544 561 432 469 556
+aggiungi-stazione 1661 13 434 460 441 362 397 470 477 466 375 472 476 410 386
+aggiungi-auto 1356 2096
+aggiungi-stazione 1088 14 481 489 445 511 461 467 481 426 513 506 491 496 396 420
+aggiungi-stazione 1042 11 494 377 452 466 367 486 426 419 486 454 493
+aggiungi-stazione 1947 19 312 339 335 314 303 285 334 357 348 337 276 314 291 340 331 281 301 324 310
+aggiungi-stazione 1917 0
+aggiungi-auto 1917 332
+aggiungi-auto 1917 282
+aggiungi-auto 1917 366
+aggiungi-auto 1917 317
+aggiungi-auto 1917 358
+aggiungi-auto 1917 377
+aggiungi-auto 1917 377
+aggiungi-auto 1917 377
+aggiungi-auto 1917 366
+aggiungi-auto 1917 347
+aggiungi-auto 1917 310
+aggiungi-auto 1917 365
+aggiungi-auto 1917 350
+aggiungi-auto 1917 286
+aggiungi-auto 1917 330
+aggiungi-auto 1917 299
+aggiungi-auto 1917 281
+aggiungi-stazione 486 13 89 79 86 101 84 103 92 97 84 94 105 92 87
+aggiungi-stazione 405 18 99 82 103 82 98 82 78 94 86 95 80 82 103 101 93 81 102 90
+aggiungi-stazione 775 15 217 228 225 216 270 247 262 207 209 264 211 235 215 246 257
+aggiungi-stazione 1787 18 422 397 407 327 344 419 385 336 328 317 413 327 332 334 407 338 408 334
+aggiungi-stazione 1781 13 362 428 341 416 407 416 362 339 425 407 326 359 358
+demolisci-stazione 2501
+aggiungi-stazione 153 11 74 73 91 91 80 73 83 76 73 78 85
+aggiungi-stazione 1307 18 503 586 521 564 575 580 526 479 441 541 484 554 492 581 499 494 565 551
+rottama-auto 1844 358
+rottama-auto 1307 492
+demolisci-stazione 360
+aggiungi-stazione 2207 0
+aggiungi-auto 2207 227
+aggiungi-auto 2207 232
+aggiungi-auto 2207 216
+aggiungi-auto 2207 229
+aggiungi-auto 2207 197
+aggiungi-auto 2207 207
+aggiungi-auto 2207 224
+aggiungi-auto 2207 206
+aggiungi-auto 2207 257
+aggiungi-auto 2207 253
+aggiungi-auto 2207 206
+aggiungi-auto 2207 221
+aggiungi-auto 2207 191
+aggiungi-auto 2207 222
+aggiungi-auto 2207 195
+aggiungi-auto 2207 226
+aggiungi-auto 2207 227
+aggiungi-auto 2207 256
+aggiungi-stazione 120 20 70 84 73 90 71 71 79 79 79 71 74 75 87 86 86 84 95 74 88 79
+rottama-auto 436 1327
+aggiungi-stazione 2369 17 125 126 104 99 115 112 117 109 121 110 128 110 112 99 124 113 128
+aggiungi-stazione 1844 15 826 1328 1168 2126 2208 2472 882 2261 45 434 689 1025 1751 238 260
+aggiungi-stazione 1666 17 440 450 437 407 462 469 417 473 430 477 397 456 451 447 362 378 374
+aggiungi-stazione 1433 14 526 453 492 480 537 536 413 437 499 549 430 509 451 487
+aggiungi-stazione 1270 11 558 572 478 585 547 457 550 559 524 536 555
+aggiungi-stazione 2120 12 235 249 300 296 228 227 269 276 282 281 239 306
+aggiungi-stazione 164 12 79 80 85 88 74 81 76 83 77 86 72 89
+aggiungi-stazione 2007 12 291 269 324 288 351 322 265 304 271 285 341 298
+aggiungi-stazione 1324 15 503 562 450 532 460 466 451 580 435 439 460 482 554 487 521
+aggiungi-stazione 816 18 310 247 274 252 285 315 310 293 274 241 308 270 278 283 268 312 302 307
+aggiungi-stazione 1724 19 420 376 452 408 447 401 339 432 405 439 453 408 432 385 384 347 374 362 443
+aggiungi-stazione 1773 14 389 422 431 344 356 368 348 413 389 331 372 386 377 346
+demolisci-stazione 1968
+aggiungi-stazione 2174 0
+aggiungi-auto 2174 229
+aggiungi-auto 2174 234
+aggiungi-auto 2174 215
+aggiungi-auto 2174 209
+aggiungi-auto 2174 273
+aggiungi-auto 2174 275
+aggiungi-auto 2174 263
+aggiungi-auto 2174 266
+aggiungi-auto 2174 251
+aggiungi-auto 2174 220
+aggiungi-auto 2174 273
+aggiungi-auto 2174 224
+aggiungi-auto 2174 237
+aggiungi-auto 2174 233
+aggiungi-auto 2174 251
+aggiungi-auto 2174 226
+aggiungi-auto 2174 239
+aggiungi-auto 2174 259
+aggiungi-auto 2174 250
+aggiungi-auto 2500 57
+pianifica-percorso 1922 159
