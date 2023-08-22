@@ -212,17 +212,7 @@ bool notInTheGraph(StationGraph *graph, int distance) {
 
 
 StationGraph* addStation(Station *x, StationGraph *graph) {
-    /*graph->head = graph->startingPoint;
 
-    while (graph->head->next != NULL){
-        if(graph->head->next->distance > x->distance) break;
-        graph->head = graph->head->next;
-    }
-    x->next=graph->head->next;
-    graph->head->next=x;
-
-    graph->head=graph->startingPoint;
-    return graph;*/
     Station *prev=graph->head;
 
     while((graph->head!=NULL)&&(graph->head->distance<x->distance && graph->head->next!=NULL)){
@@ -365,6 +355,8 @@ Station **addToQueue(Station **queue, int rear, Station *temp) {
 }
 
 
+
+
 /**
  * Function to find the best path for the trip
  * @param graph of the stations
@@ -392,7 +384,7 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
         int maxDistanceTouched=startingStation->distance;
         while (front < rear && maxDistanceTouched < arrivalPoint) {
                 Station *curr =queue[front++];
-
+                if(curr->distance>maxDistanceTouched){
                 Station *temp=curr->next;
                 int autonomy= highestAutonomyCar(curr->root);
                 while(temp->distance <= curr->distance+autonomy&&temp->distance<=arrivalPoint){
@@ -408,6 +400,7 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
 
                     maxDistanceTouched=temp->distance;
                     temp=temp->next;
+                }
                 }
         }
         Station *finalStation= searchStation(graph,arrivalPoint);
@@ -430,15 +423,36 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
         free(queue);
         return ;
     }
-
-    //precorso inverso
+        //precorso inverso
     else {
+
         Station *temp1=startingStation;
         //RESET BEST PATH
         while(temp1->distance>=arrivalPoint){
             temp1->best=NULL;
             temp1=temp1->prev;
         }
+
+        Station* *pilaNext =(Station **) malloc(sizeof(Station) * graph->size);
+        Station* *pilaCurr =(Station **) malloc(sizeof(Station) * graph->size);
+        int topPilaNext=0;
+        int topPilaCurr=0;
+        pilaCurr[topPilaCurr]=startingStation;
+        int lastTouched=startingPoint;
+        while((topPilaCurr!=0||topPilaNext!=0)||lastTouched==arrivalPoint){
+
+            Station *curr =pilaCurr[topPilaCurr];
+            Station *temp=curr->prev;
+            int autonomy= highestAutonomyCar(curr->root);
+            while(temp->distance >= curr->distance-autonomy&&temp->distance>=arrivalPoint){
+                if(temp->best==NULL ){
+                    temp->best=curr;
+                    queue=addToQueue(queue,rear,temp);
+                    rear++;
+                }
+        }
+            }
+        /*
         while (front < rear) {
             Station *curr =queue[front++];
             Station *temp=curr->prev;
@@ -450,7 +464,12 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
                     rear++;
                 }
                 else if(curr->best!=temp->best){
-                    temp->best=curr;
+                    if(curr->distance!=arrivalPoint) {
+                        if(curr->distance<temp->best->distance){
+                            temp->best=curr;
+                        }
+
+                    }
                 }
                 temp=temp->prev;
             }
@@ -472,11 +491,12 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
                 printf("%d ",list[capacity-j-1]);
             }
             printf("\n");
-            //free(list);
-        }
+
+        }*/
         free(queue);
         return ;
     }
+
 
 }
 
