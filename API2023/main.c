@@ -212,7 +212,7 @@ bool notInTheGraph(StationGraph *graph, int distance) {
 
 
 StationGraph* addStation(Station *x, StationGraph *graph) {
-    graph->head = graph->startingPoint;
+    /*graph->head = graph->startingPoint;
 
     while (graph->head->next != NULL){
         if(graph->head->next->distance > x->distance) break;
@@ -222,8 +222,8 @@ StationGraph* addStation(Station *x, StationGraph *graph) {
     graph->head->next=x;
 
     graph->head=graph->startingPoint;
-    return graph;
-    /*Station *prev=graph->head;
+    return graph;*/
+    Station *prev=graph->head;
 
     while((graph->head!=NULL)&&(graph->head->distance<x->distance && graph->head->next!=NULL)){
         prev=graph->head;
@@ -235,9 +235,9 @@ StationGraph* addStation(Station *x, StationGraph *graph) {
        prev->next=x;
     }
     x->next=graph->head;
-   // graph->head->prev=x;
+    graph->head->prev=x;
     graph->head=graph->startingPoint;
-    return graph;*/
+    return graph;
 }
 
 /**
@@ -393,7 +393,7 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
         while (front < rear && maxDistanceTouched < arrivalPoint) {
                 Station *curr =queue[front++];
 
-                Station *temp=curr;
+                Station *temp=curr->next;
                 int autonomy= highestAutonomyCar(curr->root);
                 while(temp->distance <= curr->distance+autonomy&&temp->distance<=arrivalPoint){
                     if(temp->distance==arrivalPoint){
@@ -415,17 +415,17 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
             printf("nessun percorso\n");
         }
         else{
-            int *list=(int *)malloc(sizeof (int)*arrivalPoint-startingPoint);
+            int list[100];
             int i=-1,capacity=0;
-            while(finalStation->distance>=startingPoint){
+            while(finalStation!=NULL&&finalStation->distance>=startingPoint){
                 list[i++]=finalStation->distance;
                 capacity++;
                 finalStation=finalStation->best;
             }
-            for(int j=capacity;j<1;j--){
-                printf("%d ",list[j-1]);
+            for(int j=1;j<capacity;j++){
+                printf("%d ",list[capacity-j-1]);
             }
-            free(list);
+           // free(list);
         }
         free(queue);
         return ;
@@ -441,9 +441,9 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
         }
         while (front < rear) {
             Station *curr =queue[front++];
-            Station *temp=curr;
+            Station *temp=curr->prev;
             int autonomy= highestAutonomyCar(curr->root);
-            while(temp->distance >= curr->distance-autonomy||temp->distance<=arrivalPoint){
+            while(temp->distance >= curr->distance-autonomy&&temp->distance>=arrivalPoint){
                 if(temp->best==NULL ){
                     temp->best=curr;
                     queue=addToQueue(queue,rear,temp);
@@ -460,18 +460,19 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
             printf("nessun percorso\n");
         }
         else{
-            int *list=(int *)malloc(sizeof (int)*startingPoint-arrivalPoint);
-            int i=-1,capacity=0;
-            while(finalStation->distance>=startingPoint){
-                list[i++]=finalStation->distance;
+            int list[100];
+            int i=0,capacity=1;
+            while(finalStation!=NULL&&finalStation->distance<=startingPoint){
+                list[i]=finalStation->distance;
+                i++;
                 capacity++;
                 finalStation=finalStation->best;
             }
-            for(int j=capacity;j<1;j--){
-                printf("%d ",list[j-1]);
+            for(int j=1;j<capacity;j++){
+                printf("%d ",list[capacity-j-1]);
             }
             printf("\n");
-            free(list);
+            //free(list);
         }
         free(queue);
         return ;
@@ -485,7 +486,7 @@ int main(){
     graph=newGraph(graph);
     int size=12;
 
-    //char *command= (char*)malloc(size*sizeof (char));
+
     char command[12];
     char firstLetter,ambiguitySolver;
     do {
