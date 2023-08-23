@@ -217,8 +217,8 @@ bool notInTheGraph(StationGraph *graph, int distance) {
 
 StationGraph* addStation(Station *x, StationGraph *graph) {
 
+    //graph->head=graph->head->next;
     Station *prev=graph->head;
-    graph->head=graph->head->next;
 
     while((graph->head!=NULL)&&(graph->head->distance<x->distance && graph->head->next!=NULL)){
         prev=graph->head;
@@ -231,6 +231,7 @@ StationGraph* addStation(Station *x, StationGraph *graph) {
     }
     x->next=graph->head;
     graph->head->prev=x;
+
     graph->head=graph->startingPoint;
     return graph;
 }
