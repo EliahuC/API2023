@@ -4,13 +4,13 @@
 //                  SearchPath
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
-//TODO Implementare grafi per stazione 99%
-//TODO Funzione aggiungi-stazione  80%
-//TODO Funzione demolisci-stazione 0%
-//TODO Funzione aggiungi-auto 80%
-//TODO Funzione rottama-auto 80%
-//TODO Funzione pianifica-percorso 0%
-//TODO funzione main 0%
+//TODO Implementare grafi per stazione 100%
+//TODO Funzione aggiungi-stazione  50%
+//TODO Funzione demolisci-stazione 100%
+//TODO Funzione aggiungi-auto 100%
+//TODO Funzione rottama-auto 100%
+//TODO Funzione pianifica-percorso 90%
+//TODO funzione main 100%
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,6 +22,7 @@ typedef struct carNode {
     struct carNode* p ;
     struct carNode* left;
     struct carNode* right;
+    int max;
 
 
 } carTreeNode ;
@@ -81,7 +82,8 @@ carTreeNode * carInsert (carTreeNode *root , int s,int print){
         if (x->key<pre->key) pre->left = x;
         else pre->right=x;
     }
-        if(print==1) printf("aggiunta\n");
+    if(s>root->max)root->max=s;
+    if(print==1) printf("aggiunta\n");
     return root;
     }
 
@@ -116,6 +118,19 @@ carTreeNode * nextCar(carTreeNode *x){
     return y;
 
 }
+/**
+ * Highest Autonomy Car Function
+ * @param root of the tree
+ * @return the car with the highest autonomy
+ */
+int highestAutonomyCar(carTreeNode *root){
+    carTreeNode *cur=root;
+    while(cur->right!=NULL){
+        cur=cur->right;
+    }
+    return cur->key;
+}
+
 
 /**
  * Funcion to Remove a Car from the tree
@@ -154,24 +169,14 @@ carTreeNode* removeCar(carTreeNode *root, int key){
     if(to_del != x){
         x->key=to_del->key;
     }
-    free(to_del);
+    if(key==root->max) root->max= highestAutonomyCar(root);
+
+        free(to_del);
     printf("rottamata\n");
     return root;
 }
 
 
-/**
- * Highest Autonomy Car Function
- * @param root of the tree
- * @return the car with the highest autonomy
- */
-int highestAutonomyCar(carTreeNode *root){
-    carTreeNode *cur=root;
-    while(cur->right!=NULL){
-        cur=cur->right;
-    }
-    return cur->key;
-}
 
 
 
@@ -213,6 +218,7 @@ bool notInTheGraph(StationGraph *graph, int distance) {
 StationGraph* addStation(Station *x, StationGraph *graph) {
 
     Station *prev=graph->head;
+    graph->head=graph->head->next;
 
     while((graph->head!=NULL)&&(graph->head->distance<x->distance && graph->head->next!=NULL)){
         prev=graph->head;
@@ -221,7 +227,7 @@ StationGraph* addStation(Station *x, StationGraph *graph) {
     }
     if(prev->distance<x->distance){
         x->prev=prev;
-       prev->next=x;
+        prev->next=x;
     }
     x->next=graph->head;
     graph->head->prev=x;
@@ -309,7 +315,7 @@ StationGraph* removeStation(StationGraph *graph,int distance){
     }
 
     graph->head=graph->startingPoint;
-
+    graph->size--;
 
    // free(s->root);
   //  free(s);
@@ -332,6 +338,7 @@ carTreeNode* createCarTree(int cars[],int n,carTreeNode *root){
     if(n==0) return root;
     int i;
     root->key=cars[0];
+    root->max=cars[0];
     for(i=1;i<n;i++){
 
         root= carInsert(root,cars[i],0);
@@ -385,18 +392,18 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
                 Station *curr =queue[front++];
                 if(curr->distance>=maxDistanceTouched){
                 Station *temp=curr->next;
-                int autonomy= highestAutonomyCar(curr->root);
-                while(temp->distance <= curr->distance+autonomy&&temp->distance<=arrivalPoint){
+                int autonomy= curr->root->max;
+                    while(temp!=NULL&&temp->distance <= curr->distance+autonomy&&temp->distance<=arrivalPoint){
 
-                    if(temp->best==NULL){
-                        temp->best=curr;
-                        queue=addToQueue(queue,rear,temp);
-                        rear++;
+                            if(temp->best==NULL){
+                                temp->best=curr;
+                                queue=addToQueue(queue,rear,temp);
+                                rear++;
+                            }
+
+                        maxDistanceTouched=temp->distance;
+                        temp=temp->next;
                     }
-
-                    maxDistanceTouched=temp->distance;
-                    temp=temp->next;
-                }
                 }
         }
         Station *finalStation= searchStation(graph,arrivalPoint);
@@ -414,6 +421,7 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
             for(int j=1;j<capacity;j++){
                 printf("%d ",list[capacity-j-1]);
             }
+            printf("\n");
            // free(list);
         }
         free(queue);
@@ -481,47 +489,7 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
             free(pilaCurr);
             return;
         }
-        /*
-        while (front < rear) {
-            Station *curr =queue[front++];
-            Station *temp=curr->prev;
-            int autonomy= highestAutonomyCar(curr->root);
-            while(temp->distance >= curr->distance-autonomy&&temp->distance>=arrivalPoint){
-                if(temp->best==NULL ){
-                    temp->best=curr;
-                    queue=addToQueue(queue,rear,temp);
-                    rear++;
-                }
-                else if(curr->best!=temp->best){
-                    if(curr->distance!=arrivalPoint) {
-                        if(curr->distance<temp->best->distance){
-                            temp->best=curr;
-                        }
 
-                    }
-                }
-                temp=temp->prev;
-            }
-        }
-        Station *finalStation= searchStation(graph,arrivalPoint);
-        if(finalStation->best==NULL){
-            printf("nessun percorso\n");
-        }
-        else{
-            int list[100];
-            int i=0,capacity=1;
-            while(finalStation!=NULL&&finalStation->distance<=startingPoint){
-                list[i]=finalStation->distance;
-                i++;
-                capacity++;
-                finalStation=finalStation->best;
-            }
-            for(int j=1;j<capacity;j++){
-                printf("%d ",list[capacity-j-1]);
-            }
-            printf("\n");
-
-        }*/
         free(queue);
         return ;
     }
@@ -556,7 +524,7 @@ int main(){
                   int cars[n_cars];
                   int i;
                   for(i=0;i<n_cars;i++){
-                      if(scanf("%d",&cars[i]));
+                      if(scanf("%d",&cars[i])<0);
                       getc(stdin);
                   }
                     carTreeNode *root;
@@ -646,12 +614,6 @@ int main(){
                 break;
         }
     }while(command!=NULL);
-    return 0;
+
 }
-    //TODO Implementare grafi per stazione 90%
-    //TODO Funzione aggiungi-stazione  80%
-    //TODO Funzione demolisci-stazione 90%
-    //TODO Funzione aggiungi-auto 80%
-    //TODO Funzione rottama-auto 80%
-    //TODO Funzione pianifica-percorso 0%
-    //TODO funzione main 50%
+
