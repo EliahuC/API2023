@@ -62,8 +62,7 @@ carTreeNode * searchCar(carTreeNode *root, int x)
   * @param s key of the new carNode
   * @return root
   */
-carTreeNode * carInsert (carTreeNode *root , int s,int print)
-{
+carTreeNode * carInsert (carTreeNode *root , int s,int print){
 
     carTreeNode *pre, *cur, *x;
     x=carTreeNodeCreation(s);
@@ -199,7 +198,7 @@ typedef struct Graph{
  */
 
 bool notInTheGraph(StationGraph *graph, int distance) {
-    while((graph->head!=NULL)||(graph->head->next!=NULL)||(graph->head->distance<distance) ) {
+    while((graph->head!=NULL)&&(graph->head->next!=NULL)&&(graph->head->distance<distance) ) {
         graph->head=graph->head->next;
         if(graph->head==NULL)return true;
     }
@@ -384,14 +383,11 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
         int maxDistanceTouched=startingStation->distance;
         while (front < rear && maxDistanceTouched < arrivalPoint) {
                 Station *curr =queue[front++];
-                if(curr->distance>maxDistanceTouched){
+                if(curr->distance>=maxDistanceTouched){
                 Station *temp=curr->next;
                 int autonomy= highestAutonomyCar(curr->root);
                 while(temp->distance <= curr->distance+autonomy&&temp->distance<=arrivalPoint){
-                    if(temp->distance==arrivalPoint){
-                        temp->best=curr;
-                        break;
-                    }
+
                     if(temp->best==NULL){
                         temp->best=curr;
                         queue=addToQueue(queue,rear,temp);
@@ -409,7 +405,7 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
         }
         else{
             int list[100];
-            int i=-1,capacity=0;
+            int i=0,capacity=1;
             while(finalStation!=NULL&&finalStation->distance>=startingPoint){
                 list[i++]=finalStation->distance;
                 capacity++;
@@ -435,23 +431,56 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
 
         Station* *pilaNext =(Station **) malloc(sizeof(Station) * graph->size);
         Station* *pilaCurr =(Station **) malloc(sizeof(Station) * graph->size);
-        int topPilaNext=0;
+        int topPilaNext=-1;
         int topPilaCurr=0;
         pilaCurr[topPilaCurr]=startingStation;
         int lastTouched=startingPoint;
-        while((topPilaCurr!=0||topPilaNext!=0)||lastTouched==arrivalPoint){
-
+        while((topPilaCurr!=-1||topPilaNext!=-1)&&lastTouched!=arrivalPoint){
+            if(topPilaCurr==-1){
+                int i;
+                int toCopy=topPilaNext;
+                for(i=0;i<=toCopy;i++){
+                    pilaCurr[i]=pilaNext[i];
+                    pilaNext[i]=NULL;
+                }
+                topPilaCurr=topPilaNext;
+                topPilaNext=-1;
+            }
             Station *curr =pilaCurr[topPilaCurr];
+            topPilaCurr--;
             Station *temp=curr->prev;
             int autonomy= highestAutonomyCar(curr->root);
             while(temp->distance >= curr->distance-autonomy&&temp->distance>=arrivalPoint){
                 if(temp->best==NULL ){
                     temp->best=curr;
-                    queue=addToQueue(queue,rear,temp);
-                    rear++;
+                    topPilaNext++;
+                    pilaNext[topPilaNext]=temp;
+                    lastTouched=temp->distance;
                 }
-        }
+                temp=temp->prev;
             }
+        }
+        Station *finalStation= searchStation(graph,arrivalPoint);
+        if(finalStation->best==NULL){
+            printf("nessun percorso\n");
+        }
+        else{
+            int list[100];
+            int i=0,capacity=1;
+            while(finalStation!=NULL&&finalStation->distance<=startingPoint){
+                list[i]=finalStation->distance;
+                i++;
+                capacity++;
+                finalStation=finalStation->best;
+            }
+            for(int j=1;j<capacity;j++){
+                printf("%d ",list[capacity-j-1]);
+            }
+            printf("\n");
+            free(pilaNext);
+            free(pilaCurr);
+            return;
+        }
         /*
         while (front < rear) {
             Station *curr =queue[front++];
