@@ -316,6 +316,7 @@ StationGraph * newGraph(StationGraph *graph) {
     x->root=NULL;
     x->next=NULL;
     x->prev=NULL;
+    x->best=NULL;
     graph->head=x;
     graph->startingPoint=x;
     return graph;
