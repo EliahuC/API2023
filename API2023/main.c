@@ -430,10 +430,10 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
                 capacity++;
                 finalStation=finalStation->best;
             }
-            for(int j=1;j<capacity;j++){
+            for(int j=1;j<capacity-1;j++){
                 printf("%d ",list[capacity-j-1]);
             }
-            printf("\n");
+            printf("%d\n",list[0]);
            // free(list);
         }
         free(queue);
@@ -493,10 +493,10 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
                 capacity++;
                 finalStation=finalStation->best;
             }
-            for(int j=1;j<capacity;j++){
+            for(int j=1;j<capacity-1;j++){
                 printf("%d ",list[capacity-j-1]);
             }
-            printf("\n");
+            printf("%d\n",list[0]);
             free(pilaNext);
             free(pilaCurr);
             return;
