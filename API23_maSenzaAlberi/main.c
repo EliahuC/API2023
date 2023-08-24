@@ -39,7 +39,7 @@ bool searchCar(carTreeList *cars, int autonomy);
 carTreeList *removeCar(carTreeList *cars, int autonomy);
 
 bool notInTheGraph(StationGraph *graph, int distance) {
-    while((graph->head!=NULL)||(graph->head->next!=NULL)||(graph->head->distance<distance) ) {
+    while((graph->head!=NULL)&&(graph->head->next!=NULL)&&(graph->head->distance<distance) ) {
         graph->head=graph->head->next;
         if(graph->head==NULL){
             graph->head=graph->startingPoint;
