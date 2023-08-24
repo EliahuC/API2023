@@ -217,20 +217,31 @@ bool notInTheGraph(StationGraph *graph, int distance) {
 
 StationGraph* addStation(Station *x, StationGraph *graph) {
 
-    //graph->head=graph->head->next;
-    Station *prev=graph->head;
-
-    while((graph->head!=NULL)&&(graph->head->distance<x->distance && graph->head->next!=NULL)){
-        prev=graph->head;
+    graph->head=graph->head->next;
+    while(graph->head->distance<x->distance && graph->head->next!=NULL){
         graph->head=graph->head->next;
 
     }
-    if(prev->distance<x->distance){
-        x->prev=prev;
-        prev->next=x;
+    //case 1 : exit from while because next=null
+    if(graph->head->next==NULL){
+        if(graph->head->distance>x->distance){
+            graph->head->prev->next=x;
+            x->prev=graph->head->prev;
+            graph->head->prev=x;
+            x->next=graph->head;
+        }
+        else{
+                x->prev=graph->head;
+                graph->head->next=x;
+        }
     }
-    x->next=graph->head;
-    graph->head->prev=x;
+    //case 2 : exit from while because graph.head.distance>x.distance
+    else{
+        graph->head->prev->next=x;
+        x->prev=graph->head->prev;
+        graph->head->prev=x;
+        x->next=graph->head;
+    }
 
     graph->head=graph->startingPoint;
     return graph;
@@ -391,7 +402,7 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
         int maxDistanceTouched=startingStation->distance;
         while (front < rear && maxDistanceTouched < arrivalPoint) {
                 Station *curr =queue[front++];
-                if(curr->distance>=maxDistanceTouched){
+                //if(curr->distance>=maxDistanceTouched){
                 Station *temp=curr->next;
                 int autonomy= curr->root->max;
                     while(temp!=NULL&&temp->distance <= curr->distance+autonomy&&temp->distance<=arrivalPoint){
@@ -405,7 +416,7 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
                         maxDistanceTouched=temp->distance;
                         temp=temp->next;
                     }
-                }
+               // }
         }
         Station *finalStation= searchStation(graph,arrivalPoint);
         if(finalStation->best==NULL){
