@@ -50,7 +50,7 @@ aggiunta
 aggiunta
 demolita
 non aggiunta
-non aggiunta
+aggiunta
 demolita
 aggiunta
 aggiunta
@@ -207,7 +207,7 @@ rottamata
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 rottamata
@@ -888,7 +888,7 @@ aggiunta
 demolita
 aggiunta
 non aggiunta
-non demolita
+demolita
 rottamata
 aggiunta
 non rottamata
@@ -1587,7 +1587,7 @@ rottamata
 demolita
 aggiunta
 non aggiunta
-non demolita
+demolita
 non demolita
 aggiunta
 demolita
@@ -1999,7 +1999,7 @@ demolita
 aggiunta
 non rottamata
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 rottamata
 aggiunta
@@ -2233,7 +2233,7 @@ aggiunta
 non rottamata
 rottamata
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 rottamata
 rottamata
@@ -7126,7 +7126,7 @@ aggiunta
 rottamata
 aggiunta
 non aggiunta
-non aggiunta
+aggiunta
 demolita
 aggiunta
 rottamata
@@ -9006,7 +9006,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -12746,7 +12746,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -13756,7 +13756,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 demolita
 rottamata
@@ -15604,7 +15604,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non aggiunta
+aggiunta
 aggiunta
 aggiunta
 non rottamata
@@ -15773,7 +15773,7 @@ rottamata
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -17813,7 +17813,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -18456,7 +18456,7 @@ rottamata
 demolita
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -19393,7 +19393,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 rottamata
 aggiunta
@@ -20304,7 +20304,7 @@ non rottamata
 aggiunta
 demolita
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -20436,7 +20436,7 @@ aggiunta
 rottamata
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 demolita
 rottamata
@@ -20692,7 +20692,7 @@ aggiunta
 aggiunta
 aggiunta
 rottamata
-72361782 78417856 90259224 103377088 117827664 133818855 150982166 169668237 189766545 211704927 233401056 257866209 288416279 344760034 439028555 580795214 705085436 779594769 851583262 935818076
+72361782 77960276 89607949 101681070 115721874 131589617 147969320 166365260 186035811 207289077 230173729 253909460 282862035 333085311 420616225 555249799 691971333 770475124 839935547 935818076
 aggiunta
 aggiunta
 aggiunta
@@ -20701,7 +20701,6 @@ aggiunta
 non rottamata
 aggiunta
 non rottamata
-non aggiunta
 non aggiunta
 aggiunta
 aggiunta
@@ -20762,6 +20761,7 @@ aggiunta
 aggiunta
 aggiunta
 aggiunta
+aggiunta
 demolita
 aggiunta
 non rottamata
@@ -23648,7 +23648,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 demolita
 aggiunta
 rottamata
@@ -24402,7 +24402,7 @@ non aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non aggiunta
+aggiunta
 aggiunta
 aggiunta
 aggiunta
@@ -25555,7 +25555,7 @@ aggiunta
 rottamata
 aggiunta
 non aggiunta
-nessun percorso
+127724783 137777834 251962649 279151827 328591512 412432579 544390666 686250468 766931662 834088505 918667770 982430379
 aggiunta
 aggiunta
 rottamata
@@ -29546,7 +29546,7 @@ aggiunta
 non rottamata
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -30690,7 +30690,7 @@ aggiunta
 rottamata
 aggiunta
 rottamata
-44994337 46177598 54908408 64104616 74824077 86087121 99063996 112761300 128239403 144940132 163120219 182796558 204182614 226998587 251088263 275275059 320644062 400059047 526519302 676714231 761568563 826902372
+44994337 49072845 58186021 67284856 78344902 90586340 121544003 137777834 251088263 275275059 320644062 400059047 526519302 676714231 761718460 826902372
 aggiunta
 demolita
 aggiunta
@@ -30846,9 +30846,9 @@ aggiunta
 aggiunta
 aggiunta
 aggiunta
-non aggiunta
 non aggiunta
 aggiunta
+aggiunta
 non aggiunta
 rottamata
 rottamata
@@ -33012,7 +33012,7 @@ demolita
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 rottamata
 non rottamata
 aggiunta
@@ -33914,7 +33914,7 @@ aggiunta
 aggiunta
 rottamata
 non aggiunta
-non aggiunta
+aggiunta
 rottamata
 aggiunta
 aggiunta
@@ -34447,7 +34447,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -35160,7 +35160,7 @@ aggiunta
 non rottamata
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 rottamata
 aggiunta
@@ -35597,7 +35597,7 @@ rottamata
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 rottamata
 aggiunta
@@ -36306,7 +36306,7 @@ aggiunta
 aggiunta
 aggiunta
 rottamata
-990767592 981453147 963221757 929265173 871424283 790004992 713133886 641851171 543085075 400631345 274516962 228601942 204182614 181255175 160209286 141442391 123321480 106986861 92708954 79788649 67615763 56511763 48901290 41680533 33368143 26187251 19562153 15138586
+990767592 960077633 923590383 862397737 779682608 707889866 635393484 534324322 389362395 268775393 228225165 203616520 182649492 158522523 124503390 88944575 50075202 43600145 15138586
 aggiunta
 aggiunta
 aggiunta
@@ -37047,7 +37047,6 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non aggiunta
 aggiunta
 aggiunta
 aggiunta
@@ -37098,8 +37097,9 @@ aggiunta
 aggiunta
 aggiunta
 aggiunta
+aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -37135,7 +37135,7 @@ aggiunta
 aggiunta
 aggiunta
 aggiunta
-857139911 773862192 702905653 628014520 523659276 371835507 260677204 225887334 201821030 179005715 158422353 138966357 121178834 104941216 90259224 76912134 65149229 54908408 52637059
+857139911 773862192 702905653 628014520 523659276 371835507 260677204 225887334 201821030 179005715 158522523 124503390 86274124 52637059
 demolita
 aggiunta
 demolita
@@ -38606,7 +38606,7 @@ non rottamata
 demolita
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 rottamata
 aggiunta
 aggiunta
@@ -38854,7 +38854,7 @@ aggiunta
 aggiunta
 aggiunta
 aggiunta
-22035358 25488005 31826873 38175589 46177598 54908408 63735181 73991714 85425212 98102342 112129381 127389424 143050365 161005961 180123626 201312667 223557740 247573481 273285288 317781061 394299124 517492159 672516170 758542902 822121905 905059696 975325917
+22035358 22479410 90586340 121544003 137777834 240308154 265287557 303506507 371265614 481704987 639777623 770428852 839935547 975325917
 aggiunta
 aggiunta
 aggiunta
@@ -40140,7 +40140,7 @@ aggiunta
 rottamata
 rottamata
 non aggiunta
-non rottamata
+rottamata
 demolita
 aggiunta
 aggiunta
@@ -41608,7 +41608,7 @@ aggiunta
 demolita
 rottamata
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -42408,9 +42408,9 @@ aggiunta
 aggiunta
 aggiunta
 demolita
-non aggiunta
 non aggiunta
 aggiunta
+aggiunta
 demolita
 aggiunta
 aggiunta
@@ -43721,7 +43721,7 @@ rottamata
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 rottamata
@@ -43892,8 +43892,8 @@ demolita
 aggiunta
 rottamata
 non aggiunta
-non rottamata
 rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -44501,9 +44501,9 @@ aggiunta
 aggiunta
 aggiunta
 rottamata
-non aggiunta
 non aggiunta
 aggiunta
+aggiunta
 rottamata
 demolita
 aggiunta
@@ -44690,8 +44690,8 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
 rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -44752,7 +44752,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 rottamata
 aggiunta
 aggiunta
@@ -47365,7 +47365,7 @@ rottamata
 rottamata
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 rottamata
@@ -48278,7 +48278,7 @@ demolita
 aggiunta
 non aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -49748,7 +49748,7 @@ rottamata
 demolita
 rottamata
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 rottamata
 aggiunta
@@ -50482,7 +50482,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 demolita
 demolita
 aggiunta
@@ -51095,7 +51095,7 @@ aggiunta
 aggiunta
 aggiunta
 rottamata
-986435849 973162500 947448226 901479031 829595784 745674222 685388580 603771470 489444567 328255217 244087271 218922676 194995486 190605151
+986435849 973162500 947448226 901479031 829595784 745674222 685388580 603771470 489444567 328255217 244087271 219117068 190605151
 rottamata
 rottamata
 aggiunta
@@ -51313,7 +51313,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -53271,7 +53271,7 @@ rottamata
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -53863,7 +53863,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non aggiunta
+aggiunta
 aggiunta
 demolita
 aggiunta
@@ -54860,11 +54860,11 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non aggiunta
 aggiunta
 aggiunta
 aggiunta
 aggiunta
+aggiunta
 demolita
 aggiunta
 aggiunta
@@ -56619,8 +56619,8 @@ rottamata
 aggiunta
 non rottamata
 aggiunta
-non aggiunta
 non aggiunta
+aggiunta
 rottamata
 aggiunta
 demolita
@@ -59003,7 +59003,7 @@ aggiunta
 aggiunta
 rottamata
 non aggiunta
-non demolita
+demolita
 rottamata
 aggiunta
 demolita
@@ -61952,7 +61952,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 rottamata
 aggiunta
@@ -64832,7 +64832,7 @@ rottamata
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 non rottamata
 aggiunta
 rottamata
@@ -65273,8 +65273,8 @@ aggiunta
 aggiunta
 aggiunta
 aggiunta
-non aggiunta
 non aggiunta
+aggiunta
 demolita
 aggiunta
 aggiunta
@@ -67333,7 +67333,7 @@ demolita
 non rottamata
 aggiunta
 rottamata
-975637818 952006036 909261915 840718793 755850041 693497624 615231338 505299109 344014261 249039685 223268279 211061657 172998879 152534802 133608750 116363532 100964595 87149632 69211803
+975637818 952006036 909261915 840718793 755850041 693497624 615231338 505299109 344014261 249165585 219117068 185242133 162815119 118374286 74296621 69211803
 aggiunta
 aggiunta
 aggiunta
@@ -67463,7 +67463,7 @@ aggiunta
 demolita
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -67767,7 +67767,7 @@ aggiunta
 demolita
 rottamata
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 rottamata
 aggiunta
@@ -69713,8 +69713,8 @@ aggiunta
 demolita
 rottamata
 non aggiunta
-non demolita
 demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -71720,7 +71720,7 @@ non aggiunta
 aggiunta
 non demolita
 non aggiunta
-non demolita
+demolita
 rottamata
 aggiunta
 aggiunta
@@ -72886,7 +72886,7 @@ aggiunta
 demolita
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -73010,7 +73010,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non aggiunta
+aggiunta
 rottamata
 non rottamata
 aggiunta
@@ -75368,8 +75368,8 @@ aggiunta
 aggiunta
 aggiunta
 aggiunta
-non aggiunta
 non aggiunta
+aggiunta
 demolita
 demolita
 aggiunta
@@ -76709,10 +76709,10 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 rottamata
 aggiunta
@@ -82961,7 +82961,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 rottamata
 rottamata
 aggiunta
@@ -83005,7 +83005,7 @@ non demolita
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -84714,7 +84714,7 @@ aggiunta
 demolita
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 demolita
 aggiunta
 aggiunta
@@ -86398,7 +86398,7 @@ rottamata
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 non aggiunta
 non demolita
 rottamata
@@ -86533,7 +86533,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non aggiunta
+aggiunta
 aggiunta
 aggiunta
 aggiunta
@@ -86641,9 +86641,9 @@ demolita
 aggiunta
 aggiunta
 non aggiunta
-non demolita
 demolita
 demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -88018,7 +88018,7 @@ aggiunta
 demolita
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -88250,7 +88250,7 @@ aggiunta
 aggiunta
 demolita
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -88399,7 +88399,7 @@ rottamata
 aggiunta
 aggiunta
 aggiunta
-76397860 77399223 89546014 102933952 117584436 133373917 150760299 169469051 189842203 211823042 235299317 260269804 294252981 354912431 456310475 606463967 720029675 788654524
+76397860 83195388 137777834 241813328 294252981 354912431 456310475 606463967 720029675 788654524
 aggiunta
 aggiunta
 aggiunta
@@ -88889,7 +88889,7 @@ aggiunta
 rottamata
 aggiunta
 non aggiunta
-non aggiunta
+aggiunta
 rottamata
 aggiunta
 aggiunta
@@ -89685,7 +89685,7 @@ demolita
 non aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 demolita
 aggiunta
@@ -90447,8 +90447,8 @@ aggiunta
 aggiunta
 aggiunta
 aggiunta
-non aggiunta
 non aggiunta
+aggiunta
 rottamata
 demolita
 aggiunta
@@ -90913,7 +90913,7 @@ aggiunta
 aggiunta
 non aggiunta
 non aggiunta
-non aggiunta
+aggiunta
 demolita
 aggiunta
 aggiunta
@@ -91581,7 +91581,7 @@ aggiunta
 aggiunta
 rottamata
 non aggiunta
-non demolita
+demolita
 rottamata
 aggiunta
 rottamata
@@ -93445,7 +93445,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -93566,10 +93566,10 @@ aggiunta
 aggiunta
 aggiunta
 rottamata
-non aggiunta
 non aggiunta
 aggiunta
 aggiunta
+aggiunta
 rottamata
 non aggiunta
 aggiunta
@@ -93853,7 +93853,7 @@ aggiunta
 aggiunta
 aggiunta
 rottamata
-65242661 73632052 85364328 98052290 112129381 127160314 143959008 162240632 181962298 203147770 226047178 250478337 276685197 324123395 406202775 535330968 681431440 764614390 831321351 915893707
+65242661 71761035 83195388 137777834 241813328 302256447 370709390 481239746 639777623 746645216 831321351 915893707
 rottamata
 aggiunta
 aggiunta
@@ -94360,7 +94360,7 @@ demolita
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -96140,7 +96140,7 @@ demolita
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 demolita
 aggiunta
@@ -96621,7 +96621,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -98450,7 +98450,7 @@ aggiunta
 aggiunta
 non aggiunta
 non aggiunta
-non demolita
+demolita
 demolita
 rottamata
 aggiunta
@@ -99478,7 +99478,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non aggiunta
+aggiunta
 aggiunta
 aggiunta
 aggiunta
@@ -100576,8 +100576,8 @@ aggiunta
 aggiunta
 demolita
 non aggiunta
-non rottamata
 rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -100652,7 +100652,7 @@ demolita
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 demolita
 aggiunta
 aggiunta
@@ -100847,7 +100847,7 @@ aggiunta
 aggiunta
 rottamata
 non aggiunta
-non aggiunta
+aggiunta
 aggiunta
 aggiunta
 aggiunta
@@ -101892,7 +101892,7 @@ non rottamata
 aggiunta
 rottamata
 non aggiunta
-non aggiunta
+aggiunta
 non rottamata
 aggiunta
 aggiunta
@@ -102049,9 +102049,9 @@ rottamata
 rottamata
 non rottamata
 non aggiunta
-non rottamata
 rottamata
 rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -103986,7 +103986,7 @@ aggiunta
 rottamata
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 rottamata
@@ -104655,7 +104655,7 @@ aggiunta
 rottamata
 non demolita
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 rottamata
 aggiunta
@@ -106235,7 +106235,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -111460,8 +111460,8 @@ aggiunta
 rottamata
 aggiunta
 aggiunta
-non aggiunta
 non aggiunta
+aggiunta
 demolita
 aggiunta
 demolita
@@ -111680,7 +111680,7 @@ aggiunta
 demolita
 rottamata
 non aggiunta
-non aggiunta
+aggiunta
 demolita
 aggiunta
 rottamata
@@ -111813,7 +111813,7 @@ rottamata
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -112954,7 +112954,7 @@ non aggiunta
 aggiunta
 demolita
 non aggiunta
-non aggiunta
+aggiunta
 rottamata
 aggiunta
 aggiunta
@@ -113145,7 +113145,7 @@ demolita
 aggiunta
 demolita
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -113720,7 +113720,7 @@ aggiunta
 demolita
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -116942,10 +116942,10 @@ aggiunta
 non rottamata
 aggiunta
 non aggiunta
-non aggiunta
 aggiunta
 aggiunta
 aggiunta
+aggiunta
 demolita
 rottamata
 aggiunta
@@ -118145,8 +118145,8 @@ rottamata
 demolita
 aggiunta
 non aggiunta
-non rottamata
 rottamata
+rottamata
 aggiunta
 demolita
 aggiunta
@@ -121128,7 +121128,7 @@ aggiunta
 demolita
 aggiunta
 non aggiunta
-non demolita
+demolita
 rottamata
 aggiunta
 aggiunta
@@ -121951,7 +121951,7 @@ aggiunta
 demolita
 aggiunta
 non aggiunta
-non aggiunta
+aggiunta
 aggiunta
 aggiunta
 demolita
@@ -122587,7 +122587,7 @@ rottamata
 demolita
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -122787,7 +122787,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 rottamata
@@ -122884,7 +122884,7 @@ rottamata
 demolita
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 rottamata
@@ -124068,7 +124068,7 @@ demolita
 demolita
 rottamata
 non aggiunta
-non demolita
+demolita
 aggiunta
 rottamata
 demolita
@@ -126344,7 +126344,7 @@ non demolita
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 demolita
 rottamata
 aggiunta
@@ -127590,7 +127590,7 @@ rottamata
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 rottamata
 demolita
 rottamata
@@ -129514,7 +129514,7 @@ non aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -129603,7 +129603,7 @@ non aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 demolita
 rottamata
 demolita
@@ -130307,7 +130307,7 @@ aggiunta
 rottamata
 non rottamata
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -131036,7 +131036,7 @@ aggiunta
 aggiunta
 demolita
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -132639,7 +132639,7 @@ aggiunta
 rottamata
 rottamata
 aggiunta
-46883744 55293083 65149229 75965743 87928675 100602928 114980594 130730756 147686646 166216572 186043006 207559406 230697959 255278019 285328902 339223801 431057433 571445108 700600941 776729850 848966087 933505881
+46883744 50199018 82454478 137777834 241813328 302152145 370709390 481239746 639777623 746645216 839935547 933505881
 aggiunta
 demolita
 aggiunta
@@ -133364,7 +133364,7 @@ demolita
 aggiunta
 aggiunta
 non aggiunta
-non aggiunta
+aggiunta
 demolita
 aggiunta
 demolita
@@ -134216,7 +134216,6 @@ aggiunta
 demolita
 aggiunta
 aggiunta
-non aggiunta
 non aggiunta
 aggiunta
 aggiunta
@@ -134264,6 +134263,7 @@ aggiunta
 aggiunta
 aggiunta
 aggiunta
+aggiunta
 rottamata
 rottamata
 rottamata
@@ -135378,8 +135378,8 @@ aggiunta
 aggiunta
 demolita
 aggiunta
-non aggiunta
 non aggiunta
+aggiunta
 rottamata
 aggiunta
 demolita
@@ -136367,9 +136367,9 @@ aggiunta
 demolita
 demolita
 aggiunta
-non aggiunta
 non aggiunta
 aggiunta
+aggiunta
 demolita
 aggiunta
 aggiunta
@@ -137182,8 +137182,8 @@ aggiunta
 demolita
 rottamata
 non aggiunta
-non demolita
 demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -138130,7 +138130,7 @@ aggiunta
 aggiunta
 aggiunta
 aggiunta
-973560874 948198777 902426901 831011607 746254733 686058920 604728372 490258406 328952798 257142330 194093811 172884264
+973560874 950876765 896831374 822963210 739094245 676336159 591342640 471390985 315724447 257142330 183532644 172884264
 aggiunta
 aggiunta
 aggiunta
@@ -143503,7 +143503,7 @@ demolita
 rottamata
 rottamata
 non aggiunta
-non aggiunta
+aggiunta
 aggiunta
 aggiunta
 aggiunta
@@ -144202,7 +144202,7 @@ aggiunta
 aggiunta
 rottamata
 non aggiunta
-non aggiunta
+aggiunta
 demolita
 aggiunta
 rottamata
@@ -145011,7 +145011,7 @@ rottamata
 aggiunta
 aggiunta
 rottamata
-11471081 16382655 21781038 27924236 34741955 42280852 50525878 59523774 69745655 81046222 93573797 107235119 121922271 138180188 155835284 175142212 195856728 218232269 242021590 267263758 307085889 377358475 491439562 652868936 747297923
+11471081 15351395 42924360 82454478 137777834 241813328 297667844 360747136 465838252 618964223 747297923
 aggiunta
 rottamata
 rottamata
@@ -146295,7 +146295,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 demolita
 aggiunta
 demolita
@@ -146569,7 +146569,7 @@ rottamata
 rottamata
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 rottamata
 aggiunta
@@ -147562,7 +147562,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -147712,7 +147712,7 @@ rottamata
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -148708,7 +148708,7 @@ demolita
 aggiunta
 aggiunta
 rottamata
-56511763 59993882 70231360 81677802 93979836 107739346 122804452 139244370 156897169 176306906 197040357 219535471 243506458 268917486 310222184 382487995 499582822 662711408 753198597 814128121 896831374
+56511763 57762332 80729730 133439647 241813328 297667844 360747136 465838252 618964223 739269498 801994081 896831374
 aggiunta
 aggiunta
 non aggiunta
@@ -148933,9 +148933,9 @@ aggiunta
 rottamata
 aggiunta
 rottamata
-non aggiunta
 non aggiunta
 aggiunta
+aggiunta
 non rottamata
 aggiunta
 demolita
@@ -148958,7 +148958,7 @@ aggiunta
 demolita
 aggiunta
 demolita
-72823141 82341500 94982531 108765298 123889866 140359944 158158711 177591121 198645866 221155475 245084362 270621331 313308821 387819755 507731379 667601794 756189890 818699460 902111847
+72823141 80729730 133439647 241813328 297667844 360747136 465838252 618964223 739269498 801994081 902111847
 aggiunta
 aggiunta
 aggiunta
@@ -149043,8 +149043,8 @@ aggiunta
 rottamata
 aggiunta
 aggiunta
-non aggiunta
 non aggiunta
+aggiunta
 rottamata
 demolita
 aggiunta
@@ -152356,7 +152356,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 demolita
@@ -153061,7 +153061,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-aggiunta
+non aggiunta
 rottamata
 rottamata
 demolita
@@ -154512,7 +154512,7 @@ demolita
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -155358,7 +155358,7 @@ aggiunta
 aggiunta
 rottamata
 non aggiunta
-non demolita
+demolita
 aggiunta
 rottamata
 aggiunta
@@ -155658,7 +155658,7 @@ aggiunta
 aggiunta
 aggiunta
 aggiunta
-810013399 727943108 661348613 570460869 441081504 296408874 237880765 173256423 64313081
+810013399 727943108 661348613 570460869 441081504 296408874 237880765 167203650 101368389 64313081
 demolita
 non rottamata
 aggiunta
@@ -156727,7 +156727,7 @@ demolita
 aggiunta
 rottamata
 non aggiunta
-non rottamata
+rottamata
 demolita
 aggiunta
 rottamata
@@ -157169,7 +157169,7 @@ rottamata
 rottamata
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -160837,8 +160837,8 @@ aggiunta
 aggiunta
 demolita
 aggiunta
-non aggiunta
 non aggiunta
+aggiunta
 demolita
 aggiunta
 non rottamata
@@ -161395,7 +161395,7 @@ aggiunta
 rottamata
 demolita
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -162758,7 +162758,7 @@ demolita
 rottamata
 non aggiunta
 non aggiunta
-aggiunta
+non aggiunta
 demolita
 aggiunta
 demolita
@@ -163210,8 +163210,8 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non demolita
 demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -163739,7 +163739,7 @@ rottamata
 aggiunta
 aggiunta
 aggiunta
-814252301 731507821 666264797 577276801 450656727 302493406 237880765 173256423 68232494
+814252301 731507821 666264797 577276801 450656727 302493406 237880765 167203650 101368389 68232494
 aggiunta
 aggiunta
 aggiunta
@@ -164076,7 +164076,7 @@ aggiunta
 demolita
 aggiunta
 non aggiunta
-non aggiunta
+aggiunta
 aggiunta
 aggiunta
 rottamata
@@ -164178,7 +164178,7 @@ demolita
 aggiunta
 aggiunta
 non aggiunta
-non aggiunta
+aggiunta
 aggiunta
 aggiunta
 aggiunta
@@ -164369,7 +164369,7 @@ demolita
 rottamata
 rottamata
 non aggiunta
-non aggiunta
+aggiunta
 non demolita
 aggiunta
 aggiunta
@@ -165360,7 +165360,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 demolita
@@ -166220,7 +166220,6 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non aggiunta
 aggiunta
 aggiunta
 aggiunta
@@ -166231,6 +166230,7 @@ aggiunta
 aggiunta
 aggiunta
 aggiunta
+aggiunta
 demolita
 aggiunta
 rottamata
@@ -166798,7 +166798,7 @@ aggiunta
 aggiunta
 aggiunta
 aggiunta
-700512583 624633708 518777709 364388951 257142330 194093811 173256423 54887893
+700512583 624633708 518777709 364388951 257142330 188074365 107857171 54887893
 aggiunta
 aggiunta
 non demolita
@@ -167683,7 +167683,6 @@ aggiunta
 rottamata
 non aggiunta
 aggiunta
-non aggiunta
 non aggiunta
 aggiunta
 aggiunta
@@ -167733,6 +167732,7 @@ aggiunta
 aggiunta
 aggiunta
 aggiunta
+aggiunta
 rottamata
 aggiunta
 aggiunta
@@ -169688,7 +169688,7 @@ non aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 demolita
 aggiunta
@@ -170300,7 +170300,7 @@ demolita
 aggiunta
 non rottamata
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -170670,7 +170670,6 @@ non rottamata
 rottamata
 aggiunta
 aggiunta
-non aggiunta
 non aggiunta
 non aggiunta
 aggiunta
@@ -171189,6 +171188,7 @@ aggiunta
 aggiunta
 aggiunta
 aggiunta
+aggiunta
 rottamata
 aggiunta
 aggiunta
@@ -173660,8 +173660,8 @@ aggiunta
 aggiunta
 aggiunta
 aggiunta
-non aggiunta
 non aggiunta
+aggiunta
 demolita
 aggiunta
 aggiunta
@@ -174083,7 +174083,7 @@ non aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -174326,8 +174326,8 @@ demolita
 rottamata
 aggiunta
 demolita
-non aggiunta
 non aggiunta
+aggiunta
 demolita
 aggiunta
 aggiunta
@@ -174889,7 +174889,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 rottamata
@@ -177015,7 +177015,7 @@ aggiunta
 demolita
 rottamata
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -179780,7 +179780,7 @@ aggiunta
 aggiunta
 rottamata
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -180185,7 +180185,7 @@ rottamata
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 rottamata
 demolita
 non aggiunta
@@ -180420,7 +180420,7 @@ aggiunta
 aggiunta
 non demolita
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -181666,7 +181666,7 @@ demolita
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 non aggiunta
 aggiunta
 demolita
@@ -182962,9 +182962,9 @@ aggiunta
 demolita
 demolita
 aggiunta
-non aggiunta
 non aggiunta
 aggiunta
+aggiunta
 demolita
 aggiunta
 aggiunta
@@ -184458,7 +184458,7 @@ aggiunta
 demolita
 rottamata
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -184519,7 +184519,7 @@ rottamata
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -184808,7 +184808,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 demolita
@@ -186666,7 +186666,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 rottamata
@@ -187926,7 +187926,7 @@ aggiunta
 rottamata
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -189764,7 +189764,7 @@ aggiunta
 rottamata
 aggiunta
 non aggiunta
-non aggiunta
+aggiunta
 aggiunta
 aggiunta
 aggiunta
@@ -195010,7 +195010,7 @@ aggiunta
 rottamata
 aggiunta
 aggiunta
-803532204 723004342 654928949 561364264 427469285 288378046 237880765 173256423 2916004
+803532204 747818203 646884542 550112558 411055565 279432420 234881394 149311973 77024366 2916004
 rottamata
 aggiunta
 demolita
@@ -195175,7 +195175,7 @@ non rottamata
 rottamata
 demolita
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 demolita
 aggiunta
@@ -197606,7 +197606,7 @@ demolita
 aggiunta
 aggiunta
 non aggiunta
-non aggiunta
+aggiunta
 demolita
 non demolita
 non demolita
@@ -198281,7 +198281,7 @@ rottamata
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -199449,7 +199449,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -199558,7 +199558,7 @@ aggiunta
 rottamata
 aggiunta
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 aggiunta
@@ -203104,7 +203104,7 @@ aggiunta
 non demolita
 aggiunta
 non rottamata
-904863126 834715008 749944889 690953218 611230123 499740096 336047502 281501551 184906912 158223841
+904863126 834691086 750272018 686374302 604888058 490804400 329248291 270824904 178304014 158223841
 demolita
 aggiunta
 rottamata
@@ -205662,8 +205662,8 @@ non rottamata
 rottamata
 rottamata
 demolita
-non aggiunta
 non aggiunta
+aggiunta
 demolita
 aggiunta
 aggiunta
@@ -206129,7 +206129,7 @@ aggiunta
 aggiunta
 demolita
 non aggiunta
-non rottamata
+rottamata
 rottamata
 aggiunta
 aggiunta
@@ -210831,7 +210831,7 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -210968,7 +210968,7 @@ aggiunta
 aggiunta
 non demolita
 non aggiunta
-non demolita
+demolita
 aggiunta
 aggiunta
 demolita
@@ -211775,7 +211775,7 @@ rottamata
 demolita
 aggiunta
 non aggiunta
-non demolita
+demolita
 non rottamata
 demolita
 aggiunta
@@ -212886,7 +212886,7 @@ aggiunta
 demolita
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 rottamata
 aggiunta
@@ -213154,10 +213154,10 @@ rottamata
 aggiunta
 aggiunta
 demolita
-non aggiunta
 non aggiunta
 non aggiunta
 aggiunta
+aggiunta
 non rottamata
 aggiunta
 aggiunta
@@ -213292,14 +213292,14 @@ aggiunta
 aggiunta
 aggiunta
 non aggiunta
-non rottamata
+rottamata
 demolita
 aggiunta
 aggiunta
 aggiunta
 rottamata
-non aggiunta
 non aggiunta
+aggiunta
 rottamata
 aggiunta
 aggiunta
@@ -213380,7 +213380,7 @@ aggiunta
 aggiunta
 demolita
 non aggiunta
-non rottamata
+rottamata
 aggiunta
 aggiunta
 aggiunta
@@ -213738,7 +213738,7 @@ aggiunta
 non rottamata
 rottamata
 aggiunta
-64763018 68483177 79691011 92054177 105475446 120239990 136516659 154146952 173256423 966357475
+64763018 71856518 133439647 235557349 309824282 447376329 594302503 713393802 839935547 966357475
 demolita
 aggiunta
 aggiunta
@@ -214278,7 +214278,7 @@ aggiunta
 aggiunta
 demolita
 non aggiunta
-non aggiunta
+aggiunta
 aggiunta
 aggiunta
 aggiunta
@@ -214404,4 +214404,4 @@ aggiunta
 aggiunta
 aggiunta
 aggiunta
-954723746 913976161 847569898 762980970 697042714 619517175 511709907 353766328 281501551 184906912 152947716
+954723746 931147375 838229194 753261192 695900315 591008073 470983756 320917306 222367765 152947716

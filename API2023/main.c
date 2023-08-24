@@ -205,10 +205,17 @@ typedef struct Graph{
 bool notInTheGraph(StationGraph *graph, int distance) {
     while((graph->head!=NULL)&&(graph->head->next!=NULL)&&(graph->head->distance<distance) ) {
         graph->head=graph->head->next;
-        if(graph->head==NULL)return true;
+        if(graph->head==NULL){
+            graph->head=graph->startingPoint;
+            return true;
+        }
     }
 
-    if(graph->head->distance==distance)return false;
+    if(graph->head->distance==distance){
+        graph->head=graph->startingPoint;
+        return false;
+    }
+    graph->head=graph->startingPoint;
     return true;
 }
 
@@ -438,6 +445,7 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
            // free(list);
         }
         free(queue);
+        graph->head=graph->startingPoint;
         return ;
     }
         //precorso inverso
@@ -500,10 +508,12 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
             printf("%d\n",list[0]);
             free(pilaNext);
             free(pilaCurr);
-            return;
+
+
         }
 
         free(queue);
+        graph->head=graph->startingPoint;
         return ;
     }
 
