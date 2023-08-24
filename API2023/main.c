@@ -5,7 +5,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
 //TODO Implementare grafi per stazione 100%
-//TODO Funzione aggiungi-stazione  50%
+//TODO Funzione aggiungi-stazione  100%
 //TODO Funzione demolisci-stazione 100%
 //TODO Funzione aggiungi-auto 100%
 //TODO Funzione rottama-auto 100%
@@ -416,7 +416,7 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
                         maxDistanceTouched=temp->distance;
                         temp=temp->next;
                     }
-               // }
+
         }
         Station *finalStation= searchStation(graph,arrivalPoint);
         if(finalStation->best==NULL){
@@ -529,14 +529,14 @@ int main(){
                 if(ambiguitySolver=='s'){
                     shiftInput();
                     int distance, n_cars;
-                  if(scanf("%d",&distance)<0);
+                  if(scanf("%d",&distance)<0){};
                   getc(stdin);
-                  if(scanf("%d",&n_cars)<0);
+                  if(scanf("%d",&n_cars)<0){};
                   getc(stdin);
                   int cars[n_cars];
                   int i;
                   for(i=0;i<n_cars;i++){
-                      if(scanf("%d",&cars[i])<0);
+                      if(scanf("%d",&cars[i])<0){};
                       getc(stdin);
                   }
                     carTreeNode *root;
@@ -556,9 +556,9 @@ int main(){
                 else if(ambiguitySolver=='a'){
                     shiftInput();
                     int distance,autonomy;
-                    if(scanf("%d",&distance)<0);
+                    if(scanf("%d",&distance)<0){}
                     getc(stdin);
-                    if(scanf("%d",&autonomy)<0);
+                    if(scanf("%d",&autonomy)<0){}
                     getc(stdin);
                     Station *station= searchStation(graph,distance);
                     if(station==NULL){
@@ -574,7 +574,7 @@ int main(){
 
                 shiftInput();
                 int distance;
-                if(scanf("%d",&distance)<0);
+                if(scanf("%d",&distance)<0){}
                 getc(stdin);
                 Station *station= searchStation(graph,distance);
                 if(station==NULL){
@@ -590,9 +590,9 @@ int main(){
 
                 shiftInput();
                 int distance,autonomy;
-                if(scanf("%d",&distance)<0);
+                if(scanf("%d",&distance)<0){}
                 getc(stdin);
-                if(scanf("%d",&autonomy)<0);
+                if(scanf("%d",&autonomy)<0){}
                 getc(stdin);
                 Station *station= searchStation(graph,distance);
                 if(station==NULL){
@@ -610,9 +610,9 @@ int main(){
 
                 shiftInput();
                 int start,end;
-                if(scanf("%d",&start)<0);
+                if(scanf("%d",&start)<0){}
                 getc(stdin);
-                if(scanf("%d",&end)<0);
+                if(scanf("%d",&end)<0){}
                 getc(stdin);
                 if(searchStation(graph,start)==NULL|| searchStation(graph,end)==NULL){
                     printf("nessun percorso\n");
