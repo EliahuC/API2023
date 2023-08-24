@@ -556,9 +556,9 @@ int main(){
                     root->right=NULL;
                     root->left=NULL;
                     root=createCarTree(cars,n_cars,root);
-                    int size=graph->size;
+                    int size_=graph->size;
                     graph= createStation(graph,distance,root);
-                    if(graph->size==size+1) printf("aggiunta\n");
+                    if(graph->size==size_+1) printf("aggiunta\n");
                     else printf("non aggiunta\n");
                     break;
 
