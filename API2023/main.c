@@ -326,13 +326,14 @@ StationGraph* removeStation(StationGraph *graph,int distance){
         temp_graph->head->next->prev=temp_graph->head->prev;
     }
 
+
+
+    Station *s=graph->head;
+    free(s->root);
+    free(s);
+    printf("demolita\n");
     graph->head=graph->startingPoint;
     graph->size--;
-
-   // free(s->root);
-  //  free(s);
-    printf("demolita\n");
-
     return graph;
 
 
