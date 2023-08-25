@@ -1,206 +1,23 @@
-///////////////////////////////////////////////////////////////////////////////////////////////
-// AUTHOR: Eliahu Itamar Cohen
-// PROJECT:         Final project of Algorithms and  Principles of Computer Science
-//                  SearchPath
-///////////////////////////////////////////////////////////////////////////////////////////////
-
-//TODO Implementare grafi per stazione 100%
-//TODO Funzione aggiungi-stazione  100%
-//TODO Funzione demolisci-stazione 100%
-//TODO Funzione aggiungi-auto 100%
-//TODO Funzione rottama-auto 100%
-//TODO Funzione pianifica-percorso 90%
-//TODO funzione main 100%
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
-
-typedef struct carNode {
-    int key ;
-    struct carNode* p ;
-    struct carNode* left;
-    struct carNode* right;
+typedef struct Car{
+    int key;
+    struct Car *next;
+}Car;
+typedef struct CarList {
+    Car *list;
+    Car *startingCar;
+    Car *last;
+    int size;
     int max;
-    int n_cars;
-
-
-} carTreeNode ;
-
-
-/**
- * Creation of CarNodes
- * @param s key of the carNode
- * @return the new carNode
- */
-carTreeNode* carTreeNodeCreation(int s){
-    carTreeNode *x;
-    x = (struct carNode*)malloc(sizeof(struct carNode));
-    x->key=s;
-    x->left=NULL;
-    x->right=NULL;
-    return x;
-}
-/**
- * Search Car Function
- * @param root of the tree
- * @param x key to search
- * @return root
- */
-carTreeNode * searchCar(carTreeNode *root, int x)
-{
-    while((root != NULL) && (x!= root->key)  )
-    {
-        if(x < root->key)  root=root->left;
-        else root=root->right;
-    }
-    return root;
-}
-
- /**
-  * Insert of CarNode Function
-  * @param root of the tree
-  * @param s key of the new carNode
-  * @return root
-  */
-carTreeNode * carInsert (carTreeNode *root , int s,int print){
-
-    carTreeNode *pre, *cur, *x;
-    x=carTreeNodeCreation(s);
-    pre=NULL;
-    cur=root;
-    if(root->key==0){
-     root->key=s;
-        if(print==1) {
-            printf("aggiunta\n");
-            root->n_cars++;
-        }
-     return root;
-    }
-    while (cur!=NULL){
-        pre=cur;
-        if (x->key<cur->key)cur=cur->left;
-        else cur=cur->right;
-    }
-    x->p=pre;
-    if (pre==NULL) root=x;
-    else
-    {
-        if (x->key<pre->key) pre->left = x;
-        else pre->right=x;
-    }
-    if(s>root->max)root->max=s;
-    if(print==1) {
-        printf("aggiunta\n");
-        root->n_cars++;
-    }
-    return root;
-    }
-
-
-/**
- * Lowest Autonomy Car Function
- * @param root of the tree
- * @return the car with the lowest autonomy
- */
-carTreeNode * lowestAutonomyCar(carTreeNode *root){
-    carTreeNode *cur=root;
-    while(cur->left!=NULL){
-        cur=cur->left;
-    }
-    return cur;
-}
-
-/**
- * Function that finds the successor of x
- * @param x car
- * @return successor
- */
-carTreeNode * nextCar(carTreeNode *x){
-    if(x->right!=NULL){
-        return lowestAutonomyCar(x->right);
-    }
-    carTreeNode *y=x->p;
-    while(y!=NULL && y->right==x){
-        x=y;
-        y=y->p;
-    }
-    return y;
-
-}
-/**
- * Highest Autonomy Car Function
- * @param root of the tree
- * @return the car with the highest autonomy
- */
-int highestAutonomyCar(carTreeNode *root){
-    carTreeNode *cur=root;
-    while(cur->right!=NULL){
-        cur=cur->right;
-    }
-    return cur->key;
-}
-
-
-/**
- * Funcion to Remove a Car from the tree
- * @param root of the tree
- * @return root
- */
-carTreeNode* removeCar(carTreeNode *root, int key) {
-    if (root->n_cars > 1) {
-        carTreeNode *x = searchCar(root, key);
-        carTreeNode *to_del, *subtree;
-
-        //find the carNode to delete
-        if (x->left == NULL || x->right == NULL) {
-            to_del = x;
-        } else to_del = nextCar(x);
-
-        //find the subtree to move
-        if (to_del->left != NULL) {
-            subtree = to_del->left;
-        } else subtree = to_del->right;
-        if (subtree != NULL) {
-            subtree->p = to_del->p;
-        }
-
-        //correct the father reference
-        if (to_del->p == NULL) {
-            root = subtree;
-        } else if (to_del == to_del->p->left) {
-            to_del->p->left = subtree;
-        } else to_del->p->right = subtree;
-
-        //copy the key value
-        if (to_del != x) {
-            x->key = to_del->key;
-        }
-        if (key == root->max) root->max = highestAutonomyCar(root);
-
-        free(to_del);
-        printf("rottamata\n");
-        root->n_cars--;
-        return root;
-    }
-    else{
-        root->p=NULL;
-        root->right=NULL;
-        root->left=NULL;
-        root->key=0;
-        root->max=0;
-        root->n_cars=0;
-        return root;
-    }
-}
-
-
+} carTreeList ;
 
 
 typedef struct Station{
     int distance;
-    carTreeNode* root;
+    carTreeList* list;
     struct Station* next;
     struct Station* prev;
     struct Station* best;
@@ -219,6 +36,12 @@ typedef struct Graph{
  * @param distance of the station
  * @return true if there isn't any station with key==distance
  */
+
+carTreeList *carInsert(carTreeList *pNode, int autonomy, int i);
+
+bool searchCar(carTreeList *cars, int autonomy);
+
+carTreeList *removeCar(carTreeList *cars, int autonomy);
 
 bool notInTheGraph(StationGraph *graph, int distance) {
     while((graph->head!=NULL)&&(graph->head->next!=NULL)&&(graph->head->distance<distance) ) {
@@ -240,14 +63,13 @@ bool notInTheGraph(StationGraph *graph, int distance) {
 
 
 
-StationGraph* addStation(Station *x, StationGraph *graph) {
-
+StationGraph* addStation(Station *x, StationGraph *graph){
     graph->head=graph->head->next;
     while(graph->head->distance<x->distance && graph->head->next!=NULL){
         graph->head=graph->head->next;
 
     }
-    //case 1 : exit from while because next=null
+//case 1 : exit from while because next=null
     if(graph->head->next==NULL){
         if(graph->head->distance>x->distance){
             graph->head->prev->next=x;
@@ -256,11 +78,11 @@ StationGraph* addStation(Station *x, StationGraph *graph) {
             x->next=graph->head;
         }
         else{
-                x->prev=graph->head;
-                graph->head->next=x;
+            x->prev=graph->head;
+            graph->head->next=x;
         }
     }
-    //case 2 : exit from while because graph.head.distance>x.distance
+//case 2 : exit from while because graph.head.distance>x.distance
     else{
         graph->head->prev->next=x;
         x->prev=graph->head->prev;
@@ -279,28 +101,28 @@ StationGraph* addStation(Station *x, StationGraph *graph) {
  * @param root of the tree
  * @return graph or NULL if the station is already present
  */
-StationGraph * createStation(StationGraph *graph,int distance, carTreeNode* root){
+StationGraph * createStation(StationGraph *graph, int distance, carTreeList* root){
 
 
-   if(notInTheGraph(graph,distance)){
-   Station *x = (Station *) malloc(sizeof(Station));
-    graph->head=graph->startingPoint;
-    x->root=root;
-    x->distance=distance;
-    x->prev=NULL;
-    x->next=NULL;
-    x->best=NULL;
-    if(graph->size==0){
-        graph->head->next=x;
-        graph->head->next->prev=graph->head;
-        graph->size++;
+    if(notInTheGraph(graph,distance)){
+        Station *x = (Station *) malloc(sizeof(Station));
         graph->head=graph->startingPoint;
+        x->list=root;
+        x->distance=distance;
+        x->prev=NULL;
+        x->next=NULL;
+        x->best=NULL;
+        if(graph->size==0){
+            graph->head->next=x;
+            graph->head->next->prev=graph->head;
+            graph->size++;
+            graph->head=graph->startingPoint;
+            return graph;
+        }
+        graph=addStation(x,graph);
+        graph->size++;
         return graph;
     }
-    graph=addStation(x,graph);
-    graph->size++;
-    return graph;
-   }
     return graph;
 }
 
@@ -313,7 +135,7 @@ StationGraph * newGraph(StationGraph *graph) {
     Station *x =(Station *) malloc(sizeof(Station));
     graph->size = 0;
     x->distance=-1;
-    x->root=NULL;
+    x->list=NULL;
     x->next=NULL;
     x->prev=NULL;
     x->best=NULL;
@@ -344,7 +166,7 @@ Station * searchStation(StationGraph *graph,int start){
  */
 StationGraph* removeStation(StationGraph *graph,int distance){
 
-   StationGraph *temp_graph=graph;
+    StationGraph *temp_graph=graph;
     while (temp_graph->head->distance<distance){
         temp_graph->head=temp_graph->head->next;
     }
@@ -355,9 +177,9 @@ StationGraph* removeStation(StationGraph *graph,int distance){
 
 
 
-    Station *s=graph->head;
-    free(s->root);
-    free(s);
+    // Station *s=graph->head;
+    //free(s->list);
+    //  free(s);
     printf("demolita\n");
     graph->head=graph->startingPoint;
     graph->size--;
@@ -374,17 +196,6 @@ void shiftInput(){
     }
 }
 
-carTreeNode* createCarTree(int cars[],int n,carTreeNode *root){
-    if(n==0) return root;
-    int i;
-    root->key=cars[0];
-    root->max=cars[0];
-    for(i=1;i<n;i++){
-
-        root= carInsert(root,cars[i],0);
-    }
-    return root;
-}
 
 
 /**
@@ -399,8 +210,6 @@ Station **addToQueue(Station **queue, int rear, Station *temp) {
     queue[rear++]= toBeAdded;
     return queue;
 }
-
-
 
 
 /**
@@ -426,20 +235,20 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
 
         int maxDistanceTouched=startingStation->distance;
         while (front < rear && maxDistanceTouched < arrivalPoint) {
-                Station *curr =queue[front++];
-                Station *temp=curr->next;
-                int autonomy= curr->root->max;
-                while(temp!=NULL&&temp->distance <= curr->distance+autonomy&&temp->distance<=arrivalPoint){
+            Station *curr =queue[front++];
+            Station *temp=curr->next;
+            int autonomy= curr->list->max;
+            while(temp!=NULL&&temp->distance <= curr->distance+autonomy&&temp->distance<=arrivalPoint){
 
-                        if(temp->best==NULL){
-                            temp->best=curr;
-                            queue=addToQueue(queue,rear,temp);
-                            rear++;
-                        }
-
-                    maxDistanceTouched=temp->distance;
-                    temp=temp->next;
+                if(temp->best==NULL){
+                    temp->best=curr;
+                    queue=addToQueue(queue,rear,temp);
+                    rear++;
                 }
+
+                maxDistanceTouched=temp->distance;
+                temp=temp->next;
+            }
         }
         Station *finalStation= searchStation(graph,arrivalPoint);
         if(finalStation->best==NULL){
@@ -457,9 +266,9 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
                 printf("%d ",list[capacity-j-1]);
             }
             printf("%d\n",list[0]);
-           // free(list);
+            // free(list);
         }
-        free(queue);
+        // free(queue);
         //RESET BEST PATH
         while(temp1!=NULL&&temp1->distance<=arrivalPoint){
             temp1->best=NULL;
@@ -496,13 +305,13 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
             pilaCurr[topPilaCurr]=NULL;
             topPilaCurr--;
 
-            int autonomy= curr->root->max;
+            int autonomy= curr->list->max;
             while(temp->distance >= curr->distance-autonomy&&temp->distance>=arrivalPoint){
 
-                    temp->best=curr;
-                    topPilaNext++;
-                    pilaNext[topPilaNext]=temp;
-                    lastTouched=temp->distance;
+                temp->best=curr;
+                topPilaNext++;
+                pilaNext[topPilaNext]=temp;
+                lastTouched=temp->distance;
 
                 temp=temp->prev;
             }
@@ -524,8 +333,8 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
                 printf("%d ",list[capacity-j-1]);
             }
             printf("%d\n",list[0]);
-            free(pilaNext);
-            free(pilaCurr);
+            // free(pilaNext);
+            //free(pilaCurr);
 
             Station *temp1=startingStation;
             //RESET BEST PATH
@@ -542,7 +351,6 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
 
 }
 
-
 int main(){
     StationGraph *graph= (StationGraph *)malloc(sizeof (StationGraph));
     graph=newGraph(graph);
@@ -552,7 +360,9 @@ int main(){
     char command[12];
     char firstLetter,ambiguitySolver;
     do {
-        if(fgets(command, size, stdin)==NULL)return 0;
+        if(fgets(command, size, stdin)==NULL){
+            return 0;
+        }
         firstLetter = command[0];
         switch (firstLetter) {
             case 'a':{
@@ -562,33 +372,42 @@ int main(){
                 if(ambiguitySolver=='s'){
                     shiftInput();
                     int distance, n_cars;
-                  if(scanf("%d",&distance)<0){};
-                  getc(stdin);
-                  if(scanf("%d",&n_cars)<0){};
-                  getc(stdin);
-                  int cars[n_cars];
-                  int i;
-                  for(i=0;i<n_cars;i++){
-                      if(scanf("%d",&cars[i])<0){};
-                      getc(stdin);
-                  }
-                    carTreeNode *root;
-                    root = (struct carNode *) malloc(sizeof(struct carNode));
-                    root->p=NULL;
-                    root->right=NULL;
-                    root->left=NULL;
-                    root->key=0;
-                    root->max=0;
-                    root->n_cars=n_cars;
-                    root=createCarTree(cars,n_cars,root);
+                    if(scanf("%d",&distance)<0){}
+                    getc(stdin);
+                    if(scanf("%d",&n_cars)<0){}
+                    getc(stdin);
+                    carTreeList *cars;
+                    cars = (struct CarList *) malloc(sizeof(struct CarList));
+                    cars->size=n_cars;
+                    cars->max=-1;
+                    Car *starter=(struct Car*) malloc(sizeof (struct Car));
+                    starter->key=-1;
+                    starter->next=NULL;
+                    cars->startingCar=starter;
+                    cars->list=starter;
+                    int i;
+                    for(i=0;i<n_cars;i++){
+                        int key_;
+                        if(scanf("%d",&key_)){}
+                        Car *new=(struct Car*) malloc(sizeof (struct Car));
+                        cars->list->next=new;
+                        new->key=key_;
+                        new->next=NULL;
+                        cars->list=cars->list->next;
+                        if(key_>cars->max)cars->max=cars->list->key;
+                        getc(stdin);
+                    }
+                    cars->last=cars->list;
+                    if(cars->size==0)cars->max=0;
+
                     int size_=graph->size;
-                    graph= createStation(graph,distance,root);
+                    graph= createStation(graph, distance, cars);
                     if(graph->size==size_+1) printf("aggiunta\n");
                     else printf("non aggiunta\n");
                     break;
 
                 }
-                //aggiungi-auto
+                    //aggiungi-auto
                 else if(ambiguitySolver=='a'){
                     shiftInput();
                     int distance,autonomy;
@@ -601,8 +420,7 @@ int main(){
                         printf("non aggiunta\n");
                         break;
                     }
-                    station->root= carInsert(station->root,autonomy,1);
-
+                    station->list= carInsert(station->list, autonomy, 1);
                     break;
                 }
                 break;}
@@ -635,9 +453,9 @@ int main(){
                     printf("non rottamata\n");
                     break;
                 }
-                if(searchCar(station->root,autonomy)==NULL)printf("non rottamata\n");
+                if(!searchCar(station->list, autonomy))printf("non rottamata\n");
                 else{
-                    station->root=removeCar(station->root,autonomy);
+                    station->list=removeCar(station->list, autonomy);
                 }
                 break;
             }
@@ -662,6 +480,57 @@ int main(){
                 break;
         }
     }while(command!=NULL);
-
 }
 
+carTreeList *removeCar(carTreeList *cars, int autonomy) {
+    cars->list=cars->startingCar;
+    Car *prev=NULL;
+    while(cars->list->key != autonomy && cars->list->next != NULL){
+        prev=cars->list;
+        cars->list=cars->list->next;
+    }
+    prev->next=cars->list->next;
+    if(cars->list==cars->last)cars->last=prev;
+    cars->size--;
+    // Car *to_del=cars->list;
+    cars->list=cars->startingCar;
+    // free(to_del);
+    if(cars->max==autonomy){
+        cars->max=-1;
+        while(cars->list->next!=NULL) {
+            if (cars->max < cars->list->key)cars->max = cars->list->key;
+            cars->list=cars->list->next;
+        }
+    }
+    cars->list=cars->startingCar;
+    printf("rottamata\n");
+    return cars;
+}
+
+bool searchCar(carTreeList *cars, int autonomy) {
+    cars->list=cars->startingCar;
+    while(cars->list->next != NULL){
+        if(cars->list->key==autonomy){
+            return true;
+        }
+        cars->list=cars->list->next;
+    }
+    if(cars->list->key==autonomy){
+        return true;
+    }
+    return false;
+}
+
+carTreeList *carInsert(carTreeList *cars, int autonomy, int i) {
+
+    Car *newCar=(struct Car*) malloc(sizeof (struct Car));
+    newCar->key=autonomy;
+    newCar->next=NULL;
+    cars->size++;
+    cars->last->next=newCar;
+    cars->last=newCar;
+    cars->list=cars->last;
+    if(autonomy>cars->max)cars->max=autonomy;
+    if(i==1)printf("aggiunta\n");
+    return cars;
+}
