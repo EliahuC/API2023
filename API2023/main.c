@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-
+#define HASH_SIZE 20000
 typedef struct Car{
     int key;
     struct Car *next;
 }Car;
+
 typedef struct CarList {
     Car *list;
     Car *startingCar;
@@ -30,6 +31,15 @@ typedef struct Graph{
     Station *startingPoint;
 }StationGraph;
 
+typedef struct MapNode{
+    int key;
+    Station *station;
+    struct MapNode *next;
+}MapNode;
+
+typedef struct HashMap{
+    struct MapNode *buckets[HASH_SIZE];
+}HashMap;
 /**
  * Checks if the station is already in the temp (search function)
  * @param temp of the stations
@@ -101,7 +111,7 @@ StationGraph* addStation(Station *x, StationGraph *graph){
  * @param root of the tree
  * @return graph or NULL if the station is already present
  */
-StationGraph * createStation(StationGraph *graph, int distance, carTreeList* root){
+StationGraph * createStation(HashMap *map,StationGraph *graph, int distance, carTreeList* root){
 
 
     if(notInTheGraph(graph,distance)){
@@ -117,9 +127,21 @@ StationGraph * createStation(StationGraph *graph, int distance, carTreeList* roo
             graph->head->next->prev=graph->head;
             graph->size++;
             graph->head=graph->startingPoint;
+            MapNode *node=map->buckets[x->distance % HASH_SIZE];
+            MapNode *newNode=(struct MapNode*) malloc(sizeof (MapNode));
+            newNode->key=distance;
+            newNode->next=node;
+            newNode->station=x;
+            map->buckets[x->distance % HASH_SIZE]=newNode;
             return graph;
         }
         graph=addStation(x,graph);
+        MapNode *node=map->buckets[x->distance % HASH_SIZE];
+        MapNode *newNode=(struct MapNode*) malloc(sizeof (MapNode));
+        newNode->key=distance;
+        newNode->next=node;
+        newNode->station=x;
+        map->buckets[x->distance % HASH_SIZE]=newNode;
         graph->size++;
         return graph;
     }
@@ -145,8 +167,17 @@ StationGraph * newGraph(StationGraph *graph) {
 
 }
 
-Station * searchStation(StationGraph *graph,int start){
-    StationGraph *temp=graph;
+Station * searchStation(HashMap *map,int start){
+    MapNode *node=map->buckets[start%HASH_SIZE];
+    while(node!=NULL){
+        if(node->key==start)return node->station;
+        node=node->next;
+    }
+    if(node==NULL)return NULL;
+    if(node->key==start)return node->station;
+    return NULL;
+
+  /*  StationGraph *temp=graph;
     while(temp->head->next!=NULL&&temp->head->distance<start){
         temp->head=temp->head->next;
     }
@@ -156,7 +187,7 @@ Station * searchStation(StationGraph *graph,int start){
         return station;
     }
     graph->head=graph->startingPoint;
-    return NULL;
+    return NULL;*/
 }
 /**
  * Function to remove a station
@@ -164,7 +195,7 @@ Station * searchStation(StationGraph *graph,int start){
  * @param distance of the station to remove
  * @return the updated graph
  */
-StationGraph* removeStation(StationGraph *graph,int distance){
+StationGraph* removeStation(HashMap *map,StationGraph *graph,int distance){
 
     StationGraph *temp_graph=graph;
     while (temp_graph->head->distance<distance){
@@ -177,9 +208,22 @@ StationGraph* removeStation(StationGraph *graph,int distance){
 
 
 
-    // Station *s=graph->head;
-    //free(s->list);
-    //  free(s);
+
+     Station *s=graph->head;
+     MapNode *node=map->buckets[s->distance%HASH_SIZE];
+     MapNode *prev=node;
+     while(node!=NULL){
+       if(node->key==s->distance) break;
+       prev=node;
+       node=node->next;
+     }
+     if(prev==node){
+         map->buckets[prev->key % HASH_SIZE]=prev->next;
+     }
+     prev->next=node->next;
+    free(s->list);
+    free(s);
+    free(node);
     printf("demolita\n");
     graph->head=graph->startingPoint;
     graph->size--;
@@ -219,9 +263,9 @@ Station **addToQueue(Station **queue, int rear, Station *temp) {
  * @param arrivalPoint final station
  *
  */
-void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
+void bestPath(HashMap *map,StationGraph *graph,int startingPoint,int arrivalPoint){
 
-    Station *startingStation=searchStation(graph,startingPoint);
+    Station *startingStation=searchStation(map,startingPoint);
 
 
 
@@ -250,7 +294,7 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
                 temp=temp->next;
             }
         }
-        Station *finalStation= searchStation(graph,arrivalPoint);
+        Station *finalStation= searchStation(map,arrivalPoint);
         if(finalStation->best==NULL){
             printf("nessun percorso\n");
         }
@@ -266,9 +310,9 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
                 printf("%d ",list[capacity-j-1]);
             }
             printf("%d\n",list[0]);
-            // free(list);
+
         }
-        // free(queue);
+         free(queue);
         //RESET BEST PATH
         while(temp1!=NULL&&temp1->distance<=arrivalPoint){
             temp1->best=NULL;
@@ -316,7 +360,7 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
                 temp=temp->prev;
             }
         }
-        Station *finalStation= searchStation(graph,arrivalPoint);
+        Station *finalStation= searchStation(map,arrivalPoint);
         if(finalStation->best==NULL){
             printf("nessun percorso\n");
         }
@@ -333,8 +377,8 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
                 printf("%d ",list[capacity-j-1]);
             }
             printf("%d\n",list[0]);
-            // free(pilaNext);
-            //free(pilaCurr);
+             free(pilaNext);
+            free(pilaCurr);
 
             Station *temp1=startingStation;
             //RESET BEST PATH
@@ -352,6 +396,12 @@ void bestPath(StationGraph *graph,int startingPoint,int arrivalPoint){
 }
 
 int main(){
+    HashMap *map=(struct HashMap*) malloc(sizeof (struct HashMap));
+
+    for(int i=0; i<HASH_SIZE;i++){
+        map->buckets[i]=NULL;
+    }
+
     StationGraph *graph= (StationGraph *)malloc(sizeof (StationGraph));
     graph=newGraph(graph);
     int size=12;
@@ -401,7 +451,7 @@ int main(){
                     if(cars->size==0)cars->max=0;
 
                     int size_=graph->size;
-                    graph= createStation(graph, distance, cars);
+                    graph= createStation(map,graph, distance, cars);
                     if(graph->size==size_+1) printf("aggiunta\n");
                     else printf("non aggiunta\n");
                     break;
@@ -415,7 +465,7 @@ int main(){
                     getc(stdin);
                     if(scanf("%d",&autonomy)<0){}
                     getc(stdin);
-                    Station *station= searchStation(graph,distance);
+                    Station *station= searchStation(map,distance);
                     if(station==NULL){
                         printf("non aggiunta\n");
                         break;
@@ -430,12 +480,12 @@ int main(){
                 int distance;
                 if(scanf("%d",&distance)<0){}
                 getc(stdin);
-                Station *station= searchStation(graph,distance);
+                Station *station= searchStation(map,distance);
                 if(station==NULL){
                     printf("non demolita\n");
                     break;
                 }
-                graph= removeStation(graph,distance);
+                graph= removeStation(map,graph,distance);
                 break;
 
             }
@@ -448,7 +498,7 @@ int main(){
                 getc(stdin);
                 if(scanf("%d",&autonomy)<0){}
                 getc(stdin);
-                Station *station= searchStation(graph,distance);
+                Station *station= searchStation(map,distance);
                 if(station==NULL){
                     printf("non rottamata\n");
                     break;
@@ -468,12 +518,12 @@ int main(){
                 getc(stdin);
                 if(scanf("%d",&end)<0){}
                 getc(stdin);
-                if(searchStation(graph,start)==NULL|| searchStation(graph,end)==NULL){
+                if(searchStation(map,start)==NULL|| searchStation(map,end)==NULL){
                     printf("nessun percorso\n");
                     break;
 
                 }
-                bestPath(graph,start,end);
+                bestPath(map,graph,start,end);
                 break;
             }
             default:
@@ -492,9 +542,9 @@ carTreeList *removeCar(carTreeList *cars, int autonomy) {
     prev->next=cars->list->next;
     if(cars->list==cars->last)cars->last=prev;
     cars->size--;
-    // Car *to_del=cars->list;
+     Car *to_del=cars->list;
     cars->list=cars->startingCar;
-    // free(to_del);
+     free(to_del);
     if(cars->max==autonomy){
         cars->max=-1;
         while(cars->list->next!=NULL) {
