@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #define HASH_SIZE 20000
+#define SKIP 1000
 typedef struct Car{
     int key;
     struct Car *next;
@@ -29,6 +30,7 @@ typedef struct Graph{
     Station* head;
     int size;
     Station *startingPoint;
+    Station *skip_list[SKIP];
 }StationGraph;
 
 typedef struct MapNode{
@@ -47,7 +49,7 @@ typedef struct HashMap{
  * @return true if there isn't any station with key==distance
  */
 
-carTreeList *carInsert(carTreeList *pNode, int autonomy, int i);
+carTreeList *carInsert(carTreeList *cars, int autonomy, int i);
 
 bool searchCar(carTreeList *cars, int autonomy);
 
@@ -59,6 +61,14 @@ carTreeList *removeCar(carTreeList *cars, int autonomy);
 
 StationGraph* addStation(Station *x, StationGraph *graph){
     graph->head=graph->head->next;
+    int size=(graph->size/SKIP)%10 +1;
+    for(int i=1;i<size+1;i++){
+        if(x<graph->skip_list[i]){
+            graph->head=graph->skip_list[i-1];
+            break;
+        }
+    }
+
     while(graph->head->distance<x->distance && graph->head->next!=NULL){
         graph->head=graph->head->next;
 
@@ -149,6 +159,10 @@ StationGraph * createStation(HashMap *map,StationGraph *graph, int distance, car
         newNode->station=x;
         map->buckets[x->distance % HASH_SIZE]=newNode;
         graph->size++;
+        if(graph->size%SKIP==0){
+            int i=graph->size/SKIP;
+            graph->skip_list[i]=x;
+        }
         return graph;
     }
     return graph;
