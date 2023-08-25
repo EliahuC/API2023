@@ -53,22 +53,6 @@ bool searchCar(carTreeList *cars, int autonomy);
 
 carTreeList *removeCar(carTreeList *cars, int autonomy);
 
-bool notInTheGraph(StationGraph *graph, int distance) {
-    while((graph->head!=NULL)&&(graph->head->next!=NULL)&&(graph->head->distance<distance) ) {
-        graph->head=graph->head->next;
-        if(graph->head==NULL){
-            graph->head=graph->startingPoint;
-            return true;
-        }
-    }
-
-    if(graph->head->distance==distance){
-        graph->head=graph->startingPoint;
-        return false;
-    }
-    graph->head=graph->startingPoint;
-    return true;
-}
 
 
 
@@ -104,6 +88,28 @@ StationGraph* addStation(Station *x, StationGraph *graph){
     return graph;
 }
 
+Station * searchStation(HashMap *map,int start){
+    MapNode *node=map->buckets[start%HASH_SIZE];
+    while(node!=NULL){
+        if(node->key==start)return node->station;
+        node=node->next;
+    }
+    if(node==NULL)return NULL;
+    if(node->key==start)return node->station;
+    return NULL;
+
+    /*  StationGraph *temp=graph;
+      while(temp->head->next!=NULL&&temp->head->distance<start){
+          temp->head=temp->head->next;
+      }
+      if(temp->head->distance==start){
+          Station *station=graph->head;
+          graph->head=graph->startingPoint;
+          return station;
+      }
+      graph->head=graph->startingPoint;
+      return NULL;*/
+}
 /**
  * Insert in the graph
  * @param graph
@@ -114,7 +120,7 @@ StationGraph* addStation(Station *x, StationGraph *graph){
 StationGraph * createStation(HashMap *map,StationGraph *graph, int distance, carTreeList* root){
 
 
-    if(notInTheGraph(graph,distance)){
+    if(searchStation(map/*graph*/,distance)==NULL){
         Station *x = (Station *) malloc(sizeof(Station));
         graph->head=graph->startingPoint;
         x->list=root;
@@ -167,28 +173,6 @@ StationGraph * newGraph(StationGraph *graph) {
 
 }
 
-Station * searchStation(HashMap *map,int start){
-    MapNode *node=map->buckets[start%HASH_SIZE];
-    while(node!=NULL){
-        if(node->key==start)return node->station;
-        node=node->next;
-    }
-    if(node==NULL)return NULL;
-    if(node->key==start)return node->station;
-    return NULL;
-
-  /*  StationGraph *temp=graph;
-    while(temp->head->next!=NULL&&temp->head->distance<start){
-        temp->head=temp->head->next;
-    }
-    if(temp->head->distance==start){
-        Station *station=graph->head;
-        graph->head=graph->startingPoint;
-        return station;
-    }
-    graph->head=graph->startingPoint;
-    return NULL;*/
-}
 /**
  * Function to remove a station
  * @param graph of the stations
@@ -221,9 +205,9 @@ StationGraph* removeStation(HashMap *map,StationGraph *graph,int distance){
          map->buckets[prev->key % HASH_SIZE]=prev->next;
      }
      prev->next=node->next;
-    free(s->list);
-    free(s);
-    free(node);
+    //free(s->list);
+   // free(s);
+    //free(node);
     printf("demolita\n");
     graph->head=graph->startingPoint;
     graph->size--;
@@ -312,7 +296,7 @@ void bestPath(HashMap *map,StationGraph *graph,int startingPoint,int arrivalPoin
             printf("%d\n",list[0]);
 
         }
-         free(queue);
+        // free(queue);
         //RESET BEST PATH
         while(temp1!=NULL&&temp1->distance<=arrivalPoint){
             temp1->best=NULL;
@@ -377,8 +361,8 @@ void bestPath(HashMap *map,StationGraph *graph,int startingPoint,int arrivalPoin
                 printf("%d ",list[capacity-j-1]);
             }
             printf("%d\n",list[0]);
-             free(pilaNext);
-            free(pilaCurr);
+             //free(pilaNext);
+           // free(pilaCurr);
 
             Station *temp1=startingStation;
             //RESET BEST PATH
@@ -542,9 +526,9 @@ carTreeList *removeCar(carTreeList *cars, int autonomy) {
     prev->next=cars->list->next;
     if(cars->list==cars->last)cars->last=prev;
     cars->size--;
-     Car *to_del=cars->list;
+   //  Car *to_del=cars->list;
     cars->list=cars->startingCar;
-     free(to_del);
+    // free(to_del);
     if(cars->max==autonomy){
         cars->max=-1;
         while(cars->list->next!=NULL) {
