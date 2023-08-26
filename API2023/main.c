@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #define HASH_SIZE 20000
-#define SKIP 1000
+
 typedef struct Car{
     int key;
     struct Car *next;
@@ -30,7 +30,7 @@ typedef struct Graph{
     Station* head;
     int size;
     Station *startingPoint;
-    Station *skip_list[SKIP];
+
 }StationGraph;
 
 typedef struct MapNode{
@@ -58,21 +58,14 @@ carTreeList *removeCar(carTreeList *cars, int autonomy);
 
 
 
-
 StationGraph* addStation(Station *x, StationGraph *graph){
-    graph->head=graph->head->next;
-    int size=(graph->size/SKIP)%10 +1;
-    for(int i=1;i<size+1;i++){
-        if(x<graph->skip_list[i]){
-            graph->head=graph->skip_list[i-1];
-            break;
-        }
-    }
+    if(graph->head->distance>x->distance)graph->head=graph->startingPoint;
 
     while(graph->head->distance<x->distance && graph->head->next!=NULL){
         graph->head=graph->head->next;
 
     }
+
 //case 1 : exit from while because next=null
     if(graph->head->next==NULL){
         if(graph->head->distance>x->distance){
@@ -108,17 +101,7 @@ Station * searchStation(HashMap *map,int start){
     if(node->key==start)return node->station;
     return NULL;
 
-    /*  StationGraph *temp=graph;
-      while(temp->head->next!=NULL&&temp->head->distance<start){
-          temp->head=temp->head->next;
-      }
-      if(temp->head->distance==start){
-          Station *station=graph->head;
-          graph->head=graph->startingPoint;
-          return station;
-      }
-      graph->head=graph->startingPoint;
-      return NULL;*/
+
 }
 /**
  * Insert in the graph
@@ -132,7 +115,7 @@ StationGraph * createStation(HashMap *map,StationGraph *graph, int distance, car
 
     if(searchStation(map/*graph*/,distance)==NULL){
         Station *x = (Station *) malloc(sizeof(Station));
-        graph->head=graph->startingPoint;
+
         x->list=root;
         x->distance=distance;
         x->prev=NULL;
@@ -142,7 +125,7 @@ StationGraph * createStation(HashMap *map,StationGraph *graph, int distance, car
             graph->head->next=x;
             graph->head->next->prev=graph->head;
             graph->size++;
-            graph->head=graph->startingPoint;
+            //graph->head=graph->startingPoint;
             MapNode *node=map->buckets[x->distance % HASH_SIZE];
             MapNode *newNode=(struct MapNode*) malloc(sizeof (MapNode));
             newNode->key=distance;
@@ -159,14 +142,14 @@ StationGraph * createStation(HashMap *map,StationGraph *graph, int distance, car
         newNode->station=x;
         map->buckets[x->distance % HASH_SIZE]=newNode;
         graph->size++;
-        if(graph->size%SKIP==0){
-            int i=graph->size/SKIP;
-            graph->skip_list[i]=x;
-        }
+
+
         return graph;
     }
     return graph;
 }
+
+
 
 /**
  * Initialize a new graph
@@ -183,6 +166,7 @@ StationGraph * newGraph(StationGraph *graph) {
     x->best=NULL;
     graph->head=x;
     graph->startingPoint=x;
+
     return graph;
 
 }
@@ -194,7 +178,7 @@ StationGraph * newGraph(StationGraph *graph) {
  * @return the updated graph
  */
 StationGraph* removeStation(HashMap *map,StationGraph *graph,int distance){
-
+    if(graph->head->distance>distance)graph->head=graph->startingPoint;
     StationGraph *temp_graph=graph;
     while (temp_graph->head->distance<distance){
         temp_graph->head=temp_graph->head->next;
@@ -203,7 +187,6 @@ StationGraph* removeStation(HashMap *map,StationGraph *graph,int distance){
     if(temp_graph->head->next!=NULL){
         temp_graph->head->next->prev=temp_graph->head->prev;
     }
-
 
 
 
@@ -223,7 +206,7 @@ StationGraph* removeStation(HashMap *map,StationGraph *graph,int distance){
    // free(s);
     //free(node);
     printf("demolita\n");
-    graph->head=graph->startingPoint;
+   // graph->head=graph->startingPoint;
     graph->size--;
     return graph;
 
