@@ -4,9 +4,11 @@ Progetto realizzato per il corso di Algoritmi e Strutture Dati del Politecnico d
 Il progetto vede lo sviluppo della specifica mediante le seguenti strutture dati: 
 |Strutture Utilizzate   	|
 |---	|
-|Grafi 	|
+|Graph 	|
 |HashMap  	|
-|Linked List  	|  
+|Linked List  	| 
+|Stack |
+|Queue|
 
 Il progetto riesce a passare le seguenti soglie:  
 |Soglie Oltrepassate  	|	   |Soglia Tempo     |Soglia Memoria|  
