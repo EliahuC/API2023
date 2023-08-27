@@ -9,17 +9,17 @@ Il progetto vede lo sviluppo della specifica mediante le seguenti strutture dati
 |Linked List  	|  
 
 Il progetto riesce a passare le seguenti soglie:  
-|Soglie Oltrepassate  	|	   |
-|---	|------ |
-|Open   	|✅   	| 
-|18   	|✅   	| 
-|21  	|✅   	| 
-|24 	|✅   	| 
-|27 	|✅  	| 
-|30  	|❌  	|
-|30L  	|❌  	|
+|Soglie Oltrepassate  	|	   |Soglia Tempo     |Soglia Memoria|  
+|---	|------ |---------|------  |
+|Open   	|✅   	|40,000 secondi|2,00 GiB|   
+|18   	|✅   	|19,000 secondi|128 MiB|
+|21  	|✅   	|15,000 secondi |118 MiB|  
+|24 	|✅   	|10,000 secondi|108 MiB|
+|27 	|✅  	|6,000 secondi |	98,0 MiB|
+|30  	|❌  	|4,000 secondi|	88,0 MiB|
+|30L  	|❌  	|1,000 secondo|	78,0 MiB|
 
-
+Il programma attualmente riesce a completare la sottoposizione in circa 5,000 secondi e con 54,8 MiB di memoria utilizzata
 
 
 ## CREDITS  
