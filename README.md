@@ -23,6 +23,8 @@ Il progetto riesce a passare le seguenti soglie:
 
 Il programma attualmente riesce a completare la sottoposizione in circa 5,000 secondi e con 54,8 MiB di memoria utilizzata
 
+Comandi usati in compilazione: -DEVAL -Wall -Werror -std=gnu11 -O2 -pipe -static -s -o -lm
+
 
 ## CREDITS  
 [Eliahu Itamar Cohen](https://github.com/EliahuC)
