@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#define HASH_SIZE 20000
+#define HASH_SIZE 35000
 
 typedef struct Car{
     int key;
@@ -30,6 +30,7 @@ typedef struct Graph{
     Station* head;
     int size;
     Station *startingPoint;
+    int skip_list[50];
 
 }StationGraph;
 
@@ -56,11 +57,49 @@ bool searchCar(carTreeList *cars, int autonomy);
 carTreeList *removeCar(carTreeList *cars, int autonomy);
 
 
+StationGraph *reorderList(StationGraph *graph);
+
+int getInt(){
+        int numero=0;
+        char c;
+        while (1) {
+            c = getc(stdin);
+            if (c >= '0' && c <= '9') {
+                numero = numero * 10 + (c - '0');
+            } else {
+                break;
+            }
+        }
 
 
-StationGraph* addStation(Station *x, StationGraph *graph){
-    if(graph->head->distance>x->distance)graph->head=graph->startingPoint;
+        return numero;
+    }
 
+
+Station * searchStation(HashMap *map,int start){
+    MapNode *node=map->buckets[start%HASH_SIZE];
+    while(node!=NULL){
+        if(node->key==start)return node->station;
+        node=node->next;
+    }
+    if(node==NULL)return NULL;
+    if(node->key==start)return node->station;
+    return NULL;
+
+
+}
+
+StationGraph* addStation(HashMap *map,Station *x, StationGraph *graph){
+    graph->head=graph->startingPoint;
+    int skips=graph->size/1000;
+    int i=1;
+    while(i<=skips){
+        if(x->distance>graph->skip_list[i]) {
+            graph->head = searchStation(map, graph->skip_list[i]);
+
+        }
+        i++;
+    }
     while(graph->head->distance<x->distance && graph->head->next!=NULL){
         graph->head=graph->head->next;
 
@@ -91,18 +130,6 @@ StationGraph* addStation(Station *x, StationGraph *graph){
     return graph;
 }
 
-Station * searchStation(HashMap *map,int start){
-    MapNode *node=map->buckets[start%HASH_SIZE];
-    while(node!=NULL){
-        if(node->key==start)return node->station;
-        node=node->next;
-    }
-    if(node==NULL)return NULL;
-    if(node->key==start)return node->station;
-    return NULL;
-
-
-}
 /**
  * Insert in the graph
  * @param graph
@@ -134,7 +161,7 @@ StationGraph * createStation(HashMap *map,StationGraph *graph, int distance, car
             map->buckets[x->distance % HASH_SIZE]=newNode;
             return graph;
         }
-        graph=addStation(x,graph);
+        graph=addStation(map,x,graph);
         MapNode *node=map->buckets[x->distance % HASH_SIZE];
         MapNode *newNode=(struct MapNode*) malloc(sizeof (MapNode));
         newNode->key=distance;
@@ -142,6 +169,10 @@ StationGraph * createStation(HashMap *map,StationGraph *graph, int distance, car
         newNode->station=x;
         map->buckets[x->distance % HASH_SIZE]=newNode;
         graph->size++;
+        if(graph->size%1000==0){
+            graph->skip_list[graph->size/1000]=x->distance;
+            graph=reorderList(graph);
+        }
 
 
         return graph;
@@ -149,6 +180,22 @@ StationGraph * createStation(HashMap *map,StationGraph *graph, int distance, car
     return graph;
 }
 
+int compare(const void *a, const void *b) {
+    return (*(int *)a - *(int *)b);
+}
+
+StationGraph *reorderList(StationGraph *graph) {
+    int elements=graph->size/1000;
+    int temp[elements+1];
+    for(int i=0;i<=elements;i++){
+      temp[i]=graph->skip_list[i] ;
+    }
+    qsort(temp,elements+1,sizeof(int),compare);
+    for(int i=0;i<=elements;i++){
+        graph->skip_list[i]=temp[i] ;
+    }
+    return graph;
+}
 
 
 /**
@@ -166,6 +213,10 @@ StationGraph * newGraph(StationGraph *graph) {
     x->best=NULL;
     graph->head=x;
     graph->startingPoint=x;
+    for(int i=0;i<50;i++){
+        graph->skip_list[i]=-1;
+    }
+    graph->skip_list[0]=0;
 
     return graph;
 
@@ -178,16 +229,24 @@ StationGraph * newGraph(StationGraph *graph) {
  * @return the updated graph
  */
 StationGraph* removeStation(HashMap *map,StationGraph *graph,int distance){
-    if(graph->head->distance>distance)graph->head=graph->startingPoint;
+   // if(graph->head->distance>distance)graph->head=graph->startingPoint;
     StationGraph *temp_graph=graph;
-    while (temp_graph->head->distance<distance){
+   /* while (temp_graph->head->distance<distance){
         temp_graph->head=temp_graph->head->next;
-    }
+    }*/
+    temp_graph->head= searchStation(map,distance);
     temp_graph->head->prev->next=temp_graph->head->next;
     if(temp_graph->head->next!=NULL){
         temp_graph->head->next->prev=temp_graph->head->prev;
     }
-
+    int skips=graph->size/1000;
+    for(int i =0;i<=skips;i++){
+        if(graph->skip_list[i]==distance){
+            graph->skip_list[i]= searchStation(map,distance)->prev->distance;
+            graph= reorderList(graph);
+            break;
+        }
+    }
 
 
      Station *s=graph->head;
@@ -403,10 +462,8 @@ int main(){
                 if(ambiguitySolver=='s'){
                     shiftInput();
                     int distance, n_cars;
-                    if(scanf("%d",&distance)<0){}
-                    getc(stdin);
-                    if(scanf("%d",&n_cars)<0){}
-                    getc(stdin);
+                    distance=getInt();
+                    n_cars=getInt();
                     carTreeList *cars;
                     cars = (struct CarList *) malloc(sizeof(struct CarList));
                     cars->size=n_cars;
@@ -419,14 +476,14 @@ int main(){
                     int i;
                     for(i=0;i<n_cars;i++){
                         int key_;
-                        if(scanf("%d",&key_)){}
+                        key_=getInt();
                         Car *new=(struct Car*) malloc(sizeof (struct Car));
                         cars->list->next=new;
                         new->key=key_;
                         new->next=NULL;
                         cars->list=cars->list->next;
                         if(key_>cars->max)cars->max=cars->list->key;
-                        getc(stdin);
+
                     }
                     cars->last=cars->list;
                     if(cars->size==0)cars->max=0;
@@ -442,10 +499,10 @@ int main(){
                 else if(ambiguitySolver=='a'){
                     shiftInput();
                     int distance,autonomy;
-                    if(scanf("%d",&distance)<0){}
-                    getc(stdin);
-                    if(scanf("%d",&autonomy)<0){}
-                    getc(stdin);
+                    distance=getInt();
+
+                    autonomy=getInt();
+
                     Station *station= searchStation(map,distance);
                     if(station==NULL){
                         printf("non aggiunta\n");
@@ -459,8 +516,7 @@ int main(){
 
                 shiftInput();
                 int distance;
-                if(scanf("%d",&distance)<0){}
-                getc(stdin);
+                distance=getInt();
                 Station *station= searchStation(map,distance);
                 if(station==NULL){
                     printf("non demolita\n");
@@ -475,10 +531,8 @@ int main(){
 
                 shiftInput();
                 int distance,autonomy;
-                if(scanf("%d",&distance)<0){}
-                getc(stdin);
-                if(scanf("%d",&autonomy)<0){}
-                getc(stdin);
+                distance=getInt();
+                autonomy=getInt();
                 Station *station= searchStation(map,distance);
                 if(station==NULL){
                     printf("non rottamata\n");
@@ -495,10 +549,8 @@ int main(){
 
                 shiftInput();
                 int start,end;
-                if(scanf("%d",&start)<0){}
-                getc(stdin);
-                if(scanf("%d",&end)<0){}
-                getc(stdin);
+                start=getInt();
+                end=getInt();
                 if(searchStation(map,start)==NULL|| searchStation(map,end)==NULL){
                     printf("nessun percorso\n");
                     break;
@@ -565,3 +617,4 @@ carTreeList *carInsert(carTreeList *cars, int autonomy, int i) {
     if(i==1)printf("aggiunta\n");
     return cars;
 }
+
