@@ -3,77 +3,98 @@
     #include <stdbool.h>
     #define HASH_SIZE 35000
 
+    /**
+     *node of the Car List
+     */
     typedef struct Car{
         int key;
         struct Car *next;
     }Car;
 
+    /**
+     * Car List struct
+     */
     typedef struct CarList {
         Car *list;
         Car *startingCar;
         Car *last;
         int size;
         int max;
-    } carTreeList ;
+    } CarList ;
 
 
+    /**
+     * Station struct
+     */
     typedef struct Station{
         int distance;
-        carTreeList* list;
+        CarList* list;
         struct Station* next;
         struct Station* prev;
         struct Station* best;
-
     }Station;
 
+    /**
+     * Graph struct
+     */
     typedef struct Graph{
         Station* head;
         int size;
         Station *startingPoint;
         int skip_list[50];
-
     }StationGraph;
 
+    /**
+     * HashMap node struct
+     */
     typedef struct MapNode{
         int key;
         Station *station;
         struct MapNode *next;
     }MapNode;
 
+    /**
+     * HashMap struct
+     */
     typedef struct HashMap{
         struct MapNode *buckets[HASH_SIZE];
     }HashMap;
-    /**
-     * Checks if the station is already in the temp (search function)
-     * @param temp of the stations
-     * @param distance of the station
-     * @return true if there isn't any station with key==distance
-     */
 
-    carTreeList *carInsert(carTreeList *cars, int autonomy, int i);
 
-    bool searchCar(carTreeList *cars, int autonomy);
+    CarList *carInsert(CarList *cars, int autonomy, int i);
 
-    carTreeList *removeCar(carTreeList *cars, int autonomy);
+    bool searchCar(CarList *cars, int autonomy);
+
+    CarList *removeCar(CarList *cars, int autonomy);
 
 
     StationGraph *reorderList(StationGraph *graph);
 
+    /**
+     * Function to get the int input faster than scanf
+     * @return int number
+     */
     int getInt(){
-            int numero=0;
+            int number=0;
             char c;
             while (1) {
                 c = getc(stdin);
                 if (c >= '0' && c <= '9') {
-                    numero = numero * 10 + (c - '0');
+                    number = number * 10 + (c - '0');
                 } else {
                     break;
                 }
             }
-            return numero;
+            return number;
         }
 
-
+    /**
+     * Function that returns the station from the hashmap
+     * COMPLEXITY: O(1)
+     * @param map hashmap
+     * @param start distance of the station
+     * @return the station
+     */
     Station * searchStation(HashMap *map,int start){
         MapNode *node=map->buckets[start%HASH_SIZE];
         while(node!=NULL){
@@ -85,6 +106,14 @@
         return NULL;
     }
 
+    /**
+     * Adds the station to the graph using a skip list to get faster
+     * COMPLEXITY: medium O(1) worst O(n)
+     * @param map hashmap
+     * @param x station
+     * @param graph graph of the station
+     * @return the new graph
+     */
     StationGraph* addStation(HashMap *map,Station *x, StationGraph *graph){
         graph->head=graph->startingPoint;
         int skips=graph->size/1000;
@@ -126,18 +155,16 @@
     }
 
     /**
-     * Insert in the graph
-     * @param graph
+     * Insert in the graph and in the map
+     * COMPLEXITY: medium O(1) worst O(n)
+     * @param graph graph
      * @param distance from the beginning of the road
      * @param root of the tree
-     * @return graph or NULL if the station is already present
+     * @return new graph
      */
-    StationGraph * createStation(HashMap *map,StationGraph *graph, int distance, carTreeList* root){
-
-
+    StationGraph * createStation(HashMap *map, StationGraph *graph, int distance, CarList* root){
         if(searchStation(map/*graph*/,distance)==NULL){
             Station *x = (Station *) malloc(sizeof(Station));
-
             x->list=root;
             x->distance=distance;
             x->prev=NULL;
@@ -147,7 +174,6 @@
                 graph->head->next=x;
                 graph->head->next->prev=graph->head;
                 graph->size++;
-                //graph->head=graph->startingPoint;
                 MapNode *node=map->buckets[x->distance % HASH_SIZE];
                 MapNode *newNode=(struct MapNode*) malloc(sizeof (MapNode));
                 newNode->key=distance;
@@ -168,8 +194,6 @@
                 graph->skip_list[graph->size/1000]=x->distance;
                 graph=reorderList(graph);
             }
-
-
             return graph;
         }
         return graph;
@@ -179,6 +203,12 @@
         return (*(int *)a - *(int *)b);
     }
 
+    /**
+     * method to reorder the skip list
+     * COMPLEXITY: O(1)
+     * @param graph of the stations
+     * @return graph with the skip list ordered
+     */
     StationGraph *reorderList(StationGraph *graph) {
         int elements=graph->size/1000;
         int temp[elements+1];
@@ -218,7 +248,8 @@
     }
 
     /**
-     * Function to remove a station
+     * Function to remove a station from graph and hash map
+     * COMPLEXITY: O(1)
      * @param graph of the stations
      * @param distance of the station to remove
      * @return the updated graph
@@ -262,6 +293,9 @@
 
     }
 
+    /**
+     * Method to shift the command input
+     */
     void shiftInput(){
         char input;
         input= getc(stdin);
@@ -288,6 +322,7 @@
 
     /**
      * Function to find the best path for the trip
+     * COMPLEXITY: O(n)
      * @param graph of the stations
      * @param startingPoint starting station
      * @param arrivalPoint final station
@@ -417,6 +452,82 @@
         }
     }
 
+    /**
+     * Function to remove a car
+     * COMPLEXITY:  O(n)
+     * @param cars list
+     * @param autonomy of the car
+     * @return the cars list
+     */
+    CarList *removeCar(CarList *cars, int autonomy) {
+        cars->list=cars->startingCar;
+        Car *prev=NULL;
+        while(cars->list->key != autonomy && cars->list->next != NULL){
+            prev=cars->list;
+            cars->list=cars->list->next;
+        }
+        prev->next=cars->list->next;
+        if(cars->list==cars->last)cars->last=prev;
+        cars->size--;
+        Car *to_del=cars->list;
+        cars->list=cars->startingCar;
+        free(to_del);
+        if(cars->max==autonomy){
+            cars->max=-1;
+            while(cars->list->next!=NULL) {
+                if (cars->max < cars->list->key)cars->max = cars->list->key;
+                cars->list=cars->list->next;
+            }
+        }
+        cars->list=cars->startingCar;
+        printf("rottamata\n");
+        return cars;
+    }
+
+    /**
+     * Function to search a car from the list
+     * COMPLEXITY: O(n)
+     * @param cars list
+     * @param autonomy of the car
+     * @return true if there is the car
+     */
+    bool searchCar(CarList *cars, int autonomy) {
+        cars->list=cars->startingCar;
+        while(cars->list->next != NULL){
+            if(cars->list->key==autonomy){
+                return true;
+            }
+            cars->list=cars->list->next;
+        }
+        if(cars->list->key==autonomy){
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Function to insert a car in the list
+     * COMPLEXITY: O(n)
+     * @param cars list
+     * @param autonomy of the new car
+     * @param i if the function is called from switch case "aggiungi-auto" prints "aggiunta"
+     * @return cars list
+     */
+    CarList *carInsert(CarList *cars, int autonomy, int i) {
+
+        Car *newCar=(struct Car*) malloc(sizeof (struct Car));
+        newCar->key=autonomy;
+        newCar->next=NULL;
+        cars->size++;
+        cars->last->next=newCar;
+        cars->last=newCar;
+        cars->list=cars->last;
+        if(autonomy>cars->max)cars->max=autonomy;
+        if(i==1)printf("aggiunta\n");
+        return cars;
+    }
+
+
     int main(){
         HashMap *map=(struct HashMap*) malloc(sizeof (struct HashMap));
 
@@ -438,15 +549,15 @@
             firstLetter = command[0];
             switch (firstLetter) {
                 case 'a':{
-
                     ambiguitySolver=command[9];
+
                     //aggiungi-stazione
                     if(ambiguitySolver=='s'){
                         shiftInput();
                         int distance, n_cars;
                         distance=getInt();
                         n_cars=getInt();
-                        carTreeList *cars;
+                        CarList *cars;
                         cars = (struct CarList *) malloc(sizeof(struct CarList));
                         cars->size=n_cars;
                         cars->max=-1;
@@ -477,7 +588,8 @@
                         break;
 
                     }
-                        //aggiungi-auto
+
+                    //aggiungi-auto
                     else if(ambiguitySolver=='a'){
                         shiftInput();
                         int distance,autonomy;
@@ -494,8 +606,8 @@
                         break;
                     }
                     break;}
-                case 'd':{
 
+                case 'd':{
                     shiftInput();
                     int distance;
                     distance=getInt();
@@ -506,11 +618,9 @@
                     }
                     graph= removeStation(map,graph,distance);
                     break;
-
                 }
 
                 case 'r':{
-
                     shiftInput();
                     int distance,autonomy;
                     distance=getInt();
@@ -528,7 +638,6 @@
                 }
 
                 case 'p':{
-
                     shiftInput();
                     int start,end;
                     start=getInt();
@@ -541,62 +650,9 @@
                     bestPath(map,graph,start,end);
                     break;
                 }
+
                 default:
                     break;
             }
         }while(command!=NULL);
     }
-
-    carTreeList *removeCar(carTreeList *cars, int autonomy) {
-        cars->list=cars->startingCar;
-        Car *prev=NULL;
-        while(cars->list->key != autonomy && cars->list->next != NULL){
-            prev=cars->list;
-            cars->list=cars->list->next;
-        }
-        prev->next=cars->list->next;
-        if(cars->list==cars->last)cars->last=prev;
-        cars->size--;
-        Car *to_del=cars->list;
-        cars->list=cars->startingCar;
-        free(to_del);
-        if(cars->max==autonomy){
-            cars->max=-1;
-            while(cars->list->next!=NULL) {
-                if (cars->max < cars->list->key)cars->max = cars->list->key;
-                cars->list=cars->list->next;
-            }
-        }
-        cars->list=cars->startingCar;
-        printf("rottamata\n");
-        return cars;
-    }
-
-    bool searchCar(carTreeList *cars, int autonomy) {
-        cars->list=cars->startingCar;
-        while(cars->list->next != NULL){
-            if(cars->list->key==autonomy){
-                return true;
-            }
-            cars->list=cars->list->next;
-        }
-        if(cars->list->key==autonomy){
-            return true;
-        }
-        return false;
-    }
-
-    carTreeList *carInsert(carTreeList *cars, int autonomy, int i) {
-
-        Car *newCar=(struct Car*) malloc(sizeof (struct Car));
-        newCar->key=autonomy;
-        newCar->next=NULL;
-        cars->size++;
-        cars->last->next=newCar;
-        cars->last=newCar;
-        cars->list=cars->last;
-        if(autonomy>cars->max)cars->max=autonomy;
-        if(i==1)printf("aggiunta\n");
-        return cars;
-    }
-
